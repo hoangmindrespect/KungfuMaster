@@ -25,7 +25,6 @@ public class MinotaurMovement : MonoBehaviour
     void Update()
     {
         float distance = currentGoal.position.x - transform.position.x;
-        print(rb.velocity.x);
         if(currentGoal == pointB.transform && distance < 0){
             currentGoal = pointA.transform;
             rb.velocity = new Vector2(-speed, 0f);
