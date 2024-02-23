@@ -95,8 +95,6 @@ public class playerMovement : MonoBehaviour
         
         // Player is facing right
         if(controller.isFaceRight){
-            print("Face right:");
-            print(theScale.x);
             if(theScale.x < 0){
                 theScale.x *= -1;
                 skill.transform.localScale = theScale;
@@ -107,8 +105,6 @@ public class playerMovement : MonoBehaviour
                 theScale.x *= -1;
                 skill.transform.localScale = theScale;
             }  
-            print("Face Left");
-            print(theScale.x); 
             preSkill = Instantiate(skill, new Vector3(transform.position.x - xpos, transform.position.y + ypos, 0f), transform.rotation);
         }
     }

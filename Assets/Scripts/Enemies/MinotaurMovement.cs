@@ -11,6 +11,7 @@ public class MinotaurMovement : MonoBehaviour
     public GameObject room;
     public Animator animator;
     private Rigidbody2D rb;
+    public int HP = 2;
     private Transform currentGoal; // which point is enemy moving to?
     private float speed = 5f;
     void Start()
@@ -24,7 +25,9 @@ public class MinotaurMovement : MonoBehaviour
     // Update is called once per framea
     void Update()
     {
+        //cal the distance from the goal(A or B) to minotaur
         float distance = currentGoal.position.x - transform.position.x;
+
         if(currentGoal == pointB.transform && distance < 0){
             currentGoal = pointA.transform;
             rb.velocity = new Vector2(-speed, 0f);
@@ -34,6 +37,7 @@ public class MinotaurMovement : MonoBehaviour
             rb.velocity = new Vector2(speed, 0f);
             Flip();
         }
+        print(HP);
     }
 
     /// <summary>
