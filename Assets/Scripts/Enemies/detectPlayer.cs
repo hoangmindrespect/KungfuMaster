@@ -6,14 +6,13 @@ public class detectPlayer : MonoBehaviour
 {
     public Animator animator;
 
-    void OnTriggerEnter2D(Collider2D other)
-    {
-        animator.SetBool("isAttack", true);
-    }
-
     void OnTriggerStay2D(Collider2D other)
     {
-        animator.SetBool("isAttack", true);
+        if(!animator.GetBool("isDamaged")){
+            animator.SetBool("isAttack", true);
+        }else{
+            animator.SetBool("isAttack", false);
+        }
     }
 
     void OnTriggerExit2D(Collider2D other)
