@@ -11,6 +11,7 @@ public class playerMovement : MonoBehaviour
     public GameObject FireBomb;
     public Animator animator;
     public Rigidbody2D rb;
+    private bool cantMove = false;
     public float runSpeed = 40f;
     float horizontalMove = 0f;
     public float delay = 2.0f;
@@ -30,7 +31,11 @@ public class playerMovement : MonoBehaviour
         animator.SetFloat("speed", Mathf.Abs(horizontalMove));
 
         if(Input.GetButtonDown("Attack1")){
-            Fight1();
+            if(animator.GetFloat("velocity_y") == 0){
+                if(horizontalMove == 0.0f){
+                    Fight1();
+                }
+            }
         }
         if(Input.GetButtonDown("Attack2")){
             Fight2();
@@ -50,7 +55,9 @@ public class playerMovement : MonoBehaviour
 
     void FixedUpdate () {
         // Move our characte
-        controller.Move(horizontalMove * Time.fixedDeltaTime, crouch, jump);
+        if(!cantMove){
+            controller.Move(horizontalMove * Time.fixedDeltaTime, crouch, jump);
+        }else{print("Khong di chuyen");}
         jump = false;
         Jump();
     }
@@ -59,6 +66,7 @@ public class playerMovement : MonoBehaviour
         if (attackBlocked)
         return;
         animator.SetTrigger("attack_1");
+        cantMove = true;
         attackBlocked = true;
         StartCoroutine(DelayAttack_0(0.25f, FireAttack, 3.7f, -0.4f));
         StartCoroutine(DelayAttack_1(1.1f, null));
@@ -118,6 +126,7 @@ public class playerMovement : MonoBehaviour
             attackBlocked = false;
         }
         Destroy(preSkill);
+        cantMove = false;
     }
     private IEnumerator DelayAttack_2(float timDelay)
     {
