@@ -39,7 +39,7 @@ public class MinotaurMovement : MonoBehaviour, IEnemy
             rb.velocity = new Vector2(speed, 0f);
             Flip();
         }
-        print(HP);
+        //print(HP);
     }
 
     /// <summary>

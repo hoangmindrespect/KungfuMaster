@@ -6,7 +6,7 @@ public class UltimateSlayer : Quest
 {
     void Start()
     {
-        Debug.Log("Ultimate slayer assigned.");
+        //Debug.Log("Ultimate slayer assigned.");
         QuestName = "Ultimate Slayer";
         Description = "Kill a bunch of stuff.";
         //ItemReward = ItemDatabase.Instance.GetItem("potion_log");
