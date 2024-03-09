@@ -5837,7 +5837,7 @@ Animator:
   m_GameObject: {fileID: 992222440}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 6089646f1bbfbd24fa85c08f06b56989, type: 2}
+  m_Controller: {fileID: 9100000, guid: 4797fee3c14d3d74ebb0456ea5ab978d, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -5987,13 +5987,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controller: {fileID: 992222445}
-  FireAttack: {fileID: 2487929933203032940, guid: 186e9bfe07fdd0d41a2f951dda6b3aed, type: 3}
-  FirePunch: {fileID: 6788115226961243826, guid: 6eded3f01c3face4d8a8eb495a7b6097, type: 3}
-  FireBomb: {fileID: 1178932035351196689, guid: e91666e245b1a6b49a340a2ba1843049, type: 3}
   animator: {fileID: 992222441}
   rb: {fileID: 992222444}
   runSpeed: 40
-  delay: 0.417
 --- !u!58 &992222448
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -6450,7 +6446,7 @@ Transform:
   m_GameObject: {fileID: 1306754974}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.4439888, y: 2.5768237, z: -12.764601}
+  m_LocalPosition: {x: 5.3449, y: 2.870142, z: -12.764601}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

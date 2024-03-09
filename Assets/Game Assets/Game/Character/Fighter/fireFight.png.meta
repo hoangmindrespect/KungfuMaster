@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 1a69fb0b1be08d54e958ee119d0d260a
+guid: 31f7c6e41ed975d4ab0a7caa2b2a1f4c
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -97,7 +97,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Run-1-Sheet-export-export_0
+      name: fireFight_0
       rect:
         serializedVersion: 2
         x: 0
@@ -111,14 +111,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1264e3e9281027846b40062efcef8c60
-      internalID: 2060904350
+      spriteID: d6ef8b145dd0311409b015d9793acff0
+      internalID: -2118380517
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Run-1-Sheet-export-export_1
+      name: fireFight_1
       rect:
         serializedVersion: 2
         x: 128
@@ -132,14 +132,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8d5d5054bcc25f843b55de450dfae30d
-      internalID: 331299460
+      spriteID: f2d406281ee2e984c9029c8c22fe7551
+      internalID: 222487276
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Run-1-Sheet-export-export_2
+      name: fireFight_2
       rect:
         serializedVersion: 2
         x: 256
@@ -153,14 +153,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ee432a0ba0ff5c443af7cf99c006c32d
-      internalID: -1184732401
+      spriteID: 1f785a88665f4394c9ba96b1de667ae1
+      internalID: 962294090
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Run-1-Sheet-export-export_3
+      name: fireFight_3
       rect:
         serializedVersion: 2
         x: 384
@@ -174,14 +174,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: aee636ec3deaaac4289a93ee2c760603
-      internalID: -1185559759
+      spriteID: 81adf36de1afbca418798ed075733364
+      internalID: -1343166604
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Run-1-Sheet-export-export_4
+      name: fireFight_4
       rect:
         serializedVersion: 2
         x: 512
@@ -195,14 +195,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 29cc5235a49eabc45b5dd68ada134cb1
-      internalID: 864642108
+      spriteID: b5cfae9e08400ad4aa47c256bd1871bc
+      internalID: 1794700990
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Run-1-Sheet-export-export_5
+      name: fireFight_5
       rect:
         serializedVersion: 2
         x: 640
@@ -216,29 +216,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 29028e2c9fb3aed4281e97e78d9c2f20
-      internalID: -1255373911
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Run-1-Sheet-export-export_6
-      rect:
-        serializedVersion: 2
-        x: 768
-        y: 0
-        width: 128
-        height: 128
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e2d339aedf24d5342b889d935fe91141
-      internalID: -1522180980
+      spriteID: 7d31f199d94c1a048a6e047a5ced0ee6
+      internalID: -2001832933
       vertices: []
       indices: 
       edges: []
@@ -254,13 +233,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Run-1-Sheet-export-export_0: 2060904350
-      Run-1-Sheet-export-export_1: 331299460
-      Run-1-Sheet-export-export_2: -1184732401
-      Run-1-Sheet-export-export_3: -1185559759
-      Run-1-Sheet-export-export_4: 864642108
-      Run-1-Sheet-export-export_5: -1255373911
-      Run-1-Sheet-export-export_6: -1522180980
+      fireFight_0: -2118380517
+      fireFight_1: 222487276
+      fireFight_2: 962294090
+      fireFight_3: -1343166604
+      fireFight_4: 1794700990
+      fireFight_5: -2001832933
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
