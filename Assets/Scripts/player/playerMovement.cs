@@ -72,7 +72,7 @@ public class playerMovement : MonoBehaviour
         }
 
         //control attack
-        if (asi.IsName("fight") && asi.normalizedTime >= 1){
+        if ((asi.IsName("fight") || asi.IsName("cut_sword")) && asi.normalizedTime >= 1){
             animator.SetBool("isFighting", false);
 		}
         if (asi.IsName("kick") && asi.normalizedTime >= 1){
