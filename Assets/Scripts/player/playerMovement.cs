@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.TextCore;
 
 public class playerMovement : MonoBehaviour
 {
@@ -18,7 +19,7 @@ public class playerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
     }
     void Update () {
-        //Normal moving and control Axis
+        //NORMAL MOVING
         horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
         if(Input.GetButtonDown("Jump")){
             jump = true;
@@ -30,26 +31,42 @@ public class playerMovement : MonoBehaviour
             crouch = false;
         }
 
-        //Control attack
+        //ATTACK
         if(Input.GetButtonDown("Fight")){
             Fight();
         }
         if(Input.GetButtonDown("Kick")){
             Kick();
         }
+
+        //CHANGE PLAYER STATE BY 1 OR 2 OR 3 [FOR DEVELOPERS]
+        if(Input.GetKeyDown(KeyCode.F1)){
+            resetPlayerState();
+            animator.SetBool("isNoneState", true);
+        }else if(Input.GetKeyDown(KeyCode.F2)){
+            resetPlayerState();
+            animator.SetBool("isElementState", true);
+        }else if(Input.GetKeyDown(KeyCode.F3)){
+            resetPlayerState();
+            animator.SetBool("isWeaponState", true);
+        }
+
+        //RESET PARAMETER OF ANIMATOR
         setAnimator();
     }
 
     void FixedUpdate () {
-        // Move our characte
         controller.Move(horizontalMove * Time.fixedDeltaTime, crouch, jump);
         jump = false;
     }
 
-
-
+    private void resetPlayerState(){
+        animator.SetBool("isNoneState", false);
+        animator.SetBool("isElementState", false);
+        animator.SetBool("isWeaponState", false);
+    }
     private void setAnimator(){
-         AnimatorStateInfo asi = animator.GetCurrentAnimatorStateInfo(0);
+        AnimatorStateInfo asi = animator.GetCurrentAnimatorStateInfo(0);
 
         //set isMoving
         if(horizontalMove != 0.0f){
@@ -71,8 +88,8 @@ public class playerMovement : MonoBehaviour
             animator.SetBool("isLanding", false);
         }
 
-        //control attack
-        if ((asi.IsName("fight") || asi.IsName("cut_sword")) && asi.normalizedTime >= 1){
+        //control ATTACK here
+        if ((asi.IsName("fight") || asi.IsName("cut_sword")|| asi.IsName("fight_fire")) && asi.normalizedTime >= 1){
             animator.SetBool("isFighting", false);
 		}
         if (asi.IsName("kick") && asi.normalizedTime >= 1){
