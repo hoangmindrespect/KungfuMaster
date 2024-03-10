@@ -9,6 +9,9 @@ public class playerMovement : MonoBehaviour
     [SerializeField] public CharacterController2D controller;
     [SerializeField] public Animator animator;
     [SerializeField]  public Rigidbody2D rb;
+    public GameObject LargeMeteor;
+    public GameObject MediumMeteor;
+    public GameObject SmallMeteor;
     public float runSpeed = 40f;
     float horizontalMove = 0f;
     bool jump = false;
@@ -32,11 +35,14 @@ public class playerMovement : MonoBehaviour
         }
 
         //ATTACK
-        if(Input.GetButtonDown("Fight")){
+        if(Input.GetButtonDown("Skill1")){
             Fight();
         }
-        if(Input.GetButtonDown("Kick")){
+        if(Input.GetButtonDown("Skill2")){
             Kick();
+        }
+        if(Input.GetButtonDown("Skill3")){
+            Skill3();
         }
 
         //CHANGE PLAYER STATE BY 1 OR 2 OR 3 [FOR DEVELOPERS]
@@ -92,16 +98,40 @@ public class playerMovement : MonoBehaviour
         if ((asi.IsName("fight") || asi.IsName("cut_sword")|| asi.IsName("fight_fire")) && asi.normalizedTime >= 1){
             animator.SetBool("isFighting", false);
 		}
-        if (asi.IsName("kick") && asi.normalizedTime >= 1){
+        if ((asi.IsName("kick") || asi.IsName("kick_fire")) && asi.normalizedTime >= 1){
             animator.SetBool("isKicking", false);
 		}
     }
 
+    //S1
     private void Fight(){
         animator.SetBool("isFighting", true);
     }
+
+    //S2
     private void Kick(){
         animator.SetBool("isKicking", true);
+    }
+
+    private void Skill3(){
+        //control S3 in element state
+        if(animator.GetBool("isElementState")){
+            Instantiate(LargeMeteor, new Vector3(transform.position.x -20f, transform.position.y + 10f, 0f), Quaternion.identity);
+            Instantiate(MediumMeteor, new Vector3(transform.position.x - 15f, transform.position.y + 10f, 0f), Quaternion.identity);
+            Instantiate(SmallMeteor, new Vector3(transform.position.x - 12f, transform.position.y + 10f, 0f), Quaternion.identity);
+            Instantiate(LargeMeteor, new Vector3(transform.position.x - 8f, transform.position.y + 10f, 0f), Quaternion.identity);
+            Instantiate(MediumMeteor, new Vector3(transform.position.x - 5f, transform.position.y + 10f, 0f), Quaternion.identity);
+            Instantiate(LargeMeteor, new Vector3(transform.position.x , transform.position.y + 10f, 0f), Quaternion.identity);
+            Instantiate(SmallMeteor, new Vector3(transform.position.x + 2f, transform.position.y + 10f, 0f), Quaternion.identity);
+            Instantiate(LargeMeteor, new Vector3(transform.position.x + 5f, transform.position.y + 10f, 0f), Quaternion.identity);
+            Instantiate(SmallMeteor, new Vector3(transform.position.x + 8f, transform.position.y + 10f, 0f), Quaternion.identity);
+            Instantiate(MediumMeteor, new Vector3(transform.position.x + 11f, transform.position.y + 10f, 0f), Quaternion.identity);
+            Instantiate(MediumMeteor, new Vector3(transform.position.x + 14f, transform.position.y + 10f, 0f), Quaternion.identity);
+            Instantiate(LargeMeteor, new Vector3(transform.position.x + 17f, transform.position.y + 10f, 0f), Quaternion.identity);
+            Instantiate(LargeMeteor, new Vector3(transform.position.x + 20f, transform.position.y + 10f, 0f), Quaternion.identity);
+            Instantiate(MediumMeteor, new Vector3(transform.position.x + 23f, transform.position.y + 10f, 0f), Quaternion.identity);
+            Instantiate(SmallMeteor, new Vector3(transform.position.x + 26f, transform.position.y + 10f, 0f), Quaternion.identity);
+        }
     }
 
 }

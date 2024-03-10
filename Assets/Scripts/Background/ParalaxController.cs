@@ -48,7 +48,6 @@ public class ParalaxController : MonoBehaviour
         }
     }
 
-
     void FixedUpdate()
     {
         distance = cam.position.x - camStartPos.x;
