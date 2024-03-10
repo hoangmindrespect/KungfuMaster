@@ -59,7 +59,7 @@ public class CharacterController2D : MonoBehaviour
 					OnLandEvent.Invoke();
 			}
 		}
-		animator.SetBool("islanding", m_Grounded);
+		//animator.SetBool("islanding", m_Grounded);
 	}
 
 
