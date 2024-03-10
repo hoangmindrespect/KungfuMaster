@@ -48,21 +48,6 @@ public class ParalaxController : MonoBehaviour
         }
     }
 
- /// <summary>
-/// LateUpdate is called every frame, if the Behaviour is enabled.
-/// It is called after all Update functions have been called.
-/// </summary>
-void LateUpdate()
-{
-     distance = cam.position.x - camStartPos.x;
-
-        transform.position = new Vector3(cam.position.x, transform.position.y, 0);
-        for (int i = 0; i < backgrounds.Length; i++){
-            float speed = backSpeed[i] * parallaxSpeed;
-            mat[i].SetTextureOffset("_MainTex", new Vector2(distance, 0) * speed);
-        } 
-}
-
     void FixedUpdate()
     {
         distance = cam.position.x - camStartPos.x;

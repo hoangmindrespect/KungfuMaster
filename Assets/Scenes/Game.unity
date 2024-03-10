@@ -523,7 +523,7 @@ Transform:
   m_GameObject: {fileID: 386546373}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 5.358404, y: 0.8073338, z: -12.764601}
+  m_LocalPosition: {x: -2.691596, y: 1.1673337, z: -12.764601}
   m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -5909,7 +5909,7 @@ Transform:
   m_GameObject: {fileID: 992222440}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 16.25, y: -2.5, z: 0}
+  m_LocalPosition: {x: 8.2, y: -2.14, z: 0}
   m_LocalScale: {x: 4, y: 4, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -5989,6 +5989,9 @@ MonoBehaviour:
   controller: {fileID: 992222445}
   animator: {fileID: 992222441}
   rb: {fileID: 992222444}
+  LargeMeteor: {fileID: 244110850425716280, guid: cba8c78cded740046a082f6c7d37e27f, type: 3}
+  MediumMeteor: {fileID: 3550228021753126451, guid: cf126d6da4a1d864bb033e39904088c3, type: 3}
+  SmallMeteor: {fileID: 5867487929194662161, guid: af302c2a32c319a48a9c3068f4fca4c3, type: 3}
   runSpeed: 40
 --- !u!58 &992222448
 CircleCollider2D:
@@ -6446,7 +6449,7 @@ Transform:
   m_GameObject: {fileID: 1306754974}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 5.3449, y: 2.8700123, z: -12.764601}
+  m_LocalPosition: {x: -2.7023973, y: 2.8175497, z: -12.764601}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6787,7 +6790,7 @@ Transform:
   m_GameObject: {fileID: 1599611432}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.64, y: 16.1, z: 15}
+  m_LocalPosition: {x: 0.71, y: 13.88, z: 15}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
