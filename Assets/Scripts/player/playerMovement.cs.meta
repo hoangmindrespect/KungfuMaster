@@ -3,7 +3,13 @@ guid: d4bd854ef58dc1a4087b0d6df5aed0a1
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - controller: {instanceID: 0}
+  - animator: {instanceID: 0}
+  - rb: {instanceID: 0}
+  - LargeMeteor: {fileID: 244110850425716280, guid: cba8c78cded740046a082f6c7d37e27f, type: 3}
+  - MediumMeteor: {fileID: 3550228021753126451, guid: cf126d6da4a1d864bb033e39904088c3, type: 3}
+  - SmallMeteor: {fileID: 5867487929194662161, guid: af302c2a32c319a48a9c3068f4fca4c3, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
