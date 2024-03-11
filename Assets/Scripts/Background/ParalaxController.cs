@@ -2,11 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ParalaxController : MonoBehaviour
+public class ParallaxController : MonoBehaviour
 {
     Transform cam; // Main Camera
     Vector3 camStartPos;
-    float distance; // distance between the camera start position and its current position
 
     GameObject[] backgrounds;
     Material[] mat;
@@ -14,8 +13,9 @@ public class ParalaxController : MonoBehaviour
 
     float farthestBack;
 
-    [Range(0.01f,0.05f)]
+    [Range(0.01f, 0.05f)]
     public float parallaxSpeed;
+
     void Start()
     {
         cam = Camera.main.transform;
@@ -34,11 +34,15 @@ public class ParalaxController : MonoBehaviour
         BackSpeedCalculate(backCount);
     }
 
-    void BackSpeedCalculate(int backCount){
-        for (int i = 0; i < backCount; i++) // find the farhthest background
+    void BackSpeedCalculate(int backCount)
+    {
+        farthestBack = float.MinValue; // Initialize to the smallest possible value
+        for (int i = 0; i < backCount; i++) // find the farthest background
         {
-            if ((backgrounds[i].transform.position.z - cam.position.z) > farthestBack){
-                farthestBack = backgrounds[i].transform.position.z - cam.position.z;
+            float distance = backgrounds[i].transform.position.z - cam.position.z;
+            if (distance > farthestBack)
+            {
+                farthestBack = distance;
             }
         }
 
@@ -48,15 +52,16 @@ public class ParalaxController : MonoBehaviour
         }
     }
 
-    void FixedUpdate()
-    {
-        distance = cam.position.x - camStartPos.x;
 
+
+    void FixedUpdate() 
+    {        
         transform.position = new Vector3(cam.position.x, transform.position.y, 0);
-        for (int i = 0; i < backgrounds.Length; i++){
-            float speed = backSpeed[i] * parallaxSpeed;
-            mat[i].SetTextureOffset("_MainTex", new Vector2(distance, 0) * speed);
-        } 
-    }
 
+        for (int i = 0; i < backgrounds.Length; i++)
+        {
+            float speed = backSpeed[i] * parallaxSpeed;
+            mat[i].SetTextureOffset("_MainTex", new Vector2(cam.position.x - camStartPos.x, 0) * speed);
+        }
+    }
 }

@@ -16,9 +16,9 @@ public class paralax : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        distance += Time.deltaTime*speed;
+        distance += Time.fixedDeltaTime*speed;
         mat.SetTextureOffset("_MainTex", Vector2.right * distance);
     }
 }

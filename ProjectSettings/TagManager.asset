@@ -3,7 +3,10 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Fight
+  - Kick
+  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -19,8 +22,8 @@ TagManager:
   - EnemyHitBox
   - Skill
   - NPC
-  - 
-  - 
+  - SkillOnGround
+  - MileStone
   - 
   - 
   - 
