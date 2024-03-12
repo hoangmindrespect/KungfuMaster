@@ -7,6 +7,7 @@ public class DialogueSystem : MonoBehaviour
 {
     public static DialogueSystem Instance { get; set; }
     public GameObject dialoguePanel;
+
     public string npcName;
     public List<string> dialogueLines = new List<string>();
 
@@ -17,9 +18,14 @@ public class DialogueSystem : MonoBehaviour
     // Use this for initialization
     void Awake()
     {
-        continueButton = dialoguePanel.GetComponentInChildren<Button>();
-        dialogueText = dialoguePanel.transform.GetChild(1).GetComponent<TMPro.TextMeshProUGUI>();
-        nameText = dialoguePanel.transform.Find("Name").GetChild(0).GetComponentInChildren<TMPro.TextMeshProUGUI>();
+        //continueButton = dialoguePanel.GetComponentInChildren<Button>();
+        //dialogueText = dialoguePanel.transform.GetChild(1).GetComponent<TMPro.TextMeshProUGUI>();
+        //nameText = dialoguePanel.transform.Find("Name").GetChild(0).GetComponentInChildren<TMPro.TextMeshProUGUI>();
+
+        continueButton = dialoguePanel.transform.Find("ContinueButton").GetComponent<Button>();
+        dialogueText = dialoguePanel.transform.Find("DialogueText").GetComponent<TMPro.TextMeshProUGUI>();
+        nameText = dialoguePanel.transform.Find("Name").GetChild(0).GetComponent<TMPro.TextMeshProUGUI>();
+
         continueButton.onClick.AddListener(delegate { ContinueDialogue(); });
         dialoguePanel.SetActive(false);
 
@@ -37,11 +43,13 @@ public class DialogueSystem : MonoBehaviour
     public void AddNewDialogue(string[] lines, string npcName)
     {
         dialogueIndex = 0;
-        dialogueLines = new List<string>();
-        foreach (string line in lines)
-        {
-            dialogueLines.Add(line);
-        }
+        //dialogueLines = new List<string>();
+        //foreach (string line in lines)
+        //{
+        //    dialogueLines.Add(line);
+        //}
+        dialogueLines = new List<string>(lines.Length);
+        dialogueLines.AddRange(lines);
         this.npcName = npcName;
 
         CreateDialogue();
