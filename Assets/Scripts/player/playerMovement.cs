@@ -12,12 +12,17 @@ public class playerMovement : MonoBehaviour
     public GameObject LargeMeteor;
     public GameObject MediumMeteor;
     public GameObject SmallMeteor;
+    private AudioManager audioManager;
     public float runSpeed = 40f;
     float horizontalMove = 0f;
     bool jump = false;
     bool crouch = false;
 
-    // Update is called once per frame
+    void Awake()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+    }
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -107,6 +112,7 @@ public class playerMovement : MonoBehaviour
     //S1
     private void Fight(){
         animator.SetBool("isFighting", true);
+        
     }
 
     //S2

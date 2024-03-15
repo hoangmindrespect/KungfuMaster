@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 2aa4220950ba4c6498f2d57258724fe1
+guid: fbff26f636c529d4eb79258af8816a9e
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -97,7 +97,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: crow_jump_0
+      name: crow_walk-Sheet-export_0
       rect:
         serializedVersion: 2
         x: 0
@@ -111,14 +111,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bbb71569a12417e4cbf1684d0c06283a
-      internalID: 523496889
+      spriteID: 43b699a178d7bc84db9ce01b55ea71ac
+      internalID: 1659119335
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: crow_jump_1
+      name: crow_walk-Sheet-export_1
       rect:
         serializedVersion: 2
         x: 64
@@ -132,92 +132,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3dfcd94e0e0397b4b893b7864fad47b8
-      internalID: -1493159020
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: crow_jump_2
-      rect:
-        serializedVersion: 2
-        x: 128
-        y: 0
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f6c56be0c332cf146828fb2f0e834c74
-      internalID: -501626639
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: crow_jump_3
-      rect:
-        serializedVersion: 2
-        x: 192
-        y: 0
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: b30c20ff912accf4d87e37f6917eda18
-      internalID: -1708263458
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: crow_jump_4
-      rect:
-        serializedVersion: 2
-        x: 256
-        y: 0
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: bb2deda6848f8a049ba13d321ce41065
-      internalID: -1790380533
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: crow_jump_5
-      rect:
-        serializedVersion: 2
-        x: 320
-        y: 0
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c06b1539771033049bdce8b1118dbf9a
-      internalID: -290330673
+      spriteID: 6779fcfc38fbaf1449bf13259f458eb1
+      internalID: -978020464
       vertices: []
       indices: 
       edges: []
@@ -233,12 +149,8 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      crow_jump_0: 523496889
-      crow_jump_1: -1493159020
-      crow_jump_2: -501626639
-      crow_jump_3: -1708263458
-      crow_jump_4: -1790380533
-      crow_jump_5: -290330673
+      crow_walk-Sheet-export_0: 1659119335
+      crow_walk-Sheet-export_1: -978020464
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
