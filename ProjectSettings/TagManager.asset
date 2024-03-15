@@ -7,6 +7,7 @@ TagManager:
   - Fight
   - Kick
   - Enemy
+  - Audio
   layers:
   - Default
   - TransparentFX
@@ -24,7 +25,7 @@ TagManager:
   - NPC
   - SkillOnGround
   - MileStone
-  - 
+  - EnemyVSPlayer
   - 
   - 
   - 
