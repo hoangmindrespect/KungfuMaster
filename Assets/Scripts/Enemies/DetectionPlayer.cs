@@ -5,12 +5,8 @@ using UnityEngine;
 
 public class CrowDeathInteraction : MonoBehaviour
 {
-    [Header("----------Crow Death----------")]
     public GameObject enemy;
-
-    [Header("----------Player----------")]
     public GameObject player;
-
     private CrowDeathMovement cm;
     private Animator enemyAnimator;
     private Rigidbody2D enemyRigidBody;
