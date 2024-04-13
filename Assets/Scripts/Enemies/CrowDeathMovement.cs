@@ -18,14 +18,13 @@ public class CrowDeathMovement : MonoBehaviour
         direction = 1;
     }
 
-    void FixedUpdate()
-    {
+    public void OnAttack(){
         
     }
-
     public void Flip(){
         direction = -direction;
         Vector3 theScale = transform.localScale;
+        
 		theScale.x *= -1;
 		transform.localScale = theScale;
         rb.velocity = new Vector2(speed * direction, 0.0f);

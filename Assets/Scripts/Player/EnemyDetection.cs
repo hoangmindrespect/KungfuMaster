@@ -9,7 +9,11 @@ public class NewBehaviourScript : MonoBehaviour
     private Animator playerAnimator;
     private GameObject enemy;
     public GameObject Player;
-
+    private AudioManager audioManager;
+    void Awake()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+    }
     void OnTriggerStay2D(Collider2D other)
     {
         enemyAnimator = other.GetComponent<Animator>();
@@ -22,7 +26,6 @@ public class NewBehaviourScript : MonoBehaviour
         }
     }
 
-
     void FixedUpdate()
     {
         if(enemyAnimator != null){
@@ -30,9 +33,13 @@ public class NewBehaviourScript : MonoBehaviour
             if(asi.IsName("damage") && asi.normalizedTime > 1){
                 enemyAnimator.SetBool("isDied", true);
                 enemyRigidBody2D.velocity = new Vector2(0.0f,0.0f);
+                audioManager.PlaySFX(audioManager.crowdeathDeath);
             }else if(asi.IsName("die") && asi.normalizedTime > 1){
                 Destroy(enemy);
             }
         }
+    }
+    private void EnemyYell(){
+        audioManager.PlaySFX(audioManager.crowdeathDeath);
     }
 }

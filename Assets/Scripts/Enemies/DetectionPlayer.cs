@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.Mathematics;
 using UnityEngine;
 
 public class CrowDeathInteraction : MonoBehaviour
@@ -31,14 +30,22 @@ public class CrowDeathInteraction : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other)
     {
         if(!isEnterCollide){
-            audioManager.PlaySFX(audioManager.crowdeathDetect);
+            audioManager.PlaySFX(GetRandomCrowDeathSound());
             enemyAnimator.SetBool("isPlayerDetected", true);
             isEnterCollide = true;
             isExitCollide = false;
         }
     }
-
-
+    AudioClip GetRandomCrowDeathSound()
+    {
+        int randomIndex = Random.Range(1, 3); 
+        switch (randomIndex) {
+            case 1: return audioManager.crowdeathDetect1;
+            case 2: return audioManager.crowdeathDetect2;
+            case 3: return audioManager.crowdeathDetect3;
+            default: return audioManager.crowdeathDetect1;
+        }
+    }
     void OnTriggerExit2D(Collider2D other)
     {
         if(!isExitCollide){

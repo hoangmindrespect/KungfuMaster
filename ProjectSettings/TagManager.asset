@@ -16,8 +16,8 @@ TagManager:
   - Water
   - UI
   - Player
+  - FlyEnemy
   - background
-  - 
   - Enemy
   - Ground
   - EnemyHitBox
@@ -26,7 +26,7 @@ TagManager:
   - SkillOnGround
   - MileStone
   - EnemyVSPlayer
-  - 
+  - Portal
   - 
   - 
   - 

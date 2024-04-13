@@ -8,10 +8,23 @@ public class AudioManager : MonoBehaviour
     [SerializeField] AudioSource musicSource;
     [SerializeField] AudioSource SFXSource;
 
-    [Header("----------Audio Clip----------")]
-    public AudioClip crowdeathDetect;
-    public AudioClip playerFight;
+    [Header("----------Audio Clip For Background----------")]
+    public AudioClip background;
 
+    [Header("----------Audio Clip For CrowDeadth----------")]
+    public AudioClip crowdeathDetect1;
+    public AudioClip crowdeathDetect2;
+    public AudioClip crowdeathDetect3;
+    public AudioClip crowdeathDeath;
+    public AudioClip crowdeathAttack;
+
+    [Header("----------Audio Clip For Player----------")]
+    public AudioClip playerFight;
+    public AudioClip playerKick;
+    private void Start(){
+        musicSource.clip = background;
+        musicSource.Play();
+    }
     public void PlaySFX(AudioClip clip){
         SFXSource.PlayOneShot(clip);
     }
