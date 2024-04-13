@@ -16,8 +16,8 @@ TagManager:
   - Water
   - UI
   - Player
+  - FlyEnemy
   - background
-  - 
   - Enemy
   - Ground
   - EnemyHitBox
