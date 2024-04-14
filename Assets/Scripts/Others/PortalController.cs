@@ -8,10 +8,14 @@ public class PortalController : MonoBehaviour
     GameObject player;
     Animator animator;
     Rigidbody2D playerRb;
+    
+    private AudioManager audioManager;
+
     private void Awake() {
         player = GameObject.FindGameObjectWithTag("Player");
         animator = player.GetComponent<Animator>();
         playerRb = player.GetComponent<Rigidbody2D>();
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
     }
     
     private void OnTriggerEnter2D(Collider2D other)
@@ -25,6 +29,7 @@ public class PortalController : MonoBehaviour
     {
         playerRb.simulated = false;
         animator.SetBool("isEntryPortal", true);
+        audioManager.PlaySFX(audioManager.EntryPortal);
         yield return new WaitForSeconds(0.4f);
         animator.SetBool("isEntryPortal", false);
         animator.SetBool("isExistPortal", true);

@@ -116,13 +116,11 @@ public class CharacterController2D : MonoBehaviour
 			// If the input is moving the player right and the player is facing left...
 			if (move > 0 && !m_FacingRight)
 			{
-				Debug.Log("phải");
 				Flip();
 			}
 			// Otherwise if the input is moving the player left and the player is facing right...
 			else if (move < 0 && m_FacingRight)
-			{				Debug.Log("trái");
-
+			{				
  				Flip();
 			}
 		}
