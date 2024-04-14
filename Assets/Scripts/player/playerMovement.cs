@@ -17,7 +17,11 @@ public class playerMovement : MonoBehaviour
     float horizontalMove = 0f;
     bool jump = false;
     bool crouch = false;
-
+    private bool canFight = true; // Biến để kiểm tra xem có thể thực hiện Fight() hay không
+    private bool canKick = true; // Biến để kiểm tra xem có thể thực hiện Kick() hay không
+    private float lastFightTime; // Thời gian cuối cùng khi thực hiện Fight()
+    private float lastKickTime; // Thời gian cuối cùng khi thực hiện Kick()
+    public float cooldown = 0.5f; // Thời gian cooldown giữa các lần nhấn
     void Awake()
     {
         audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
@@ -41,10 +45,10 @@ public class playerMovement : MonoBehaviour
         }
 
         //ATTACK
-        if(Input.GetButtonDown("Skill1")){
+        if(canFight && Input.GetButtonDown("Skill1")){
             Fight();
         }
-        if(Input.GetButtonDown("Skill2")){
+        if(canKick && Input.GetButtonDown("Skill2")){
             Kick();
         }
         if(Input.GetButtonDown("Skill3")){
@@ -110,16 +114,27 @@ public class playerMovement : MonoBehaviour
     }
 
     //S1
-    private void Fight(){
-        animator.SetBool("isFighting", true);
-        
+    private void Fight()
+    {
+        // Kiểm tra thời gian cooldown
+        if (Time.time - lastFightTime > cooldown)
+        {
+            lastFightTime = Time.time; // Cập nhật thời gian cuối cùng khi thực hiện Fight()
+            animator.SetBool("isFighting", true);
+            audioManager.PlaySFX(audioManager.playerFight);
+        }
     }
 
-    //S2
-    private void Kick(){
-        animator.SetBool("isKicking", true);
+    private void Kick()
+    {
+        // Kiểm tra thời gian cooldown
+        if (Time.time - lastKickTime > cooldown)
+        {
+            lastKickTime = Time.time; // Cập nhật thời gian cuối cùng khi thực hiện Kick()
+            animator.SetBool("isKicking", true);
+            audioManager.PlaySFX(audioManager.playerKick);
+        }
     }
-
     private void Skill3(){
         //control S3 in element state
         if(animator.GetBool("isElementState")){

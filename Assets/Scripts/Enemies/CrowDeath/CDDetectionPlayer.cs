@@ -27,15 +27,23 @@ public class CrowDeathInteraction : MonoBehaviour
         cm = enemy.GetComponent<CrowDeathMovement>();
         playerRigidBody = player.GetComponent<Rigidbody2D>();
     }
+
     void OnTriggerEnter2D(Collider2D other)
     {
+        //đảm bảo là CD chỉ nói gì đó 1 lần.
         if(!isEnterCollide){
             audioManager.PlaySFX(GetRandomCrowDeathSound());
             enemyAnimator.SetBool("isPlayerDetected", true);
+            //Start
             isEnterCollide = true;
             isExitCollide = false;
         }
     }
+
+    IEnumerable Delay(){
+        yield return new WaitForSeconds(0.5f);
+    }
+
     AudioClip GetRandomCrowDeathSound()
     {
         int randomIndex = Random.Range(1, 3); 
@@ -53,7 +61,6 @@ public class CrowDeathInteraction : MonoBehaviour
             enemyAnimator.SetBool("isRunning", false);
             isEnterCollide = false;
             isExitCollide = true;
-            cm.Flip();
         }
     }
     void FixedUpdate()
