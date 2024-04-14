@@ -29,15 +29,13 @@ public class AttackPlayer : MonoBehaviour
         isAttacking = true;
         animator.SetBool("isAttacking", true);
 
-        // Phát âm thanh tấn công mỗi 0.5 giây
         if (isAttacking)
         {
+            isAttacking = false;
             audioManager.PlaySFX(audioManager.crowdeathAttack);
             yield return new WaitForSeconds(0.5f);
-            isAttacking = false;
+            animator.SetBool("isAttacking", false);
         }
-
-        animator.SetBool("isAttacking", false);
     }
 
     void OnTriggerExit2D(Collider2D other)
