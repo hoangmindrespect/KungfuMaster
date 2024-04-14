@@ -9388,6 +9388,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CrowDeath
       objectReference: {fileID: 0}
+    - target: {fileID: 5688920572437152725, guid: f619af84468cdc742b6d94bf04feb427, type: 3}
+      propertyPath: maxHP
+      value: 131
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
