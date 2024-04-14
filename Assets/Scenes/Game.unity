@@ -6967,6 +6967,7 @@ MonoBehaviour:
   MediumMeteor: {fileID: 3550228021753126451, guid: cf126d6da4a1d864bb033e39904088c3, type: 3}
   SmallMeteor: {fileID: 5867487929194662161, guid: af302c2a32c319a48a9c3068f4fca4c3, type: 3}
   runSpeed: 40
+  cooldown: 0.5
 --- !u!58 &992222448
 CircleCollider2D:
   m_ObjectHideFlags: 0
