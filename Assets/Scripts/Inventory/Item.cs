@@ -4,7 +4,7 @@ using Newtonsoft.Json;
 public class Item
 {
     public enum ItemTypes { Consumable, Weapon, Quest }
-    public List<BaseStat> Stats { get; set; }
+    public List<BaseStat> Stats { get; set; } // One item has many stats like dame, attack speed or even toughness = HP
     public string ObjectSlug { get; set; }
     public string Description { get; set; }
     [JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]

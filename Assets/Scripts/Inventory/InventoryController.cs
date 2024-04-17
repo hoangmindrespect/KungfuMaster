@@ -6,8 +6,8 @@ public class InventoryController : MonoBehaviour
 {
     public static InventoryController Instance { get; set; }
     //public PlayerWeaponController playerWeaponController;
-    public ConsumableController consumableController;
-    //public InventoryUIDetails inventoryDetailsPanel;
+    //public ConsumableController consumableController;
+    public InventoryUIDetails inventoryDetailsPanel;
     public List<Item> playerItems = new List<Item>();
 
     void Start()
@@ -18,7 +18,7 @@ public class InventoryController : MonoBehaviour
             Instance = this;
 
         //playerWeaponController = GetComponent<PlayerWeaponController>();
-        consumableController = GetComponent<ConsumableController>();
+        //consumableController = GetComponent<ConsumableController>();
         GiveItem("sword");
         GiveItem("staff");
         GiveItem("potion_log");
@@ -26,26 +26,26 @@ public class InventoryController : MonoBehaviour
 
     public void GiveItem(string itemSlug)
     {
-        //Item item = ItemDatabase.Instance.GetItem(itemSlug);
-        //playerItems.Add(item);
-        //UIEventHandler.ItemAddedToInventory(item);
+        Item item = ItemDatabase.Instance.GetItem(itemSlug);
+        playerItems.Add(item);
+        UIEventHandler.ItemAddedToInventory(item);
     }
 
     public void GiveItem(Item item)
     {
-        //playerItems.Add(item);
-        //UIEventHandler.ItemAddedToInventory(item);
+        playerItems.Add(item);
+        UIEventHandler.ItemAddedToInventory(item);
     }
 
     public void GiveItem(List<Item> items)
     {
-        //playerItems.AddRange(items);
-        //UIEventHandler.ItemAddedToInventory(items);
+        playerItems.AddRange(items);
+        UIEventHandler.ItemAddedToInventory(items);
     }
 
     public void SetItemDetails(Item item, Button selectedButton)
     {
-        //inventoryDetailsPanel.SetItem(item, selectedButton);
+        inventoryDetailsPanel.SetItem(item, selectedButton);
     }
 
     public void EquipItem(Item itemToEquip)
@@ -55,6 +55,6 @@ public class InventoryController : MonoBehaviour
 
     public void ConsumeItem(Item itemToConsume)
     {
-        consumableController.ConsumeItem(itemToConsume);
+        //consumableController.ConsumeItem(itemToConsume);
     }
 }
