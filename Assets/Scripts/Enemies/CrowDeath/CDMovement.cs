@@ -18,9 +18,6 @@ public class CrowDeathMovement : MonoBehaviour
         direction = 1;
     }
 
-    public void OnAttack(){
-        
-    }
     public void Flip(){
         direction = -direction;
         Vector3 theScale = transform.localScale;
@@ -28,5 +25,24 @@ public class CrowDeathMovement : MonoBehaviour
 		theScale.x *= -1;
 		transform.localScale = theScale;
         rb.velocity = new Vector2(speed * direction, 0.0f);
+    }
+
+    void OnCollisionEnter2D(Collision2D other)
+    {
+        Vector2 collisionVelocity = other.relativeVelocity;
+        if (collisionVelocity.x > 0) 
+        {
+            if (direction < 0) 
+            {
+                Flip();
+            }
+        }
+        else if (collisionVelocity.x < 0) 
+        {
+            if (direction > 0) 
+            {
+                Flip();
+            }
+        }
     }
 }

@@ -21,6 +21,7 @@ public class AudioManager : MonoBehaviour
     [Header("----------Audio Clip For Player----------")]
     public AudioClip playerFight;
     public AudioClip playerKick;
+    public AudioClip EntryPortal;
     private void Start(){
         musicSource.clip = background;
         musicSource.Play();

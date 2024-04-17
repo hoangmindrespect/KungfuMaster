@@ -30,10 +30,8 @@ public class NewBehaviourScript : MonoBehaviour
     {
         if(enemyAnimator != null){
             AnimatorStateInfo asi = enemyAnimator.GetCurrentAnimatorStateInfo(0);
-            if(asi.IsName("damage") && asi.normalizedTime > 1){
-                enemyAnimator.SetBool("isDied", true);
-                enemyRigidBody2D.velocity = new Vector2(0.0f,0.0f);
-                audioManager.PlaySFX(audioManager.crowdeathDeath);
+            if(asi.IsName("damage")){
+                enemy.GetComponent<Ability>().TackDamage();
             }else if(asi.IsName("die") && asi.normalizedTime > 1){
                 Destroy(enemy);
             }
