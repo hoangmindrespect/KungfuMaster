@@ -5,8 +5,8 @@ using UnityEngine.UI;
 public class InventoryController : MonoBehaviour
 {
     public static InventoryController Instance { get; set; }
-    //public PlayerWeaponController playerWeaponController;
-    //public ConsumableController consumableController;
+    public PlayerWeaponController playerWeaponController;
+    public ConsumableController consumableController;
     public InventoryUIDetails inventoryDetailsPanel;
     public List<Item> playerItems = new List<Item>();
 
@@ -17,8 +17,8 @@ public class InventoryController : MonoBehaviour
         else
             Instance = this;
 
-        //playerWeaponController = GetComponent<PlayerWeaponController>();
-        //consumableController = GetComponent<ConsumableController>();
+        playerWeaponController = GetComponent<PlayerWeaponController>();
+        consumableController = GetComponent<ConsumableController>();
         GiveItem("sword");
         GiveItem("staff");
         GiveItem("potion_log");
