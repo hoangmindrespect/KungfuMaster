@@ -28,6 +28,6 @@ public class PlayerLevel : MonoBehaviour
             CurrentExperience -= RequiredExperience;
             Level++;
         }
-        UIEventHandler.PlayerLevelChanged();
+        //UIEventHandler.PlayerLevelChanged();
     }
 }

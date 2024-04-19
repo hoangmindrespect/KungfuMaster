@@ -11,10 +11,11 @@ public class InventoryUI : MonoBehaviour
     bool menuIsActive { get; set; }
     Item currentSelectedItem { get; set; }
     // Use this for initialization
-    void Start()
+    void Awake()
     {
         UIEventHandler.OnItemAddedToInventory += ItemAdded;
         itemContainer = Resources.Load<InventoryUIItem>("UI/Item_Container");
+        //Debug.Log(itemContainer.gameObject.name);
         inventoryPanel.gameObject.SetActive(false);
     }
 
@@ -30,6 +31,7 @@ public class InventoryUI : MonoBehaviour
     public void ItemAdded(Item item)
     {
         InventoryUIItem emptyItem = Instantiate(itemContainer);
+        //Debug.Log(emptyItem.gameObject.name);
         emptyItem.SetItem(item);
         itemUIList.Add(emptyItem);
         emptyItem.transform.SetParent(scrollViewContent);

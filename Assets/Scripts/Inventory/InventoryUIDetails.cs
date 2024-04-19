@@ -9,7 +9,7 @@ public class InventoryUIDetails : MonoBehaviour
     Button selectedItemButton, itemInteractButton;
     TextMeshProUGUI itemNameText, itemDescriptionText, itemInteractButtonText;
 
-    public TextMeshProUGUI statText;
+    //public TextMeshProUGUI statText;
     void Start()
     {
         itemNameText = transform.Find("Item_Name").GetComponent<TextMeshProUGUI>();
@@ -22,14 +22,14 @@ public class InventoryUIDetails : MonoBehaviour
     public void SetItem(Item item, Button selectedButton)
     {
         gameObject.SetActive(true);
-        statText.text = "";
-        if (item.Stats != null)
-        {
-            foreach (BaseStat stat in item.Stats)
-            {
-                statText.text += stat.StatName + ": " + stat.BaseValue + "\n";
-            }
-        }
+        //statText.text = "";
+        //if (item.Stats != null)
+        //{
+        //    foreach (BaseStat stat in item.Stats)
+        //    {
+        //        statText.text += stat.StatName + ": " + stat.BaseValue + "\n";
+        //    }
+        //}
         itemInteractButton.onClick.RemoveAllListeners();
         this.item = item;
         selectedItemButton = selectedButton;
