@@ -31,17 +31,17 @@ public class InventoryController : MonoBehaviour
         UIEventHandler.ItemAddedToInventory(item);
     }
 
-    public void GiveItem(Item item)
-    {
-        playerItems.Add(item);
-        UIEventHandler.ItemAddedToInventory(item);
-    }
+    //public void GiveItem(Item item)
+    //{
+    //    playerItems.Add(item);
+    //    UIEventHandler.ItemAddedToInventory(item);
+    //}
 
-    public void GiveItem(List<Item> items)
-    {
-        playerItems.AddRange(items);
-        UIEventHandler.ItemAddedToInventory(items);
-    }
+    //public void GiveItem(List<Item> items)
+    //{
+    //    playerItems.AddRange(items);
+    //    UIEventHandler.ItemAddedToInventory(items);
+    //}
 
     public void SetItemDetails(Item item, Button selectedButton)
     {
