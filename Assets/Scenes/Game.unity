@@ -428,7 +428,7 @@ GameObject:
   - component: {fileID: 96020853}
   - component: {fileID: 96020852}
   m_Layer: 16
-  m_Name: DetectPlayCircle
+  m_Name: DetectPlayerCircle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1534,7 +1534,7 @@ Transform:
   m_GameObject: {fileID: 451355569}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.274, y: -0.129, z: 0}
+  m_LocalPosition: {x: 0.295, y: -0.129, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2126,7 +2126,7 @@ Transform:
   m_GameObject: {fileID: 700802547}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.367, y: -0.293, z: 0}
+  m_LocalPosition: {x: 0.259, y: -0.334, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -7681,10 +7681,12 @@ MonoBehaviour:
   fightPoint: {fileID: 451355569}
   kickPoint: {fileID: 700802547}
   swordPoint: {fileID: 1308959783}
-  radius: 0.52
+  radius_Fight: 0.58
+  radius_Kick: 1.19
+  radius_Sword: 1.69
   layerMask:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 640
 --- !u!1 &1033559125
 GameObject:
   m_ObjectHideFlags: 0
@@ -8088,7 +8090,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!50 &1196814931
 Rigidbody2D:
   serializedVersion: 4
@@ -8184,7 +8186,7 @@ CircleCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1196814930}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -8557,7 +8559,7 @@ Transform:
   m_GameObject: {fileID: 1306754974}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.8876514, y: 2.5183978, z: -12.764601}
+  m_LocalPosition: {x: -3.8876524, y: 2.5183406, z: -12.764601}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -8666,7 +8668,7 @@ Transform:
   m_GameObject: {fileID: 1308959783}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.535, y: -0.239, z: 0}
+  m_LocalPosition: {x: 0.277, y: -0.149, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -8683,7 +8685,9 @@ GameObject:
   - component: {fileID: 1325152875}
   - component: {fileID: 1325152877}
   - component: {fileID: 1325152876}
-  - component: {fileID: 1325152879}
+  - component: {fileID: 1325152880}
+  - component: {fileID: 1325152882}
+  - component: {fileID: 1325152881}
   m_Layer: 7
   m_Name: Harpy
   m_TagString: Untagged
@@ -8780,14 +8784,42 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!58 &1325152879
-CircleCollider2D:
+--- !u!114 &1325152880
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1325152874}
-  m_Enabled: 0
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6a78bc76c630f34f8b15aff3c76db8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHP: 5
+  enemy: {fileID: 1325152874}
+  isSameDirection: 0
+--- !u!114 &1325152881
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1325152874}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48217a01bb4db2b439eb1be60fe2597e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AI: {fileID: 1196814930}
+--- !u!70 &1325152882
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1325152874}
+  m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -8809,12 +8841,12 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.121750735, y: 0.0805161}
-  serializedVersion: 2
-  m_Radius: 0.53025526
+  m_Offset: {x: -0.10499268, y: 0.026702834}
+  m_Size: {x: 0.35321808, y: 0.5689146}
+  m_Direction: 0
 --- !u!1 &1365058816
 GameObject:
   m_ObjectHideFlags: 0
@@ -10841,6 +10873,10 @@ PrefabInstance:
     - target: {fileID: 248031298076898761, guid: f619af84468cdc742b6d94bf04feb427, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2963659801945177658, guid: f619af84468cdc742b6d94bf04feb427, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3679478096978269152, guid: f619af84468cdc742b6d94bf04feb427, type: 3}
       propertyPath: player

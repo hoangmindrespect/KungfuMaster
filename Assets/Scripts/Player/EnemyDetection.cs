@@ -5,7 +5,9 @@ using UnityEngine;
 public class NewBehaviourScript : MonoBehaviour
 {
     public GameObject fightPoint, kickPoint, swordPoint;
-    public float radius;
+    public float radius_Fight;
+    public float radius_Kick;
+    public float radius_Sword;
     public LayerMask layerMask;
     private Animator animator;
     private AudioManager audioManager;
@@ -17,56 +19,43 @@ public class NewBehaviourScript : MonoBehaviour
 
     public void Attack(){
         if(animator.GetBool("isNoneState")){
-            OnAttack(1,2, fightPoint, kickPoint);
+            OnAttack(1,2, fightPoint, kickPoint, radius_Fight, radius_Kick);
         }else if(animator.GetBool("isElementState")){
-            OnAttack(4, 3, fightPoint, kickPoint);
+            OnAttack(4, 3, fightPoint, kickPoint, radius_Fight, radius_Kick);
         } else if(animator.GetBool("isWeaponState")){
-            OnAttack(3, 3, swordPoint, kickPoint);
+            OnAttack(3, 3, swordPoint, kickPoint, radius_Sword, radius_Sword);
         }
     }
 
-    private void OnAttack(int i, int j, GameObject point_1, GameObject point_2){
-        if(!animator.GetBool("isWeaponState")){
-            if(animator.GetBool("isFighting")){
-                Collider2D[] enemies = Physics2D.OverlapCircleAll(fightPoint.transform.position, radius, layerMask);
+    private void OnAttack(int i, int j, GameObject point_1, GameObject point_2, float radius_1, float radius_2){
+        if(animator.GetBool("isFighting")){
+                Collider2D[] enemies = Physics2D.OverlapCircleAll(point_1.transform.position, radius_1, layerMask);
 
                 foreach(var enemy in enemies){
-                    if(enemy.GetComponent<Health>().IsWillBeDie(1)){
+                    if(enemy.GetComponent<Health>().IsWillBeDie(i)){
                         audioManager.PlaySFX(audioManager.crowdeathDeath);
                     }else{
                         enemy.GetComponent<Animator>().SetBool("isDamaged", true);
-                        enemy.GetComponent<Health>().TackDamage(1);
+                        enemy.GetComponent<Health>().TackDamage(j);
                     }
                 }
             }else if(animator.GetBool("isKicking")){
-                Collider2D[] enemies = Physics2D.OverlapCircleAll(kickPoint.transform.position, radius, layerMask);
+                Collider2D[] enemies = Physics2D.OverlapCircleAll(point_2.transform.position, radius_2, layerMask);
 
                 foreach(var enemy in enemies){
-                    if(enemy.GetComponent<Health>().IsWillBeDie(2)){
+                    if(enemy.GetComponent<Health>().IsWillBeDie(i)){
                         audioManager.PlaySFX(audioManager.crowdeathDeath);
                     }else{
                         enemy.GetComponent<Animator>().SetBool("isDamaged", true);
-                        enemy.GetComponent<Health>().TackDamage(2);
+                        enemy.GetComponent<Health>().TackDamage(j);
                     }
                 }
             }
-        }else{
-            Collider2D[] enemies = Physics2D.OverlapCircleAll(swordPoint.transform.position, radius, layerMask);
-
-            foreach(var enemy in enemies){
-                if(enemy.GetComponent<Health>().IsWillBeDie(3)){
-                    audioManager.PlaySFX(audioManager.crowdeathDeath);
-                }else{
-                    enemy.GetComponent<Animator>().SetBool("isDamaged", true);
-                    enemy.GetComponent<Health>().TackDamage(3);
-                }
-            }
-        }
     } 
 
     private void OnDrawGizmos() {
-        // Gizmos.DrawWireSphere(swordPoint.transform.position, radius);
-        // Gizmos.DrawWireSphere(kickPoint.transform.position, radius);
-        // Gizmos.DrawWireSphere(fightPoint.transform.position, radius);
+        // Gizmos.DrawWireSphere(swordPoint.transform.position, radius_Sword);
+        // Gizmos.DrawWireSphere(kickPoint.transform.position, radius_Kick);
+        // Gizmos.DrawWireSphere(fightPoint.transform.position, radius_Fight);
     }
 }

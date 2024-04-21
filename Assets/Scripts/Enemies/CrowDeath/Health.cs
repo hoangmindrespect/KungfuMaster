@@ -8,21 +8,17 @@ public class Health : MonoBehaviour
     public GameObject enemy;
     private GameObject player;
     private AudioManager audioManager;
-    private Animator animator;
-    private Rigidbody2D rb;
     public bool isSameDirection = false;
     void Awake()
     {
         audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
         player = GameObject.FindGameObjectWithTag("Player");
-        rb = gameObject.GetComponent<Rigidbody2D>();
-        animator = gameObject.GetComponent<Animator>();
     }
 
     public bool IsWillBeDie(int attdame){
         if(maxHP - attdame < 0){
         {
-            animator.SetBool("isDied", true);
+            enemy.GetComponent<Animator>().SetBool("isDied", true);
             maxHP -= attdame;
             return true;
         }
@@ -31,13 +27,15 @@ public class Health : MonoBehaviour
     }
     public void TackDamage(int attdame){
         maxHP -= attdame;
-        if(rb.velocity.x * player.GetComponent<Rigidbody2D>().velocity.x > 0){
+        if(enemy.CompareTag("Enemy")){
+            if(enemy.GetComponent<Rigidbody2D>().velocity.x * player.GetComponent<Rigidbody2D>().velocity.x > 0){
             isSameDirection = true;
-            rb.velocity = new(rb.velocity.x * 2, 0.0f);
+            enemy.GetComponent<Rigidbody2D>().velocity = new(enemy.GetComponent<Rigidbody2D>().velocity.x * 2, 0.0f);
         }
         else{
             isSameDirection = false;
-            rb.velocity = new(-rb.velocity.x, 0.0f);
+            enemy.GetComponent<Rigidbody2D>().velocity = new(-enemy.GetComponent<Rigidbody2D>().velocity.x, 0.0f);
+        }
         }
     }
 
