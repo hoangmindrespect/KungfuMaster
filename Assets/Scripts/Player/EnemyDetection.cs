@@ -4,40 +4,58 @@ using UnityEngine;
 
 public class NewBehaviourScript : MonoBehaviour
 {
-    private Animator enemyAnimator;
-    private Rigidbody2D enemyRigidBody2D;
-    private Animator playerAnimator;
-    private GameObject enemy;
-    public GameObject Player;
+    public GameObject fightPoint, kickPoint, swordPoint;
+    public float radius_Fight;
+    public float radius_Kick;
+    public float radius_Sword;
+    public LayerMask layerMask;
+    private Animator animator;
     private AudioManager audioManager;
     void Awake()
     {
         audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+        animator = GetComponent<Animator>();
     }
-    void OnTriggerStay2D(Collider2D other)
-    {
-        enemyAnimator = other.GetComponent<Animator>();
-        playerAnimator = Player.GetComponent<Animator>();
-        enemyRigidBody2D = other.GetComponent<Rigidbody2D>();
-        enemy = other.gameObject;
-        
-        if(playerAnimator.GetBool("isKicking") || playerAnimator.GetBool("isFighting")){
-           enemyAnimator.SetBool("isDamaged", true);
+
+    public void Attack(){
+        if(animator.GetBool("isNoneState")){
+            OnAttack(1,2, fightPoint, kickPoint, radius_Fight, radius_Kick);
+        }else if(animator.GetBool("isElementState")){
+            OnAttack(4, 3, fightPoint, kickPoint, radius_Fight, radius_Kick);
+        } else if(animator.GetBool("isWeaponState")){
+            OnAttack(3, 3, swordPoint, kickPoint, radius_Sword, radius_Sword);
         }
     }
 
-    void FixedUpdate()
-    {
-        if(enemyAnimator != null){
-            AnimatorStateInfo asi = enemyAnimator.GetCurrentAnimatorStateInfo(0);
-            if(asi.IsName("damage")){
-                enemy.GetComponent<Ability>().TackDamage();
-            }else if(asi.IsName("die") && asi.normalizedTime > 1){
-                Destroy(enemy);
+    private void OnAttack(int i, int j, GameObject point_1, GameObject point_2, float radius_1, float radius_2){
+        if(animator.GetBool("isFighting")){
+                Collider2D[] enemies = Physics2D.OverlapCircleAll(point_1.transform.position, radius_1, layerMask);
+
+                foreach(var enemy in enemies){
+                    if(enemy.GetComponent<Health>().IsWillBeDie(i)){
+                        audioManager.PlaySFX(audioManager.crowdeathDeath);
+                    }else{
+                        enemy.GetComponent<Animator>().SetBool("isDamaged", true);
+                        enemy.GetComponent<Health>().TackDamage(j);
+                    }
+                }
+            }else if(animator.GetBool("isKicking")){
+                Collider2D[] enemies = Physics2D.OverlapCircleAll(point_2.transform.position, radius_2, layerMask);
+
+                foreach(var enemy in enemies){
+                    if(enemy.GetComponent<Health>().IsWillBeDie(i)){
+                        audioManager.PlaySFX(audioManager.crowdeathDeath);
+                    }else{
+                        enemy.GetComponent<Animator>().SetBool("isDamaged", true);
+                        enemy.GetComponent<Health>().TackDamage(j);
+                    }
+                }
             }
-        }
-    }
-    private void EnemyYell(){
-        audioManager.PlaySFX(audioManager.crowdeathDeath);
+    } 
+
+    private void OnDrawGizmos() {
+        // Gizmos.DrawWireSphere(swordPoint.transform.position, radius_Sword);
+        // Gizmos.DrawWireSphere(kickPoint.transform.position, radius_Kick);
+        // Gizmos.DrawWireSphere(fightPoint.transform.position, radius_Fight);
     }
 }
