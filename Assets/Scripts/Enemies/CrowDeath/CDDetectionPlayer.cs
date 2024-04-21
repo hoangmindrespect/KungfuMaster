@@ -69,8 +69,10 @@ public class CrowDeathInteraction : MonoBehaviour
         float currentSpeed = enemyRigidBody.velocity.x;
 
         if(asi.IsName("run")){
-            if((enemyRigidBody.position.x < playerRigidBody.position.x && currentSpeed < 0) || (enemyRigidBody.position.x >= playerRigidBody.position.x && currentSpeed > 0) ){
-                cm.Flip();
+            if(player.GetComponent<Animator>().GetBool("isMoving")){
+                if((enemyRigidBody.position.x < playerRigidBody.position.x && currentSpeed < 0.2f) || (enemyRigidBody.position.x >= playerRigidBody.position.x && currentSpeed > 0.2f) ){
+                    cm.Flip();
+                }
             }
         }
 
