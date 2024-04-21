@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Ability : MonoBehaviour
+public class Health : MonoBehaviour
 {
-    [SerializeField] private int maxHP = 50;
-    [SerializeField] private int DPS = 2;
+    [SerializeField] private int maxHP = 5;
+    public GameObject enemy;
     private AudioManager audioManager;
     private Animator animator;
     private Rigidbody2D rb;
@@ -15,17 +15,22 @@ public class Ability : MonoBehaviour
         rb = gameObject.GetComponent<Rigidbody2D>();
         animator = gameObject.GetComponent<Animator>();
     }
-    // Update is called once per frame
-    public void TackDamage(){
-        if(maxHP > 1){
-            maxHP--;
-            animator.SetBool("isDamaged", false);
-            Debug.Log(maxHP);
-        }else{
-            Debug.Log(maxHP);
-            rb.velocity = new Vector2(0.0f,0.0f);
+
+    public bool IsWillBeDie(int attdame){
+        if(maxHP - attdame < 0){
+        {
             animator.SetBool("isDied", true);
-            audioManager.PlaySFX(audioManager.crowdeathDeath);
+            maxHP -= attdame;
+            return true;
         }
+        }else
+            return false;
+    }
+    public void TackDamage(int attdame){
+        maxHP -= attdame;
+    }
+
+    public void Destroy(){
+        Destroy(enemy);
     }
 }
