@@ -113,6 +113,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemText: {fileID: 6525888751467387637}
+  itemImage: {fileID: 3979649160822762841}
 --- !u!114 &6727064595437330208
 MonoBehaviour:
   m_ObjectHideFlags: 0
