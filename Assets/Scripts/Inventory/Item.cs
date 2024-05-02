@@ -5,10 +5,12 @@ public class Item
 {
     public enum ItemTypes { Consumable, Weapon, Quest }
     public List<BaseStat> Stats { get; set; } // One item has many stats like dame, attack speed or even toughness = HP
-    public string ObjectSlug { get; set; }
+    public string ObjectSlug { get; set; } // This seems like header.
+                                           // This means type of certain object. For example, potion_log is type of potion, big sword is type of sword.
+                                           // Moreover, this is defined to differentiate from others => one model one prefab. Avoid call one model but have the same prefabs.
     public string Description { get; set; }
     [JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public ItemTypes ItemType { get; set; }
+    public ItemTypes ItemType { get; set; } // This seems like category.
     public string ActionName { get; set; }
     public string ItemName { get; set; }
     public bool ItemModifier { get; set; }

@@ -10,6 +10,11 @@ public class InventoryController : MonoBehaviour
     public InventoryUIDetails inventoryDetailsPanel;
     public List<Item> playerItems = new List<Item>();
 
+    // Testing //
+    public Item sword;
+    public Item potionLog;
+    //  End    //
+
     void Start()
     {
         if (Instance != null && Instance != this)
@@ -22,7 +27,25 @@ public class InventoryController : MonoBehaviour
         GiveItem("sword");
         GiveItem("staff");
         GiveItem("potion_log");
+
+        // Testing //
+        List<BaseStat> swordStats = new List<BaseStat>();
+        swordStats.Add(new BaseStat(6, "Power", "Your power level."));
+        sword = new Item(swordStats, "sword");
+        potionLog = new Item(new List<BaseStat>(), "potion_log", "Drink this to log something cool!", Item.ItemTypes.Consumable ,"Drink", "Log Potion", false);
+        //  End    //
     }
+
+    // Testing //
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.V))
+        {
+            playerWeaponController.EquipWeapon(sword);
+            consumableController.ConsumeItem(potionLog);
+        }
+    }
+    // End     //
 
     public void GiveItem(string itemSlug)
     {

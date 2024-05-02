@@ -3,18 +3,19 @@ using System.Collections;
 
 public class PlayerWeaponController : MonoBehaviour
 {
-    public GameObject playerHand;
+    //public GameObject playerHand;
     public GameObject EquippedWeapon { get; set; }
 
-    Transform spawnProjectile;
+    //Transform spawnProjectile;
     Item currentlyEquippedItem;
     IWeapon equippedWeapon;
     CharacterStats characterStats;
 
     void Start()
     {
-        spawnProjectile = transform.Find("ProjectileSpawn");
-        characterStats = GetComponent<Player>().characterStats;
+        //spawnProjectile = transform.Find("ProjectileSpawn");
+        //characterStats = GetComponent<Player>().characterStats;
+        characterStats = GetComponent<CharacterStats>();
     }
 
     public void EquipWeapon(Item itemToEquip)
@@ -24,17 +25,19 @@ public class PlayerWeaponController : MonoBehaviour
             UnequipWeapon();
         }
 
-        EquippedWeapon = (GameObject)Instantiate(Resources.Load<GameObject>("Weapons/" + itemToEquip.ObjectSlug),
-            playerHand.transform.position, playerHand.transform.rotation);
+        EquippedWeapon = (GameObject)Instantiate(Resources.Load<GameObject>("Weapons/" + itemToEquip.ObjectSlug)
+            /*, playerHand.transform.position, playerHand.transform.rotation*/);
         equippedWeapon = EquippedWeapon.GetComponent<IWeapon>();
-        if (EquippedWeapon.GetComponent<IProjectileWeapon>() != null)
-            EquippedWeapon.GetComponent<IProjectileWeapon>().ProjectileSpawn = spawnProjectile;
-        EquippedWeapon.transform.SetParent(playerHand.transform);
+        //if (EquippedWeapon.GetComponent<IProjectileWeapon>() != null)
+        //    EquippedWeapon.GetComponent<IProjectileWeapon>().ProjectileSpawn = spawnProjectile;
+        //EquippedWeapon.transform.SetParent(playerHand.transform);
         equippedWeapon.Stats = itemToEquip.Stats;
         currentlyEquippedItem = itemToEquip;
         characterStats.AddStatBonus(itemToEquip.Stats);
         //UIEventHandler.ItemEquipped(itemToEquip);
         //UIEventHandler.StatsChanged();
+
+        Debug.Log(equippedWeapon.Stats[0]);
     }
 
     public void UnequipWeapon()
