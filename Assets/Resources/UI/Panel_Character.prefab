@@ -279,6 +279,7 @@ GameObject:
   - component: {fileID: 4629968257869569276}
   - component: {fileID: 3010595761206315781}
   - component: {fileID: 2009792050492655876}
+  - component: {fileID: 5035947974628253061}
   m_Layer: 5
   m_Name: Panel_Character
   m_TagString: Untagged
@@ -347,6 +348,31 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &5035947974628253061
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 645797819551140738}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aea5a78ef6e02a04191acac6ad613908, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: {fileID: 3357836768843036641}
+  level: {fileID: 7340365997908586937}
+  healthFill: {fileID: 4774028918530127678}
+  levelFill: {fileID: 5603255465613591272}
+  player: {fileID: 0}
+  playerStatPrefab: {fileID: 0}
+  playerStatPanel: {fileID: 4236156771187805571}
+  defaultWeaponSprite: {fileID: 0}
+  playerWeaponController: {fileID: 0}
+  weaponStatPrefab: {fileID: 0}
+  weaponStatPanel: {fileID: 0}
+  weaponNameText: {fileID: 0}
+  weaponIcon: {fileID: 0}
 --- !u!1 &671087250825367403
 GameObject:
   m_ObjectHideFlags: 0

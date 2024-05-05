@@ -7,9 +7,9 @@ public class PlayerWeaponController : MonoBehaviour
     public GameObject EquippedWeapon { get; set; }
 
     //Transform spawnProjectile;
-    Item currentlyEquippedItem;
-    IWeapon equippedWeapon;
-    CharacterStats characterStats;
+    public Item currentlyEquippedItem;
+    public IWeapon equippedWeapon;
+    public CharacterStats characterStats;
 
     void Start()
     {
@@ -34,10 +34,10 @@ public class PlayerWeaponController : MonoBehaviour
         equippedWeapon.Stats = itemToEquip.Stats;
         currentlyEquippedItem = itemToEquip;
         characterStats.AddStatBonus(itemToEquip.Stats);
-        //UIEventHandler.ItemEquipped(itemToEquip);
+        UIEventHandler.ItemEquipped(itemToEquip);
         //UIEventHandler.StatsChanged();
 
-        Debug.Log(equippedWeapon.Stats[0]);
+        Debug.Log(equippedWeapon.Stats[0].GetCalculatedStatValue());
     }
 
     public void UnequipWeapon()
