@@ -8,13 +8,12 @@ public class Player : MonoBehaviour
     public int maxHealth;
     //public PlayerLevel PlayerLevel { get; set; }
 
-    void Start()
+    void Awake()
     {
-        Debug.Log("Plater init");
         //PlayerLevel = GetComponent<PlayerLevel>();
         characterStats = GetComponent<CharacterStats>();
         this.currentHealth = this.maxHealth;
-        characterStats = new CharacterStats(10, 10, 10);
+        //characterStats = new CharacterStats(10, 10, 10);
         UIEventHandler.HealthChanged(this.currentHealth, this.maxHealth);
     }
 

@@ -54,6 +54,8 @@ public class UIEventHandler : MonoBehaviour
     {
         if (OnPlayerHealthChanged != null)
             OnPlayerHealthChanged(currentHealth, maxHealth);
+        else
+            Debug.Log("Health event Null babe");
     }
 
     public static void StatsChanged()

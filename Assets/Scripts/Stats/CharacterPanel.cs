@@ -59,7 +59,6 @@ public class CharacterPanel : MonoBehaviour
 
     void InitializeStats()
     {
-        Debug.Log("Stat init");
         for (int i = 0; i < player.characterStats.stats.Count; i++)
         {
             playerStatTexts.Add(Instantiate(playerStatPrefab));
