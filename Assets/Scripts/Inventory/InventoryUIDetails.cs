@@ -3,7 +3,7 @@ using System.Collections;
 using UnityEngine.UI;
 using TMPro;
 
-public class InventoryUIDetails : MonoBehaviour
+public class InventoryUIDetails : MonoBehaviour // Responsible for displaying more details of the item that we clicked.
 {
     Item item;
     Button selectedItemButton, itemInteractButton;
@@ -39,7 +39,7 @@ public class InventoryUIDetails : MonoBehaviour
         itemInteractButton.onClick.AddListener(OnItemInteract);
     }
 
-    public void OnItemInteract()
+    public void OnItemInteract() // When click the button of item in detail panel, the system will call the suitable method from InventoryController.
     {
         if (item.ItemType == Item.ItemTypes.Consumable)
         {

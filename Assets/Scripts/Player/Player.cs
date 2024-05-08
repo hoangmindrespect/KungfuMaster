@@ -13,7 +13,10 @@ public class Player : MonoBehaviour
         //PlayerLevel = GetComponent<PlayerLevel>();
         characterStats = GetComponent<CharacterStats>();
         this.currentHealth = this.maxHealth;
-        //characterStats = new CharacterStats(10, 10, 10);
+    }
+
+    void Start()
+    {
         UIEventHandler.HealthChanged(this.currentHealth, this.maxHealth);
     }
 

@@ -2,7 +2,7 @@ using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
 
-public class InventoryUIItem : MonoBehaviour
+public class InventoryUIItem : MonoBehaviour // Responsible for displaying UI of one item
 {
     public Item item;
 

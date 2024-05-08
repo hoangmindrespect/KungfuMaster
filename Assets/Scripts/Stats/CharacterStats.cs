@@ -13,6 +13,14 @@ public class CharacterStats : MonoBehaviour
             new BaseStat(BaseStat.BaseStatType.AttackSpeed, attackSpeed, "Atk Spd")
         };
     }
+    public CharacterStats()
+    {
+        stats = new List<BaseStat>() {
+            new BaseStat(BaseStat.BaseStatType.Power, 10, "Power"),
+            new BaseStat(BaseStat.BaseStatType.Toughness, 10, "Toughness"),
+            new BaseStat(BaseStat.BaseStatType.AttackSpeed, 10, "Atk Spd")
+        };
+    }
 
     public BaseStat GetStat(BaseStat.BaseStatType stat)
     {

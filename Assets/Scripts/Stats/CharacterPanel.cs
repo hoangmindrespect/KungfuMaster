@@ -64,7 +64,7 @@ public class CharacterPanel : MonoBehaviour
             playerStatTexts.Add(Instantiate(playerStatPrefab));
             playerStatTexts[i].transform.SetParent(playerStatPanel);
         }
-        //UpdateStats();
+        UpdateStats();
     }
 
     void UpdateStats()
@@ -77,6 +77,7 @@ public class CharacterPanel : MonoBehaviour
 
     void UpdateEquippedWeapon(Item item)
     {
+        //Debug.Log(item.ItemName);
         weaponIcon.sprite = Resources.Load<Sprite>("UI/Icons/Items/" + item.ObjectSlug);
         weaponNameText.text = item.ItemName;
 

@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-public class InventoryUI : MonoBehaviour
+public class InventoryUI : MonoBehaviour // Responsible for loading data of items to inventory
 {
     public RectTransform inventoryPanel;
     public RectTransform scrollViewContent;

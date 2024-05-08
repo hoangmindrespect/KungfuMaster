@@ -2,7 +2,9 @@ using UnityEngine;
 using System.Collections.Generic;
 using UnityEngine.UI;
 
-public class InventoryController : MonoBehaviour
+public class InventoryController : MonoBehaviour // Responsible for managing the PlayerWeaponController, ConsumableController
+                                                 // and responsing item details when user click on item in inventory panel
+                                                 // and responsing the suitable method of item when click on the button in detail panel to use this item.
 {
     public static InventoryController Instance { get; set; }
     public PlayerWeaponController playerWeaponController;
@@ -74,11 +76,11 @@ public class InventoryController : MonoBehaviour
 
     public void EquipItem(Item itemToEquip)
     {
-        //playerWeaponController.EquipWeapon(itemToEquip);
+        playerWeaponController.EquipWeapon(itemToEquip);
     }
 
     public void ConsumeItem(Item itemToConsume)
     {
-        //consumableController.ConsumeItem(itemToConsume);
+        consumableController.ConsumeItem(itemToConsume);
     }
 }

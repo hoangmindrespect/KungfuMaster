@@ -14,7 +14,7 @@ public class PlayerWeaponController : MonoBehaviour
     void Start()
     {
         //spawnProjectile = transform.Find("ProjectileSpawn");
-        //characterStats = GetComponent<Player>().characterStats;
+        characterStats = GetComponent<Player>().characterStats;
         characterStats = GetComponent<CharacterStats>();
     }
 
@@ -35,17 +35,17 @@ public class PlayerWeaponController : MonoBehaviour
         currentlyEquippedItem = itemToEquip;
         characterStats.AddStatBonus(itemToEquip.Stats);
         UIEventHandler.ItemEquipped(itemToEquip);
-        //UIEventHandler.StatsChanged();
+        UIEventHandler.StatsChanged();
 
-        Debug.Log(equippedWeapon.Stats[0].GetCalculatedStatValue());
+        //Debug.Log(equippedWeapon.Stats[0].GetCalculatedStatValue());
     }
 
     public void UnequipWeapon()
     {
         InventoryController.Instance.GiveItem(currentlyEquippedItem.ObjectSlug);
-        //characterStats.RemoveStatBonus(equippedWeapon.Stats);
+        characterStats.RemoveStatBonus(equippedWeapon.Stats);
         Destroy(EquippedWeapon.transform.gameObject);
-        //UIEventHandler.StatsChanged();
+        UIEventHandler.StatsChanged();
     }
 
     void Update()
