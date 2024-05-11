@@ -77,7 +77,6 @@ public class CharacterPanel : MonoBehaviour
 
     void UpdateEquippedWeapon(Item item)
     {
-        //Debug.Log(item.ItemName);
         weaponIcon.sprite = Resources.Load<Sprite>("UI/Icons/Items/" + item.ObjectSlug);
         weaponNameText.text = item.ItemName;
 

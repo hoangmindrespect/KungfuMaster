@@ -50,6 +50,12 @@ public class InventoryUIDetails : MonoBehaviour // Responsible for displaying mo
         {
             InventoryController.Instance.EquipItem(item);
             Destroy(selectedItemButton.gameObject);
+
+            // Flow of equip one weapon:
+            // [InventoryUIDetails] OnItemInteract() -> [InventoryController] EquipItem(Item itemToEquip)
+            //                                       -> [PlayerWeaponController] EquipWeapon(Item itemToEquip) { UIEventHandler.ItemEquipped(itemToEquip);}
+            //                                       -> [UIEventHandler] ItemEquipped(Item item)
+            //                                       -> [CharacterPanel] UpdateEquippedWeapon(Item item) { for (int i = 0; i < item.Stats.Count; i++) weaponStatTexts[i].transform.SetParent(weaponStatPanel); }
         }
         item = null;
         gameObject.SetActive(false);
