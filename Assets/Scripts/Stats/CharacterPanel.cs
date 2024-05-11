@@ -95,6 +95,7 @@ public class CharacterPanel : MonoBehaviour
         for (int i = 0; i < weaponStatTexts.Count; i++)
         {
             Destroy(weaponStatTexts[i].gameObject);
+            weaponStatTexts.RemoveAt(i);
         }
         playerWeaponController.UnequipWeapon();
     }
