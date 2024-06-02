@@ -1,9 +1,11 @@
 using UnityEngine;
 using System.Collections;
+using Unity.VisualScripting;
 
 public class Player : MonoBehaviour
 {
     public CharacterStats characterStats;
+    public Rigidbody2D playerRb;
     public int currentHealth;
     public int maxHealth;
     //public PlayerLevel PlayerLevel { get; set; }
@@ -13,6 +15,7 @@ public class Player : MonoBehaviour
         //PlayerLevel = GetComponent<PlayerLevel>();
         characterStats = GetComponent<CharacterStats>();
         this.currentHealth = this.maxHealth;
+        transform.position = GameManager.playerStartPosition;
     }
 
     void Start()
@@ -28,6 +31,12 @@ public class Player : MonoBehaviour
             TakeDamage(5);
         }
     }
+
+    private void OnApplicationQuit()
+    {
+        SaveSystem.SaveGame(this);
+    }
+
     // End     //
 
     public void TakeDamage(int amount)
