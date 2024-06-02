@@ -13,18 +13,24 @@ public class playerMovement : MonoBehaviour
     public GameObject MediumMeteor;
     public GameObject SmallMeteor;
     private AudioManager audioManager;
+    private TrailRenderer trailRenderer;
     public float runSpeed = 40f;
     float horizontalMove = 0f;
     bool jump = false;
     bool crouch = false;
     private bool canFight = true; // Biến để kiểm tra xem có thể thực hiện Fight() hay không
     private bool canKick = true; // Biến để kiểm tra xem có thể thực hiện Kick() hay không
+    private bool isSurfing = false; // Disale tất cả các action khác
+    private int isFacingRight = 1;
     private float lastFightTime; // Thời gian cuối cùng khi thực hiện Fight()
     private float lastKickTime; // Thời gian cuối cùng khi thực hiện Kick()
     public float cooldown = 0.5f; // Thời gian cooldown giữa các lần nhấn
+    private float theLastLocation; // vị trí trước khi surf
     void Awake()
     {
         audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+        trailRenderer = GetComponent<TrailRenderer>();
+        trailRenderer.enabled = false;
     }
 
     void Start()
@@ -32,27 +38,46 @@ public class playerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
     }
     void Update () {
-        //NORMAL MOVING
-        horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
-        if(Input.GetButtonDown("Jump")){
-            jump = true;
+        AnimatorStateInfo asi = animator.GetCurrentAnimatorStateInfo(0);
+
+        //NORMAL MOVING AND SURFING
+        if(!isSurfing){
+            if(Input.GetButtonDown("Crouch")){
+                trailRenderer.enabled = true;
+                animator.SetBool("isSurfing", true);
+                isSurfing = true;
+                theLastLocation = rb.transform.position.x;
+                if(rb.velocity.x >= 0f){
+                    isFacingRight = 1;
+                }else{
+                    isFacingRight = -1;
+                }
+            }
+            
+            horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
+            if(Input.GetButtonDown("Jump")){
+                jump = true;
+            }
+
+            //ATTACK
+            if(canFight && Input.GetButtonDown("Skill1")){
+                Fight();
+            }
+            if(canKick && Input.GetButtonDown("Skill2")){
+                Kick();
+            }
+            if(Input.GetButtonDown("Skill3")){
+                Skill3();
+            }
         }
 
-        if(Input.GetButtonDown("Crouch")){
-            crouch = true;
-        }else if(Input.GetButtonUp("Crouch")){
-            crouch = false;
-        }
-
-        //ATTACK
-        if(canFight && Input.GetButtonDown("Skill1")){
-            Fight();
-        }
-        if(canKick && Input.GetButtonDown("Skill2")){
-            Kick();
-        }
-        if(Input.GetButtonDown("Skill3")){
-            Skill3();
+        if(isSurfing){
+            horizontalMove = 0.0f;
+            if(Math.Abs(rb.transform.position.x - theLastLocation) > 15f){
+                animator.SetBool("isSurfing", false);
+                isSurfing = false;
+                trailRenderer.enabled = false;
+            }
         }
 
         //CHANGE PLAYER STATE BY 1 OR 2 OR 3 [FOR DEVELOPERS]
@@ -72,8 +97,12 @@ public class playerMovement : MonoBehaviour
     }
 
     void FixedUpdate () {
-        controller.Move(horizontalMove * Time.fixedDeltaTime, crouch, jump);
-        jump = false;
+        if(!isSurfing){
+            controller.Move(horizontalMove * Time.fixedDeltaTime, crouch, jump);
+            jump = false;
+        }else{
+            rb.transform.position = new Vector2(rb.position.x + isFacingRight* 60f * Time.fixedDeltaTime, rb.position.y);
+        }
     }
 
     private void resetPlayerState(){
