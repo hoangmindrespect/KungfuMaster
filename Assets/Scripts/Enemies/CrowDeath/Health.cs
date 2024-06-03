@@ -51,9 +51,4 @@ public class Health : MonoBehaviour, IEnemy
     public void ResetBool(){
         isSameDirection = false;
     }
-
-    public void PerformAttack()
-    {
-        throw new System.NotImplementedException();
-    }
 }

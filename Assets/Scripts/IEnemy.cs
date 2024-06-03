@@ -8,5 +8,4 @@ public interface IEnemy
     int Experience { get; set; }
     void Destroy();
     void TackDamage(int amount);
-    void PerformAttack();
 }
