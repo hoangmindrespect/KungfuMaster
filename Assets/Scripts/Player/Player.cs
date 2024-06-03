@@ -8,11 +8,11 @@ public class Player : MonoBehaviour
     public Rigidbody2D playerRb;
     public int currentHealth;
     public int maxHealth;
-    //public PlayerLevel PlayerLevel { get; set; }
+    public PlayerLevel PlayerLevel { get; set; }
 
     void Awake()
     {
-        //PlayerLevel = GetComponent<PlayerLevel>();
+        PlayerLevel = GetComponent<PlayerLevel>();
         characterStats = GetComponent<CharacterStats>();
         this.currentHealth = this.maxHealth;
         transform.position = GameManager.playerStartPosition;
@@ -20,7 +20,7 @@ public class Player : MonoBehaviour
 
     void Start()
     {
-        UIEventHandler.HealthChanged(this.currentHealth, this.maxHealth);
+        //UIEventHandler.HealthChanged(this.currentHealth, this.maxHealth);
     }
 
     // Testing //

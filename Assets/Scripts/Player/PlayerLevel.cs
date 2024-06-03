@@ -9,7 +9,7 @@ public class PlayerLevel : MonoBehaviour
     public int RequiredExperience { get { return Level * 25; } }
 
     // Use this for initialization
-    void Start()
+    void Awake()
     {
         CombatEvents.OnEnemyDeath += EnemyToExperience;
         Level = 1;
@@ -28,6 +28,6 @@ public class PlayerLevel : MonoBehaviour
             CurrentExperience -= RequiredExperience;
             Level++;
         }
-        //UIEventHandler.PlayerLevelChanged();
+        UIEventHandler.PlayerLevelChanged();
     }
 }
