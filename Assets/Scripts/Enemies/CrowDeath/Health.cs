@@ -2,17 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Health : MonoBehaviour
+public class Health : MonoBehaviour, IEnemy
 {
     [SerializeField] private int maxHP = 5;
     public GameObject enemy;
     private GameObject player;
     private AudioManager audioManager;
     public bool isSameDirection = false;
+
+    public int ID { get ; set ; }
+    public int Experience { get; set; }
+
     void Awake()
     {
         audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
         player = GameObject.FindGameObjectWithTag("Player");
+        Experience = 15;
     }
 
     public bool IsWillBeDie(int attdame){
@@ -40,9 +45,15 @@ public class Health : MonoBehaviour
     }
 
     public void Destroy(){
+        CombatEvents.EnemyDied(this);
         Destroy(enemy);
     }
     public void ResetBool(){
         isSameDirection = false;
+    }
+
+    public void PerformAttack()
+    {
+        throw new System.NotImplementedException();
     }
 }
