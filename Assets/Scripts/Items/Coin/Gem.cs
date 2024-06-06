@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class Gem : MonoBehaviour
 {
+    bool isCollided;
     // Start is called before the first frame update
     void Start()
     {
-        
+        isCollided = false;
     }
 
     // Update is called once per frame
@@ -18,7 +19,11 @@ public class Gem : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        ScoreManager.instance.AddPoint(100);
-        Destroy(this);
+        if(isCollided == false)
+        {
+            ScoreManager.instance.AddPoint(100);
+            Destroy(gameObject);
+            isCollided = true;
+        }  
     }
 }
