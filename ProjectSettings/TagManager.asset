@@ -51,3 +51,9 @@ TagManager:
   - name: onBackgroundLayer
     uniqueID: 3131193051
     locked: 0
+  - name: Objects
+    uniqueID: 2859797833
+    locked: 0
+  - name: Player
+    uniqueID: 3315180119
+    locked: 0
