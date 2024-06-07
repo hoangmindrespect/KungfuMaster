@@ -22,6 +22,10 @@ public class AudioManager : MonoBehaviour
     public AudioClip playerFight;
     public AudioClip playerKick;
     public AudioClip EntryPortal;
+
+    [Header("----------Audio Clip For Collecting Gem----------")]
+    public AudioClip collectingGem;
+
     private void Start(){
         musicSource.clip = background;
         musicSource.Play();

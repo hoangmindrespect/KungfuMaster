@@ -35816,6 +35816,7 @@ MonoBehaviour:
   playerFight: {fileID: 8300000, guid: b82640e8fff587140b7e369ca31b3532, type: 3}
   playerKick: {fileID: 8300000, guid: de8960fdec972774ba9799c34f7d084e, type: 3}
   EntryPortal: {fileID: 8300000, guid: 56743500b01882f49b9430fe6fdb216c, type: 3}
+  collectingGem: {fileID: 8300000, guid: 4f3fbde13a350f24d9fb06819478fbf9, type: 3}
 --- !u!4 &1365058818
 Transform:
   m_ObjectHideFlags: 0
