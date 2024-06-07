@@ -47,7 +47,7 @@ public class Health : MonoBehaviour, IEnemy
     public void Destroy(){
         CombatEvents.EnemyDied(this);
         Destroy(enemy);
-        ScoreManager.instance.AddPoint(20); // 20 is point value only for CrowDeath, another enemy has different point,
+        ScoreManager.instance.AddPoint(50); // 50 is point value only for CrowDeath, another enemy has different point,
                                             // I can use delegate for this later to make sure Open/Closed Responsibility.
     }
     public void ResetBool(){

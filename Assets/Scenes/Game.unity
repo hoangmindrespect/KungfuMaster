@@ -5317,6 +5317,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreText: {fileID: 68862874}
   highscoreText: {fileID: 353919891}
+  player: {fileID: 992222456}
+  inventoryController: {fileID: 0}
 --- !u!114 &625232042
 MonoBehaviour:
   m_ObjectHideFlags: 0
