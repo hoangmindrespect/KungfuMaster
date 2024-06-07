@@ -14,6 +14,13 @@ public class ScoreManager : MonoBehaviour
     int score = 0;
     int highscore = 0;
 
+    // SETTING FOR GIVING ITEMS INTO PLAYER INVENTORY
+    public Player player;
+    public InventoryController inventoryController;
+
+    bool isQualifiedSword = false;
+    bool isQualifiedFire = false;
+
     private void Awake()
     {
         instance = this;
@@ -26,6 +33,8 @@ public class ScoreManager : MonoBehaviour
 
         scoreText.text = score.ToString() + " POINTS";
         highscoreText.text = "HIGHSCORE: " + highscore.ToString();
+
+        inventoryController = player.GetComponent<InventoryController>();
     }
 
     public void AddPoint(int value)
@@ -34,5 +43,17 @@ public class ScoreManager : MonoBehaviour
         scoreText.text = score.ToString() + " POINTS";
         if(highscore < score)
             PlayerPrefs.SetInt("highscore", score);
+
+        if(score >= 250 && !isQualifiedSword)
+        {
+            isQualifiedSword=true;
+            inventoryController.GiveItem("sword");
+        }
+
+        if(score >= 500 && !isQualifiedFire)
+        {
+            isQualifiedFire=true;
+            inventoryController.GiveItem("fire");
+        }
     }
 }

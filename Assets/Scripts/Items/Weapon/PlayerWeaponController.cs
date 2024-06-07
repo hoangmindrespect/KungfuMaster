@@ -3,6 +3,9 @@ using System.Collections;
 
 public class PlayerWeaponController : MonoBehaviour
 {
+    public Animator animator;
+    public playerMovement playerMovement;
+
     //public GameObject playerHand;
     public GameObject EquippedWeapon { get; set; }
 
@@ -16,6 +19,9 @@ public class PlayerWeaponController : MonoBehaviour
         //spawnProjectile = transform.Find("ProjectileSpawn");
         characterStats = GetComponent<Player>().characterStats;
         characterStats = GetComponent<CharacterStats>();
+
+        playerMovement = GetComponent<playerMovement>();
+        animator = GetComponent<Animator>();
     }
 
     public void EquipWeapon(Item itemToEquip)
@@ -37,6 +43,21 @@ public class PlayerWeaponController : MonoBehaviour
         UIEventHandler.ItemEquipped(itemToEquip);
         UIEventHandler.StatsChanged();
 
+        // Set animator back to player when eqqip
+        if (itemToEquip.ObjectSlug == "fire")
+        {
+            playerMovement.resetPlayerState();
+            animator.SetBool("isElementState", true);
+        }
+        else if (itemToEquip.ObjectSlug == "sword")
+        {
+            playerMovement.resetPlayerState();
+            animator.SetBool("isWeaponState", true);
+        }
+
+        //RESET PARAMETER OF ANIMATOR
+        playerMovement.setAnimator();
+
         //Debug.Log(equippedWeapon.Stats[0].GetCalculatedStatValue());
     }
 
@@ -46,14 +67,18 @@ public class PlayerWeaponController : MonoBehaviour
         characterStats.RemoveStatBonus(equippedWeapon.Stats);
         Destroy(EquippedWeapon.transform.gameObject);
         UIEventHandler.StatsChanged();
+
+        playerMovement.resetPlayerState();
+        animator.SetBool("isNoneState", true);
+        playerMovement.setAnimator();
     }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.X))
-            PerformWeaponAttack();
-        if (Input.GetKeyDown(KeyCode.Z))
-            PerformWeaponSpecialAttack();
+        //if (Input.GetKeyDown(KeyCode.X))
+        //    PerformWeaponAttack();
+        //if (Input.GetKeyDown(KeyCode.Z))
+        //    PerformWeaponSpecialAttack();
     }
 
     public void PerformWeaponAttack()

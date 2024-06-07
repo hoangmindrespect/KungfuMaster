@@ -21,7 +21,8 @@ public class InventoryController : MonoBehaviour // Responsible for managing the
 
         playerWeaponController = GetComponent<PlayerWeaponController>();
         consumableController = GetComponent<ConsumableController>();
-        GiveItem("sword");
+        //GiveItem("sword");
+        //GiveItem("fire");
         //GiveItem("staff");
         //GiveItem("potion_log");
     }

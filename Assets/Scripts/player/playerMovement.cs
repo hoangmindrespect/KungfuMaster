@@ -80,17 +80,17 @@ public class playerMovement : MonoBehaviour
             }
         }
 
-        //CHANGE PLAYER STATE BY 1 OR 2 OR 3 [FOR DEVELOPERS]
-        if(Input.GetKeyDown(KeyCode.F1)){
-            resetPlayerState();
-            animator.SetBool("isNoneState", true);
-        }else if(Input.GetKeyDown(KeyCode.F2)){
-            resetPlayerState();
-            animator.SetBool("isElementState", true);
-        }else if(Input.GetKeyDown(KeyCode.F3)){
-            resetPlayerState();
-            animator.SetBool("isWeaponState", true);
-        }
+        ////CHANGE PLAYER STATE BY 1 OR 2 OR 3 [FOR DEVELOPERS]
+        //if(Input.GetKeyDown(KeyCode.F1)){
+        //    resetPlayerState();
+        //    animator.SetBool("isNoneState", true);
+        //}else if(Input.GetKeyDown(KeyCode.F2)){
+        //    resetPlayerState();
+        //    animator.SetBool("isElementState", true);
+        //}else if(Input.GetKeyDown(KeyCode.F3)){
+        //    resetPlayerState();
+        //    animator.SetBool("isWeaponState", true);
+        //}
 
         //RESET PARAMETER OF ANIMATOR
         setAnimator();
@@ -105,12 +105,12 @@ public class playerMovement : MonoBehaviour
         }
     }
 
-    private void resetPlayerState(){
+    public void resetPlayerState(){
         animator.SetBool("isNoneState", false);
         animator.SetBool("isElementState", false);
         animator.SetBool("isWeaponState", false);
     }
-    private void setAnimator(){
+    public void setAnimator(){
         AnimatorStateInfo asi = animator.GetCurrentAnimatorStateInfo(0);
 
         //set isMoving
