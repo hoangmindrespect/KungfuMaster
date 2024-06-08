@@ -18,6 +18,11 @@ public class AudioManager : MonoBehaviour
     public AudioClip crowdeathDeath;
     public AudioClip crowdeathAttack;
 
+    [Header("----------Audio Clip For Minotour----------")]
+    public AudioClip minotourDetect;
+    public AudioClip minotourDeath;
+    public AudioClip minotourAttack;
+
     [Header("----------Audio Clip For Player----------")]
     public AudioClip playerFight;
     public AudioClip playerKick;
