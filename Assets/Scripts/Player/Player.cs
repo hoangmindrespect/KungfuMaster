@@ -23,21 +23,18 @@ public class Player : MonoBehaviour
         //UIEventHandler.HealthChanged(this.currentHealth, this.maxHealth);
     }
 
-    // Testing //
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.V))
-        {
-            TakeDamage(5);
-        }
+        //if (Input.GetKeyDown(KeyCode.V))
+        //{
+        //    TakeDamage(5);
+        //}
     }
 
     private void OnApplicationQuit()
     {
         SaveSystem.SaveGame(this);
     }
-
-    // End     //
 
     public void TakeDamage(int amount)
     {
