@@ -33,7 +33,7 @@ public class PortalController : MonoBehaviour
         yield return new WaitForSeconds(0.4f);
         animator.SetBool("isEntryPortal", false);
         animator.SetBool("isExistPortal", true);
-        player.transform.position = destination.position;
+        player.transform.position = new Vector2(destination.position.x + 1f, destination.position.y );
         yield return new WaitForSeconds(0.4f);
         animator.SetBool("isExistPortal", false);
         playerRb.simulated = true;

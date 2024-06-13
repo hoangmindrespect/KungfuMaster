@@ -17,8 +17,8 @@ public class playerMovement : MonoBehaviour
     public float runSpeed = 40f;
     float horizontalMove = 0f;
     bool jump = false;
-    int count = 0;
     bool doubleJump = false;
+    bool can_doubleJump = true;
     bool crouch = false;
     private bool canFight = true; // Biến để kiểm tra xem có thể thực hiện Fight() hay không
     private bool canKick = true; // Biến để kiểm tra xem có thể thực hiện Kick() hay không
@@ -58,12 +58,12 @@ public class playerMovement : MonoBehaviour
             
             horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
             if(Input.GetButtonDown("Jump")){
-                if(count == 0){
-                    jump = true;
-                }else if(count == 1 && !doubleJump && rb.velocity.y < 0f){
+                if(can_doubleJump && !doubleJump && rb.velocity.y != 0f){
                     doubleJump = true;
+                    can_doubleJump = false;
                 }
-                count += 1;
+
+                jump = true;
             }
 
             //ATTACK
@@ -106,13 +106,11 @@ public class playerMovement : MonoBehaviour
     void FixedUpdate () {
         if(!isSurfing){
             controller.Move(horizontalMove * Time.fixedDeltaTime, crouch, jump, doubleJump);
-            if(count == 1){
-                jump = false;
+            jump = false; 
+            doubleJump = false;
+            if(controller.getM_Ground() == true){
+                can_doubleJump = true;
             }
-            if(count == 2){
-                doubleJump = false;
-                count = 0;
-            }     
         }else{
             rb.transform.position = new Vector2(rb.position.x + isFacingRight* 60f * Time.fixedDeltaTime, rb.position.y);
         }

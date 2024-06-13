@@ -135,10 +135,13 @@ public class CharacterController2D : MonoBehaviour
 		{
 			// Add a vertical force to the player.
 			m_Grounded = false;
-			m_Rigidbody2D.AddForce(new Vector2(0f,  1.3f * m_JumpForce));
+			m_Rigidbody2D.AddForce(new Vector2(0f,  1.2f * m_JumpForce));
 		}
 	}
 
+	public bool getM_Ground(){
+		return m_Grounded;
+	}
 
 	private void Flip()
 	{
