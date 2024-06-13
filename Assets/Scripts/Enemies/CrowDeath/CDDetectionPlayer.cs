@@ -32,7 +32,7 @@ public class CrowDeathInteraction : MonoBehaviour
     {
         //đảm bảo là CD chỉ nói gì đó 1 lần.
         if(!isEnterCollide){
-            audioManager.PlaySFX(GetRandomCrowDeathSound());
+            //audioManager.PlaySFX(GetRandomCrowDeathSound());
             enemyAnimator.SetBool("isPlayerDetected", true);
             //Start
             isEnterCollide = true;
