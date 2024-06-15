@@ -25,8 +25,8 @@ Transform:
   m_GameObject: {fileID: 1918137663775424436}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.2, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0.082, y: -0.191, z: 0}
+  m_LocalScale: {x: 0.74544, y: 0.74544, z: 0.74544}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 339273227990633806}
@@ -59,7 +59,7 @@ Transform:
   m_GameObject: {fileID: 6554353852675149477}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 272.84, y: -5.65, z: 0}
+  m_LocalPosition: {x: 1.1816087, y: 0.20710075, z: 0}
   m_LocalScale: {x: 10, y: 10, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -107,7 +107,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 1436584694, guid: 9cf04a94558bb14499f7dd41f14b6bbd, type: 3}
+  m_Sprite: {fileID: 784244204, guid: 9cf04a94558bb14499f7dd41f14b6bbd, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -151,7 +151,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e25302e0488d096438cf63a64a00b6aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  "da\xF1o": 20
-  dimensionesCaja: {x: 2.97, y: 5.23}
-  posicionCaja: {fileID: 7916789684751631111}
-  tiempoDeVida: 1.5
+  damageCaused: 5
+  dimensionesBox: {x: 2.08, y: 5.1}
+  attackPoint: {fileID: 7916789684751631111}
+  tiempoDeVida: 1.46
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 64

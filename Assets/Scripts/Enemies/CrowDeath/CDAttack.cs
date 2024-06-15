@@ -6,14 +6,14 @@ public class AttackPlayer : MonoBehaviour
 {
     private Animator animator;
     public GameObject enemy;
-    private bool isAttacking = false;
     private AudioManager audioManager;
-
+    private bool isAttacking = false;
     void Awake()
     {
         audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
     }
-    private void Start() {
+    private void Start()
+    {
         animator = enemy.GetComponent<Animator>();
     }
     void OnTriggerEnter2D(Collider2D other)
@@ -23,7 +23,6 @@ public class AttackPlayer : MonoBehaviour
             StartCoroutine(AttackWithSoundEffect());
         }
     }
-
     IEnumerator AttackWithSoundEffect()
     {
         isAttacking = true;
@@ -37,9 +36,9 @@ public class AttackPlayer : MonoBehaviour
             animator.SetBool("isAttacking", false);
         }
     }
-
     void OnTriggerExit2D(Collider2D other)
     {
         animator.SetBool("isAttacking", false);
     }
+
 }

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class AudioManager : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class AudioManager : MonoBehaviour
 
     [Header("----------Audio Clip For Background----------")]
     public AudioClip background;
+    public AudioClip combatboss;
 
     [Header("----------Audio Clip For CrowDeadth----------")]
     public AudioClip crowdeathDetect1;
@@ -32,8 +34,13 @@ public class AudioManager : MonoBehaviour
     public AudioClip collectingGem;
 
     private void Start(){
-        musicSource.clip = background;
-        musicSource.Play();
+        if(SceneManager.GetActiveScene().name == "Game"){
+            musicSource.clip = background;
+            musicSource.Play();
+        }else if(SceneManager.GetActiveScene().name == "Boss1"){
+            musicSource.clip = combatboss;
+            musicSource.Play();
+        }
     }
     public void PlaySFX(AudioClip clip){
         SFXSource.PlayOneShot(clip);

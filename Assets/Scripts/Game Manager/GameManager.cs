@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -12,8 +13,11 @@ public class GameManager : MonoBehaviour
     private void Update() {
         if(!is_bringer_created){
             if(player.transform.position.x > 247.0f){
-                GameObject newBringer = Instantiate(bringerOfDeath);
-                newBringer.transform.position = new Vector3(262.0f, -5.32f, 0);
+                // GameObject newBringer = Instantiate(bringerOfDeath);
+                // newBringer.transform.position = new Vector3(262.0f, -5.32f, 0);
+                SceneManager.LoadScene("Boss1");
+                // GameObject newBringer = Instantiate(bringerOfDeath);
+                // newBringer.transform.position = new Vector3(12.0f, -3.32f, 0);
                 is_bringer_created = true;
             }
         }

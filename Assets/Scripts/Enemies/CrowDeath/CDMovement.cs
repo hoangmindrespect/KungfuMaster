@@ -5,9 +5,13 @@ using UnityEngine;
 public class CrowDeathMovement : MonoBehaviour
 {
     private GameObject player;
-    private Rigidbody2D rb;
+    private Rigidbody2D rb;   
+    public LayerMask layerMask;
+    public GameObject attackPoint;
+    public float radius;
     [Range(1.0f, 5f)] public float speed;
     private int direction;
+    [Range(1, 5)] public int damageCaused;
     private Animator animator;
     // Start is called before the first frame update
     void Start()
@@ -70,5 +74,21 @@ public class CrowDeathMovement : MonoBehaviour
                 }
             }
         }
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawWireSphere(attackPoint.transform.position, radius);
+    }
+    public void Attack()
+    {
+        Collider2D[] gameObj = Physics2D.OverlapCircleAll(attackPoint.transform.position, radius, layerMask);
+            foreach (Collider2D colision in gameObj)
+            {
+                if (colision.CompareTag("Player"))
+                {
+                    colision.GetComponent<Player>().TakeDamage(damageCaused);
+                }
+            }
     }
 }

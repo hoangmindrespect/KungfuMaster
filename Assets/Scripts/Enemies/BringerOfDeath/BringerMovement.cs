@@ -8,6 +8,7 @@ public class BringerMovement : MonoBehaviour
     public Rigidbody2D rb2D;
     public Transform player;
     private bool detectedPlayer = true;
+    public LayerMask layerMask;
 
     [Header("Health")]
     [SerializeField] private float HP;
@@ -15,7 +16,8 @@ public class BringerMovement : MonoBehaviour
     [Header("Attack")]
     [SerializeField] private Transform attackPoint;
     [SerializeField] private float radiusAttack;
-    [SerializeField] private float dps;
+    [SerializeField] private int damageCaused;
+
     private void Start()
     {
         animator = GetComponent<Animator>();
@@ -54,22 +56,20 @@ public class BringerMovement : MonoBehaviour
         }
     }
 
-    public void Ataque()
+    public void OnAttack()
     {
-        Collider2D[] objetos = Physics2D.OverlapCircleAll(attackPoint.position, radiusAttack);
+        Collider2D[] objetos = Physics2D.OverlapCircleAll(attackPoint.position, radiusAttack, layerMask);
         foreach (Collider2D colision in objetos)
         {
             if (colision.CompareTag("Player"))
             {
-                //colision.GetComponent<CombateJugador>().TomarDaño(dañoAtaque);
+                colision.GetComponent<Player>().TakeDamage(damageCaused);
             }
-
         }
-
     }
     private void OnDrawGizmos()
     {
-        Gizmos.color = Color.red;
+        Gizmos.color = Color.white;
         Gizmos.DrawWireSphere(attackPoint.position, radiusAttack);
     }
 }
