@@ -16,7 +16,7 @@ public class BringerSkill : MonoBehaviour
 
     public void Golpe()
     {
-        Collider2D[] objetos=Physics2D.OverlapBoxAll(posicionCaja.position, dimensionesCaja, 0f);
+        Collider2D[] objetos = Physics2D.OverlapBoxAll(posicionCaja.position, dimensionesCaja, 0f);
         foreach (Collider2D colisiones in objetos)
         {
             if (colisiones.CompareTag("Player"))

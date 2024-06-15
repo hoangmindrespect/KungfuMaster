@@ -15,7 +15,7 @@ public class bringer_walk : StateMachineBehaviour
         jefe = animator.GetComponent<BringerMovement>();
         rb2D = jefe.rb2D;
 
-        jefe.MirarJugador();
+        jefe.DetectPlayer();
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks

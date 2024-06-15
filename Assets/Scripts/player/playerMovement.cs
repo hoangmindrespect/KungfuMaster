@@ -28,6 +28,8 @@ public class playerMovement : MonoBehaviour
     private float lastKickTime; // Thời gian cuối cùng khi thực hiện Kick()
     public float cooldown = 0.5f; // Thời gian cooldown giữa các lần nhấn
     private float theLastLocation; // vị trí trước khi surf
+
+
     void Awake()
     {
         audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();

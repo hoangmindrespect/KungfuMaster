@@ -7,16 +7,16 @@ public class bringger_use_skill : StateMachineBehaviour
     [SerializeField] private GameObject habilidad;
     [SerializeField] private float offsetY;
     private BringerMovement jefe;
-    private Transform jugador;
+    private Transform player;
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         jefe = animator.GetComponent<BringerMovement>();
-        jugador = jefe.jugador;
+        player = jefe.player;
 
-        jefe.MirarJugador();
+        jefe.DetectPlayer();
 
-        Vector2 posicionAparicion = new Vector2(jugador.position.x, jugador.position.y + offsetY);
+        Vector2 posicionAparicion = new Vector2(player.position.x, player.position.y + offsetY);
 
         Instantiate(habilidad, posicionAparicion, Quaternion.identity);
     }
