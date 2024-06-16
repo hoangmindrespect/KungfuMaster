@@ -10,10 +10,10 @@ public class DetectInteraction : MonoBehaviour
     public KeyCode interactKey;
     public UnityEvent interactAction;
 
-    private void Start()
-    {
-        interactAction.Invoke();
-    }
+    //private void Start()
+    //{
+    //    interactAction.Invoke();
+    //}
 
     private void Update()
     {
