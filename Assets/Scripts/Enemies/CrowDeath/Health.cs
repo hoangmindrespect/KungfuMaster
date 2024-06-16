@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Health : MonoBehaviour, IEnemy
 {
@@ -13,11 +14,19 @@ public class Health : MonoBehaviour, IEnemy
     public int ID { get ; set ; }
     public int Experience { get; set; }
 
+    public Slider healthBar;
+
     void Awake()
     {
         audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
         player = GameObject.FindGameObjectWithTag("Player");
         Experience = 15;
+    }
+
+    private void Update()
+    {
+        if(healthBar != null)
+            healthBar.value = (float) maxHP/100;
     }
 
     public bool IsWillBeDie(int attdame){
