@@ -44,77 +44,117 @@ public class playerMovement : MonoBehaviour
     void Update () {
         AnimatorStateInfo asi = animator.GetCurrentAnimatorStateInfo(0);
 
-        //NORMAL MOVING AND SURFING
-        if(!isSurfing){
-            if(Input.GetButtonDown("Crouch")){
-                trailRenderer.enabled = true;
-                animator.SetBool("isSurfing", true);
-                isSurfing = true;
-                theLastLocation = rb.transform.position.x;
-                if(rb.velocity.x >= 0f){
-                    isFacingRight = 1;
-                }else{
-                    isFacingRight = -1;
-                }
-            }
-            
-            horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
-            if(Input.GetButtonDown("Jump")){
-                if(can_doubleJump && !doubleJump && rb.velocity.y != 0f){
-                    doubleJump = true;
-                    can_doubleJump = false;
+        if(DialogueSystem.Instance.dialoguePanel.activeSelf == false)
+        {
+            //NORMAL MOVING AND SURFING
+            if (!isSurfing)
+            {
+                if (Input.GetButtonDown("Crouch"))
+                {
+                    trailRenderer.enabled = true;
+                    animator.SetBool("isSurfing", true);
+                    isSurfing = true;
+                    theLastLocation = rb.transform.position.x;
+                    if (rb.velocity.x >= 0f)
+                    {
+                        isFacingRight = 1;
+                    }
+                    else
+                    {
+                        isFacingRight = -1;
+                    }
                 }
 
-                jump = true;
+                horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
+                if (Input.GetButtonDown("Jump"))
+                {
+                    if (can_doubleJump && !doubleJump && rb.velocity.y != 0f)
+                    {
+                        doubleJump = true;
+                        can_doubleJump = false;
+                    }
+
+                    jump = true;
+                }
+
+                //ATTACK
+                if (canFight && Input.GetButtonDown("Skill1"))
+                {
+                    Fight();
+                }
+                if (canKick && Input.GetButtonDown("Skill2"))
+                {
+                    Kick();
+                }
+                if (Input.GetButtonDown("Skill3"))
+                {
+                    Skill3();
+                }
             }
 
-            //ATTACK
-            if(canFight && Input.GetButtonDown("Skill1")){
-                Fight();
+            if (isSurfing)
+            {
+                horizontalMove = 0.0f;
+                if (Math.Abs(rb.transform.position.x - theLastLocation) > 15f)
+                {
+                    animator.SetBool("isSurfing", false);
+                    isSurfing = false;
+                    trailRenderer.enabled = false;
+                }
+                horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
             }
-            if(canKick && Input.GetButtonDown("Skill2")){
-                Kick();
-            }
-            if(Input.GetButtonDown("Skill3")){
-                Skill3();
-            }
+
+            ////CHANGE PLAYER STATE BY 1 OR 2 OR 3 [FOR DEVELOPERS]
+            //if(Input.GetKeyDown(KeyCode.F1)){
+            //    resetPlayerState();
+            //    animator.SetBool("isNoneState", true);
+            //}else if(Input.GetKeyDown(KeyCode.F2)){
+            //    resetPlayerState();
+            //    animator.SetBool("isElementState", true);
+            //}else if(Input.GetKeyDown(KeyCode.F3)){
+            //    resetPlayerState();
+            //    animator.SetBool("isWeaponState", true);
+            //}
         }
-
-        if(isSurfing){
+        else
+        {
             horizontalMove = 0.0f;
-            if(Math.Abs(rb.transform.position.x - theLastLocation) > 15f){
+            if (Math.Abs(rb.transform.position.x - theLastLocation) > 15f)
+            {
                 animator.SetBool("isSurfing", false);
                 isSurfing = false;
                 trailRenderer.enabled = false;
             }
         }
 
-        ////CHANGE PLAYER STATE BY 1 OR 2 OR 3 [FOR DEVELOPERS]
-        //if(Input.GetKeyDown(KeyCode.F1)){
-        //    resetPlayerState();
-        //    animator.SetBool("isNoneState", true);
-        //}else if(Input.GetKeyDown(KeyCode.F2)){
-        //    resetPlayerState();
-        //    animator.SetBool("isElementState", true);
-        //}else if(Input.GetKeyDown(KeyCode.F3)){
-        //    resetPlayerState();
-        //    animator.SetBool("isWeaponState", true);
-        //}
-
         //RESET PARAMETER OF ANIMATOR
         setAnimator();
     }
 
     void FixedUpdate () {
-        if(!isSurfing){
-            controller.Move(horizontalMove * Time.fixedDeltaTime, crouch, jump, doubleJump);
-            jump = false; 
-            doubleJump = false;
-            if(controller.getM_Ground() == true){
-                can_doubleJump = true;
+        if (DialogueSystem.Instance.dialoguePanel.activeSelf == false)
+        {
+            if (!isSurfing)
+            {
+                controller.Move(horizontalMove * Time.fixedDeltaTime, crouch, jump, doubleJump);
+                jump = false;
+                doubleJump = false;
+                if (controller.getM_Ground() == true)
+                {
+                    can_doubleJump = true;
+                }
             }
-        }else{
-            rb.transform.position = new Vector2(rb.position.x + isFacingRight* 60f * Time.fixedDeltaTime, rb.position.y);
+            else
+            {
+                rb.transform.position = new Vector2(rb.position.x + isFacingRight * 60f * Time.fixedDeltaTime, rb.position.y);
+            }
+        }
+        else
+        {
+            if (isSurfing)
+            {
+                rb.transform.position = new Vector2(rb.position.x + isFacingRight * 60f * Time.fixedDeltaTime, rb.position.y);
+            }
         }
     }
 
