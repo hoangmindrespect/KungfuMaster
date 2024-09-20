@@ -8,21 +8,17 @@
     "itemModifier": 0,
     "Stats": [
       {
-        "StatType": "Power",
-        "BaseValue": 25,
-        "StatName": "Power"
+        "StatType": "ATK",
+        "BaseValue": 7,
+        "StatName": "Attack"
       },
       {
-        "StatType": "Toughness",
+        "StatType": "DEF",
         "BaseValue": 4,
-        "StatName": "Tougness"
-      },
-      {
-        "StatType": "AttackSpeed",
-        "BaseValue": 4,
-        "StatName": "Atk Spd"
+        "StatName": "Defense"
       }
-    ]
+    ],
+    "Price":  500
   },
   {
     "objectSlug": "staff",
@@ -33,21 +29,17 @@
     "itemModifier": 0,
     "Stats": [
       {
-        "StatType": "Power",
-        "BaseValue": 800,
-        "StatName": "Power"
+        "StatType": "ATK",
+        "BaseValue": 12,
+        "StatName": "Attack"
       },
       {
-        "StatType": "Toughness",
+        "StatType": "DEF",
         "BaseValue": 2,
-        "StatName": "Tougness"
-      },
-      {
-        "StatType": "AttackSpeed",
-        "BaseValue": 1,
-        "StatName": "Atk Spd"
+        "StatName": "Defense"
       }
-    ]
+    ],
+    "Price":  1500
   },
   {
     "objectSlug": "fire",
@@ -58,21 +50,17 @@
     "itemModifier": 0,
     "Stats": [
       {
-        "StatType": "Power",
-        "BaseValue": 40,
-        "StatName": "Power"
+        "StatType": "ATK",
+        "BaseValue": 10,
+        "StatName": "Attack"
       },
       {
-        "StatType": "Toughness",
-        "BaseValue": 2,
-        "StatName": "Tougness"
-      },
-      {
-        "StatType": "AttackSpeed",
-        "BaseValue": 1,
-        "StatName": "Atk Spd"
+        "StatType": "DEF",
+        "BaseValue": 3,
+        "StatName": "Defense"
       }
-    ]
+    ],
+    "Price":  1200
   },
   {
     "objectSlug": "potion_log",
@@ -80,6 +68,7 @@
     "description": "A potion that logs something to the console.",
     "itemType": "Consumable",
     "actionName": "Drink",
-    "itemModifier": 0
+    "itemModifier": 0,
+    "Price":  200
   }
 ]

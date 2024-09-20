@@ -1,24 +1,23 @@
 using UnityEngine;
 using System.Collections.Generic;
+using System.Collections;
 
 public class CharacterStats : MonoBehaviour
 {
     public List<BaseStat> stats = new List<BaseStat>();
 
-    public CharacterStats(int power, int toughness, int attackSpeed)
+    public CharacterStats(int attack, int defense)
     {
         stats = new List<BaseStat>() {
-            new BaseStat(BaseStat.BaseStatType.Power, power, "Power"),
-            new BaseStat(BaseStat.BaseStatType.Toughness, toughness, "Toughness"),
-            new BaseStat(BaseStat.BaseStatType.AttackSpeed, attackSpeed, "Atk Spd")
+            new BaseStat(BaseStat.BaseStatType.ATK, attack, "Attack"),
+            new BaseStat(BaseStat.BaseStatType.DEF, defense, "Defense")
         };
     }
     public CharacterStats()
     {
         stats = new List<BaseStat>() {
-            new BaseStat(BaseStat.BaseStatType.Power, 10, "Power"),
-            new BaseStat(BaseStat.BaseStatType.Toughness, 10, "Toughness"),
-            new BaseStat(BaseStat.BaseStatType.AttackSpeed, 10, "Atk Spd")
+            new BaseStat(BaseStat.BaseStatType.ATK, 10, "Attack"),
+            new BaseStat(BaseStat.BaseStatType.DEF, 0, "Defense")
         };
     }
 
