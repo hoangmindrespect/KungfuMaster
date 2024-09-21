@@ -25,6 +25,8 @@ public class InventoryController : MonoBehaviour // Responsible for managing the
         //GiveItem("fire");
         //GiveItem("staff");
         //GiveItem("potion_log");
+        GiveItem("spear");
+        GiveItem("axe");
     }
 
     public void GiveItem(string itemSlug)

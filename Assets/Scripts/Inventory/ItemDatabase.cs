@@ -6,6 +6,10 @@ public class ItemDatabase : MonoBehaviour
 {
     public static ItemDatabase Instance { get; set; }
     private List<Item> Items { get; set; }
+    
+    // Get quantity of item database
+    public static int ItemQuantity { get; set; }
+
     // Use this for initialization
     void Awake()
     {
@@ -14,6 +18,9 @@ public class ItemDatabase : MonoBehaviour
         else
             Instance = this;
         BuildDatabase();
+
+        ItemQuantity = Items.Count;
+        Debug.Log("Item quantity: " + ItemQuantity);
     }
 
     private void BuildDatabase()
@@ -21,6 +28,7 @@ public class ItemDatabase : MonoBehaviour
         Items = JsonConvert.DeserializeObject<List<Item>>(Resources.Load<TextAsset>("JSON/Items").ToString());
     }
 
+    // Get item from unaccessable item list by this function with the compatible parameter
     public Item GetItem(string itemSlug)
     {
         foreach (Item item in Items)
@@ -30,5 +38,13 @@ public class ItemDatabase : MonoBehaviour
         }
         Debug.LogWarning("Couldn't find item: " + itemSlug);
         return null;
+    }
+
+    public Item GetItem(int itemIndex)
+    {
+        Item item = Items[itemIndex];
+        if (item == null)
+            Debug.LogWarning("Couldn't find item[ " + itemIndex.ToString() + "]");
+        return item;
     }
 }
