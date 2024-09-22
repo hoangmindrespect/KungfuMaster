@@ -8,21 +8,17 @@
     "itemModifier": 0,
     "Stats": [
       {
-        "StatType": "Power",
-        "BaseValue": 25,
-        "StatName": "Power"
+        "StatType": "ATK",
+        "BaseValue": 7,
+        "StatName": "Attack"
       },
       {
-        "StatType": "Toughness",
+        "StatType": "DEF",
         "BaseValue": 4,
-        "StatName": "Tougness"
-      },
-      {
-        "StatType": "AttackSpeed",
-        "BaseValue": 4,
-        "StatName": "Atk Spd"
+        "StatName": "Defense"
       }
-    ]
+    ],
+    "Price": 500
   },
   {
     "objectSlug": "staff",
@@ -33,21 +29,185 @@
     "itemModifier": 0,
     "Stats": [
       {
-        "StatType": "Power",
-        "BaseValue": 800,
-        "StatName": "Power"
+        "StatType": "ATK",
+        "BaseValue": 11,
+        "StatName": "Attack"
       },
       {
-        "StatType": "Toughness",
+        "StatType": "DEF",
         "BaseValue": 2,
-        "StatName": "Tougness"
+        "StatName": "Defense"
+      }
+    ],
+    "Price": 1500
+  },
+  {
+    "objectSlug": "spear",
+    "itemName": "Spear",
+    "description": "A long, flexible spear.",
+    "itemType": "Weapon",
+    "actionName": "Equip",
+    "itemModifier": 0,
+    "Stats": [
+      {
+        "StatType": "ATK",
+        "BaseValue": 14,
+        "StatName": "Attack"
       },
       {
-        "StatType": "AttackSpeed",
-        "BaseValue": 1,
-        "StatName": "Atk Spd"
+        "StatType": "DEF",
+        "BaseValue": 4,
+        "StatName": "Defense"
       }
-    ]
+    ],
+    "Price": 1800
+  },
+  {
+    "objectSlug": "shield",
+    "itemName": "Shield",
+    "description": "A tanky weapon.",
+    "itemType": "Weapon",
+    "actionName": "Equip",
+    "itemModifier": 0,
+    "Stats": [
+      {
+        "StatType": "ATK",
+        "BaseValue": 2,
+        "StatName": "Attack"
+      },
+      {
+        "StatType": "DEF",
+        "BaseValue": 15,
+        "StatName": "Defense"
+      }
+    ],
+    "Price": 2000
+  },
+  {
+    "objectSlug": "scythe",
+    "itemName": "Scythe",
+    "description": "A deadly penetrated weapon.",
+    "itemType": "Weapon",
+    "actionName": "Equip",
+    "itemModifier": 0,
+    "Stats": [
+      {
+        "StatType": "ATK",
+        "BaseValue": 18,
+        "StatName": "Attack"
+      },
+      {
+        "StatType": "DEF",
+        "BaseValue": 2,
+        "StatName": "Defense"
+      }
+    ],
+    "Price": 2200
+  },
+  {
+    "objectSlug": "knife",
+    "itemName": "Knife",
+    "description": "A small and shape knife.",
+    "itemType": "Weapon",
+    "actionName": "Equip",
+    "itemModifier": 0,
+    "Stats": [
+      {
+        "StatType": "ATK",
+        "BaseValue": 5,
+        "StatName": "Attack"
+      },
+      {
+        "StatType": "DEF",
+        "BaseValue": 1,
+        "StatName": "Defense"
+      }
+    ],
+    "Price": 300
+  },
+  {
+    "objectSlug": "hammer",
+    "itemName": "Hammer",
+    "description": "A heavy hammer.",
+    "itemType": "Weapon",
+    "actionName": "Equip",
+    "itemModifier": 0,
+    "Stats": [
+      {
+        "StatType": "ATK",
+        "BaseValue": 10,
+        "StatName": "Attack"
+      },
+      {
+        "StatType": "DEF",
+        "BaseValue": 10,
+        "StatName": "Defense"
+      }
+    ],
+    "Price": 2200
+  },
+  {
+    "objectSlug": "gauntlet",
+    "itemName": "Gauntlet",
+    "description": "An infinity gauntlet.",
+    "itemType": "Weapon",
+    "actionName": "Equip",
+    "itemModifier": 0,
+    "Stats": [
+      {
+        "StatType": "ATK",
+        "BaseValue": 50,
+        "StatName": "Attack"
+      },
+      {
+        "StatType": "DEF",
+        "BaseValue": 0,
+        "StatName": "Defense"
+      }
+    ],
+    "Price": 10000
+  },
+  {
+    "objectSlug": "bow",
+    "itemName": "Bow",
+    "description": "A weapon for sniper.",
+    "itemType": "Weapon",
+    "actionName": "Equip",
+    "itemModifier": 0,
+    "Stats": [
+      {
+        "StatType": "ATK",
+        "BaseValue": 10,
+        "StatName": "Attack"
+      },
+      {
+        "StatType": "DEF",
+        "BaseValue": 3,
+        "StatName": "Defense"
+      }
+    ],
+    "Price": 1500
+  },
+  {
+    "objectSlug": "axe",
+    "itemName": "Axe",
+    "description": "A powerful weapon.",
+    "itemType": "Weapon",
+    "actionName": "Equip",
+    "itemModifier": 0,
+    "Stats": [
+      {
+        "StatType": "ATK",
+        "BaseValue": 21,
+        "StatName": "Attack"
+      },
+      {
+        "StatType": "DEF",
+        "BaseValue": 6,
+        "StatName": "Defense"
+      }
+    ],
+    "Price": 3500
   },
   {
     "objectSlug": "fire",
@@ -58,21 +218,17 @@
     "itemModifier": 0,
     "Stats": [
       {
-        "StatType": "Power",
-        "BaseValue": 40,
-        "StatName": "Power"
+        "StatType": "ATK",
+        "BaseValue": 10,
+        "StatName": "Attack"
       },
       {
-        "StatType": "Toughness",
-        "BaseValue": 2,
-        "StatName": "Tougness"
-      },
-      {
-        "StatType": "AttackSpeed",
-        "BaseValue": 1,
-        "StatName": "Atk Spd"
+        "StatType": "DEF",
+        "BaseValue": 3,
+        "StatName": "Defense"
       }
-    ]
+    ],
+    "Price": 1200
   },
   {
     "objectSlug": "potion_log",
@@ -80,6 +236,7 @@
     "description": "A potion that logs something to the console.",
     "itemType": "Consumable",
     "actionName": "Drink",
-    "itemModifier": 0
+    "itemModifier": 0,
+    "Price": 200
   }
 ]

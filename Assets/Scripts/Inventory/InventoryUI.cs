@@ -5,14 +5,18 @@ public class InventoryUI : MonoBehaviour // Responsible for loading data of item
 {
     public RectTransform inventoryPanel;
     public RectTransform scrollViewContent;
+    bool menuIsActive { get; set; }
 
     public RectTransform characterPanel;
+    bool characterPanelIsActive { get; set; }
 
     InventoryUIItem itemContainer { get; set; }
     List<InventoryUIItem> itemUIList = new List<InventoryUIItem>();
-    bool menuIsActive { get; set; }
-    bool characterPanelIsActive { get; set; }
+ 
     Item currentSelectedItem { get; set; }
+
+    public RectTransform shopPanel;
+    bool shopPanelIsActive { get; set; }
     // Use this for initialization
     void Awake()
     {
@@ -21,6 +25,7 @@ public class InventoryUI : MonoBehaviour // Responsible for loading data of item
         //Debug.Log(itemContainer.gameObject.name);
         inventoryPanel.gameObject.SetActive(false);
         characterPanel.gameObject.SetActive(false);
+        shopPanel.gameObject.SetActive(false);
     }
 
     void Update()
@@ -34,6 +39,11 @@ public class InventoryUI : MonoBehaviour // Responsible for loading data of item
         {
             characterPanelIsActive = !characterPanelIsActive;
             characterPanel.gameObject.SetActive(characterPanelIsActive);
+        }
+        if (Input.GetKeyUp(KeyCode.P))
+        {
+            shopPanelIsActive = !shopPanelIsActive;
+            shopPanel.gameObject.SetActive(shopPanelIsActive);
         }
     }
 
