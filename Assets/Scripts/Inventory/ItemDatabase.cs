@@ -8,7 +8,7 @@ public class ItemDatabase : MonoBehaviour
     private List<Item> Items { get; set; }
     
     // Get quantity of item database
-    public static int ItemQuantity { get; set; }
+    private int ItemQuantity { get; set; }
 
     // Use this for initialization
     void Awake()
@@ -20,7 +20,7 @@ public class ItemDatabase : MonoBehaviour
         BuildDatabase();
 
         ItemQuantity = Items.Count;
-        Debug.Log("Item quantity: " + ItemQuantity);
+        //Debug.Log("Item quantity: " + ItemQuantity);
     }
 
     private void BuildDatabase()
@@ -46,5 +46,10 @@ public class ItemDatabase : MonoBehaviour
         if (item == null)
             Debug.LogWarning("Couldn't find item[ " + itemIndex.ToString() + "]");
         return item;
+    }
+
+    public int GetItemQuantity()
+    {
+        return ItemQuantity;
     }
 }
