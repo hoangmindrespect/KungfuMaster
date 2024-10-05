@@ -5,7 +5,7 @@ using UnityEngine;
 public class CrowDeathMovement : MonoBehaviour
 {
     private GameObject player;
-    private Rigidbody2D rb;   
+    private Rigidbody2D rb;
     public LayerMask layerMask;
     public GameObject attackPoint;
     public float radius;
@@ -23,32 +23,30 @@ public class CrowDeathMovement : MonoBehaviour
         direction = 1;
     }
 
-    public void Flip(){
+    public void Flip()
+    {
+        if (direction > 0)
+        {
+            transform.position = new Vector3(transform.position.x - 1, transform.position.y, transform.position.z);
+        }
+        else
+        {
+            transform.position = new Vector3(transform.position.x + 1, transform.position.y, transform.position.z);
+        }
         direction = -direction;
         Vector3 theScale = transform.localScale;
-        
-		theScale.x *= -1;
-		transform.localScale = theScale;
+
+        theScale.x *= -1;
+        transform.localScale = theScale;
         rb.velocity = new Vector2(speed * direction, 0.0f);
+
+
     }
 
     void OnCollisionEnter2D(Collision2D other)
     {
-        Vector2 collisionVelocity = other.relativeVelocity;
-        if (collisionVelocity.x > 0) 
-        {
-            if (direction < 0) 
-            {
-                Flip();
-            }
-        }
-        else if (collisionVelocity.x < 0) 
-        {
-            if (direction > 0) 
-            {
-                Flip();
-            }
-        }
+        Flip();
+
     }
 
     /// <summary>
@@ -56,20 +54,28 @@ public class CrowDeathMovement : MonoBehaviour
     /// </summary>
     void FixedUpdate()
     {
-        if(animator.GetBool("isDied")){
+        if (animator.GetBool("isDied"))
+        {
             rb.velocity = new Vector2(0.0f, 0.0f);
         }
 
         AnimatorStateInfo asi = animator.GetCurrentAnimatorStateInfo(0);
-        if(asi.IsName("die") && asi.normalizedTime > 0.7f){
+        if (asi.IsName("die") && asi.normalizedTime > 0.7f)
+        {
             GetComponent<Health>().Destroy();
-        }else if(asi.IsName("damage")){
-            if(asi.normalizedTime > 1.0f){
+        }
+        else if (asi.IsName("damage"))
+        {
+            if (asi.normalizedTime > 1.0f)
+            {
                 animator.SetBool("isDamaged", false);
-                if(GetComponent<Health>().isSameDirection){
+                if (GetComponent<Health>().isSameDirection)
+                {
                     rb.velocity = new(rb.velocity.x / 2, 0.0f);
                     GetComponent<Health>().ResetBool();
-                }else{
+                }
+                else
+                {
                     rb.velocity = new(-rb.velocity.x, 0.0f);
                 }
             }
@@ -83,12 +89,12 @@ public class CrowDeathMovement : MonoBehaviour
     public void Attack()
     {
         Collider2D[] gameObj = Physics2D.OverlapCircleAll(attackPoint.transform.position, radius, layerMask);
-            foreach (Collider2D colision in gameObj)
+        foreach (Collider2D colision in gameObj)
+        {
+            if (colision.CompareTag("Player"))
             {
-                if (colision.CompareTag("Player"))
-                {
-                    colision.GetComponent<Player>().TakeDamage(damageCaused);
-                }
+                colision.GetComponent<Player>().TakeDamage(damageCaused);
             }
+        }
     }
 }

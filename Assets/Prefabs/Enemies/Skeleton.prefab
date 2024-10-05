@@ -342,6 +342,7 @@ MonoBehaviour:
   maxHP: 5
   enemy: {fileID: 4569740640175356260}
   isSameDirection: 0
+  healthBar: {fileID: 0}
 --- !u!1 &6559282869446359941
 GameObject:
   m_ObjectHideFlags: 0

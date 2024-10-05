@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.TextCore;
 
@@ -8,12 +9,14 @@ public class playerMovement : MonoBehaviour
 {
     [SerializeField] public CharacterController2D controller;
     [SerializeField] public Animator animator;
-    [SerializeField]  public Rigidbody2D rb;
+    [SerializeField] public Rigidbody2D rb;
     public GameObject LargeMeteor;
     public GameObject MediumMeteor;
     public GameObject SmallMeteor;
+    public GameObject Basic_Skill_None;
+    public GameObject Basic_Skill_Fire;
+    public GameObject Basic_Skill_Sword;
     private AudioManager audioManager;
-    private TrailRenderer trailRenderer;
     public float runSpeed = 40f;
     float horizontalMove = 0f;
     bool jump = false;
@@ -33,25 +36,24 @@ public class playerMovement : MonoBehaviour
     void Awake()
     {
         audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
-        trailRenderer = GetComponent<TrailRenderer>();
-        trailRenderer.enabled = false;
+
     }
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
     }
-    void Update () {
+    void Update()
+    {
         AnimatorStateInfo asi = animator.GetCurrentAnimatorStateInfo(0);
 
-        if(DialogueSystem.Instance.dialoguePanel.activeSelf == false)
+        if (DialogueSystem.Instance.dialoguePanel.activeSelf == false)
         {
             //NORMAL MOVING AND SURFING
             if (!isSurfing)
             {
                 if (Input.GetButtonDown("Crouch"))
                 {
-                    trailRenderer.enabled = true;
                     animator.SetBool("isSurfing", true);
                     isSurfing = true;
                     theLastLocation = rb.transform.position.x;
@@ -99,7 +101,6 @@ public class playerMovement : MonoBehaviour
                 {
                     animator.SetBool("isSurfing", false);
                     isSurfing = false;
-                    trailRenderer.enabled = false;
                 }
                 horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
             }
@@ -123,15 +124,23 @@ public class playerMovement : MonoBehaviour
             {
                 animator.SetBool("isSurfing", false);
                 isSurfing = false;
-                trailRenderer.enabled = false;
             }
         }
 
         //RESET PARAMETER OF ANIMATOR
         setAnimator();
     }
-
-    void FixedUpdate () {
+    void OnCollisionEnter2D(Collision2D other)
+    {
+        if (isSurfing)
+        {
+            isSurfing = false;
+            animator.SetBool("isSurfing", false);
+        }
+    }
+    void FixedUpdate()
+    {
+        resetSkillIcon();
         if (DialogueSystem.Instance.dialoguePanel.activeSelf == false)
         {
             if (!isSurfing)
@@ -146,53 +155,83 @@ public class playerMovement : MonoBehaviour
             }
             else
             {
-                rb.transform.position = new Vector2(rb.position.x + isFacingRight * 60f * Time.fixedDeltaTime, rb.position.y);
+                rb.transform.position = new Vector2(rb.position.x + isFacingRight * 50f * Time.fixedDeltaTime, rb.position.y);
             }
         }
         else
         {
             if (isSurfing)
             {
-                rb.transform.position = new Vector2(rb.position.x + isFacingRight * 60f * Time.fixedDeltaTime, rb.position.y);
+                rb.transform.position = new Vector2(rb.position.x + isFacingRight * 50f * Time.fixedDeltaTime, rb.position.y);
             }
         }
     }
 
-    public void resetPlayerState(){
+    public void resetPlayerState()
+    {
         animator.SetBool("isNoneState", false);
         animator.SetBool("isElementState", false);
         animator.SetBool("isWeaponState", false);
     }
-    public void setAnimator(){
+
+    public void resetSkillIcon()
+    {
+        Basic_Skill_Fire.SetActive(false);
+        Basic_Skill_None.SetActive(false);
+        Basic_Skill_Sword.SetActive(false);
+        if (animator.GetBool("isNoneState") == true)
+        {
+            Basic_Skill_None.SetActive(true);
+        }
+        else if (animator.GetBool("isElementState") == true)
+        {
+            Basic_Skill_Fire.SetActive(true);
+        }
+        else
+        {
+            Basic_Skill_Sword.SetActive(true);
+        }
+    }
+    public void setAnimator()
+    {
         AnimatorStateInfo asi = animator.GetCurrentAnimatorStateInfo(0);
 
         //set isMoving
-        if(horizontalMove != 0.0f){
+        if (horizontalMove != 0.0f)
+        {
             animator.SetBool("isMoving", true);
         }
-        else{
+        else
+        {
             animator.SetBool("isMoving", false);
         }
 
         //set isJumping
         float vy = rb.velocity.y;
-        if(vy >= 0.1f){
+        if (vy >= 0.1f)
+        {
             animator.SetBool("isJumping", true);
-        }else if(vy <= -0.1f){
+        }
+        else if (vy <= -0.1f)
+        {
             animator.SetBool("isLanding", true);
             animator.SetBool("isJumping", false);
-        }else{
+        }
+        else
+        {
             animator.SetBool("isJumping", false);
             animator.SetBool("isLanding", false);
         }
 
         //control ATTACK here
-        if ((asi.IsName("fight") || asi.IsName("cut_sword")|| asi.IsName("fight_fire")) && asi.normalizedTime >= 1){
+        if ((asi.IsName("fight") || asi.IsName("cut_sword") || asi.IsName("fight_fire")) && asi.normalizedTime >= 1)
+        {
             animator.SetBool("isFighting", false);
-		}
-        if ((asi.IsName("kick") || asi.IsName("kick_fire")|| asi.IsName("cut2_sword")) && asi.normalizedTime >= 1){
+        }
+        if ((asi.IsName("kick") || asi.IsName("kick_fire") || asi.IsName("cut2_sword")) && asi.normalizedTime >= 1)
+        {
             animator.SetBool("isKicking", false);
-		}
+        }
     }
 
     //S1
@@ -217,15 +256,17 @@ public class playerMovement : MonoBehaviour
             audioManager.PlaySFX(audioManager.playerKick);
         }
     }
-    private void Skill3(){
+    private void Skill3()
+    {
         //control S3 in element state
-        if(animator.GetBool("isElementState")){
-            Instantiate(LargeMeteor, new Vector3(transform.position.x -20f, transform.position.y + 10f, 0f), Quaternion.identity);
+        if (animator.GetBool("isElementState"))
+        {
+            Instantiate(LargeMeteor, new Vector3(transform.position.x - 20f, transform.position.y + 10f, 0f), Quaternion.identity);
             Instantiate(MediumMeteor, new Vector3(transform.position.x - 15f, transform.position.y + 10f, 0f), Quaternion.identity);
             Instantiate(SmallMeteor, new Vector3(transform.position.x - 12f, transform.position.y + 10f, 0f), Quaternion.identity);
             Instantiate(LargeMeteor, new Vector3(transform.position.x - 8f, transform.position.y + 10f, 0f), Quaternion.identity);
             Instantiate(MediumMeteor, new Vector3(transform.position.x - 5f, transform.position.y + 10f, 0f), Quaternion.identity);
-            Instantiate(LargeMeteor, new Vector3(transform.position.x , transform.position.y + 10f, 0f), Quaternion.identity);
+            Instantiate(LargeMeteor, new Vector3(transform.position.x, transform.position.y + 10f, 0f), Quaternion.identity);
             Instantiate(SmallMeteor, new Vector3(transform.position.x + 2f, transform.position.y + 10f, 0f), Quaternion.identity);
             Instantiate(LargeMeteor, new Vector3(transform.position.x + 5f, transform.position.y + 10f, 0f), Quaternion.identity);
             Instantiate(SmallMeteor, new Vector3(transform.position.x + 8f, transform.position.y + 10f, 0f), Quaternion.identity);
