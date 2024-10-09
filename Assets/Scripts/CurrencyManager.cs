@@ -10,7 +10,10 @@ public class CurrencyManager : MonoBehaviour
 
     public TextMeshProUGUI moneyText;
 
-    int money = 0;
+    [SerializeField]
+    private int money = 0;
+
+    public int Money {  get { return money; } set { money = value; } } // set value for money first through property, then set value for PlayerPrefs
 
     private void Awake()
     {
@@ -28,8 +31,15 @@ public class CurrencyManager : MonoBehaviour
 
     public void AddMoney(int value)
     {
+        money = PlayerPrefs.GetInt("money");
         money += value;
         moneyText.text = money.ToString() + "$";
         PlayerPrefs.SetInt("money", money);
+    }
+
+    public void SetMoney()
+    {
+        PlayerPrefs.SetInt("money", money);
+        moneyText.text = money.ToString() + "$";
     }
 }

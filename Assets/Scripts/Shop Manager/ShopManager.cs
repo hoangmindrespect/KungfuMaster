@@ -12,9 +12,6 @@ public class ShopManager : MonoBehaviour
 
     ShopTemplate itemTemplate { get; set; }
     List<ShopTemplate> itemUIList = new List<ShopTemplate>();
-    //Test
-    public int coins;
-    //public TMP_Text coinUI;
 
     void Awake()
     {
@@ -33,10 +30,6 @@ public class ShopManager : MonoBehaviour
     {
         Debug.Log("Item quantity: " + ItemDatabase.Instance.GetItemQuantity().ToString());
         AddRandomItemToShop();
-        
-        //Test
-        //coinUI.text = "Coins: " + coins.ToString();
-        //CheckPurchaseable();
     }
 
     public void ItemAdded(Item item)
@@ -76,35 +69,4 @@ public class ShopManager : MonoBehaviour
         }
         catch { }
     }
-
-    public void AddCoins() // simple script to add coins
-    {
-        coins++;
-        //coinUI.text = "Coins: " + coins.ToString();
-        //CheckPurchaseable();
-    }
-
-    //public void CheckPurchaseable()
-    //{
-    //    //for (int i = 0; i < shopItemsSO.Length; i++)
-    //    //{
-    //    //    if (coins >= shopItemsSO[i].basePrice) // if I have enough money
-    //    //        myPurchaseBtns[i].interactable = true;
-    //    //    else
-    //    //        myPurchaseBtns[i].interactable = false;
-    //    //}
-    //}
-
-    //public void PurchaseItem(int btnNo)
-    //{
-    //    //if (coins >= shopItemsSO[btnNo].basePrice)
-    //    //{
-    //    //    coins = coins - shopItemsSO[btnNo].basePrice;
-    //    //    coinUI.text = "Coins: " + coins.ToString();
-    //    //    CheckPurchaseable();
-    //    //    //Unlock item.
-    //    //}
-    //}
-
-    
 }

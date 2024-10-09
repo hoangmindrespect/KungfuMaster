@@ -27,7 +27,7 @@ public class Coin : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (isCollided == false && collision.tag == "Player")
+        if (isCollided == false && collision.CompareTag("Player"))
         {
             audioManager.PlaySFX(audioManager.collectingGem);
             CurrencyManager.instance.AddMoney(100);

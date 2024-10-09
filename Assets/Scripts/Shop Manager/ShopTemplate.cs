@@ -22,7 +22,22 @@ public class ShopTemplate : MonoBehaviour
     [SerializeField]
     private Image itemIcon; // ~= weaponIcon
     private List<TextMeshProUGUI> itemStatTexts = new List<TextMeshProUGUI>(); // ~= weaponStatTexts
+    [SerializeField]
+    private Button purchaseBtn;
 
+    //Player money
+    int money = 0;
+
+    private void Start()
+    {
+        money = PlayerPrefs.GetInt("money");
+        CheckPurchaseable();
+    }
+    private void Update()
+    {
+        money = PlayerPrefs.GetInt("money");
+        CheckPurchaseable();
+    }
     public void SetItem(Item item)
     {
         this.item = item;
@@ -42,5 +57,25 @@ public class ShopTemplate : MonoBehaviour
             itemStatTexts[i].transform.SetParent(itemStatPanel);
             itemStatTexts[i].text = item.Stats[i].StatName + ": " + item.Stats[i].GetCalculatedStatValue().ToString();
         }
-    }    
+    }
+
+    public void CheckPurchaseable()
+    {
+        if (money >= item.Price) // if I have enough money
+            purchaseBtn.interactable = true;
+        else
+            purchaseBtn.interactable = false;
+    }
+
+    public void PurchaseItem()
+    {
+        if (money >= item.Price)
+        {
+            money = money - item.Price;
+            CurrencyManager.instance.Money = money;
+            CurrencyManager.instance.SetMoney();
+            CheckPurchaseable();
+            //Unlock item.
+        }
+    }
 }
