@@ -24,4 +24,13 @@ public class GameManager : MonoBehaviour
             }
         }
     }
+
+    private void OnApplicationFocus(bool focus)
+    {
+        if(!focus)
+        {
+            if (PlayerPrefs.HasKey("money"))
+                PlayerPrefs.DeleteKey("money");
+        }
+    }
 }
