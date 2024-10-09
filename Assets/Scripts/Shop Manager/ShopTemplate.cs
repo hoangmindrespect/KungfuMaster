@@ -28,8 +28,15 @@ public class ShopTemplate : MonoBehaviour
     //Player money
     int money = 0;
 
+    // SETTING FOR GIVING ITEMS INTO PLAYER INVENTORY
+    public GameObject player;
+    public InventoryController inventoryController;
+
     private void Start()
     {
+        player = GameObject.Find("Player");
+        inventoryController = player.GetComponent<InventoryController>();
+
         money = PlayerPrefs.GetInt("money");
         CheckPurchaseable();
     }
@@ -76,6 +83,8 @@ public class ShopTemplate : MonoBehaviour
             CurrencyManager.instance.SetMoney();
             CheckPurchaseable();
             //Unlock item.
+
+            inventoryController.GiveItem(item);
         }
     }
 }
