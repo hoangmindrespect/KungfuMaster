@@ -51,4 +51,13 @@ public class Player : MonoBehaviour
         this.currentHealth = this.maxHealth;
         UIEventHandler.HealthChanged(this.currentHealth, this.maxHealth);
     }
+
+    public void Healing(int amount)
+    {
+        Debug.Log("HEALING");
+        currentHealth += amount;
+        if (currentHealth >= maxHealth)
+            currentHealth = maxHealth;
+        UIEventHandler.HealthChanged(this.currentHealth, this.maxHealth);
+    }
 }

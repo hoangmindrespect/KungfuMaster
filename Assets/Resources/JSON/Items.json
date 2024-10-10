@@ -233,10 +233,42 @@
   {
     "objectSlug": "potion_log",
     "itemName": "Log Potion",
-    "description": "A potion that logs something to the console.",
+    "description": "healing HP.",
     "itemType": "Consumable",
     "actionName": "Drink",
     "itemModifier": 0,
     "Price": 200
+  },
+  {
+    "objectSlug": "potion_log",
+    "itemName": "ATK Potion",
+    "description": "A potion that increase your ATK.",
+    "itemType": "Consumable",
+    "actionName": "Drink",
+    "itemModifier": 1,
+    "Stats": [
+      {
+        "StatType": "ATK",
+        "BaseValue": 1,
+        "StatName": "Attack"
+      }
+    ],
+    "Price": 500
+  },
+  {
+    "objectSlug": "potion_log",
+    "itemName": "DEF Potion",
+    "description": "A potion that increase your DEF.",
+    "itemType": "Consumable",
+    "actionName": "Drink",
+    "itemModifier": 1,
+    "Stats": [
+      {
+        "StatType": "DEF",
+        "BaseValue": 1,
+        "StatName": "Defense"
+      }
+    ],
+    "Price": 700
   }
 ]

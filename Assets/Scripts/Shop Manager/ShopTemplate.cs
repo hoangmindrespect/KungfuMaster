@@ -57,7 +57,13 @@ public class ShopTemplate : MonoBehaviour
         priceText.text = item.Price.ToString();
         itemIcon.sprite = Resources.Load<Sprite>("UI/Icons/Items/" + item.ObjectSlug);
 
-        if (item.Stats == null) return;
+        if (item.Stats == null)
+        {
+            TextMeshProUGUI itemStatTexts = Instantiate(itemStatPrefab);
+            itemStatTexts.transform.SetParent(itemStatPanel);
+            itemStatTexts.text = item.Description;
+            return;
+        }
         for (int i = 0; i < item.Stats.Count; i++)
         {
             itemStatTexts.Add(Instantiate(itemStatPrefab));
