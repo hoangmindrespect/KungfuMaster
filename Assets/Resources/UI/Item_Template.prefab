@@ -98,6 +98,7 @@ MonoBehaviour:
   itemNameText: {fileID: 5799857938099053890}
   priceText: {fileID: 7935836220884685840}
   itemIcon: {fileID: 3654073907872930724}
+  purchaseBtn: {fileID: 1164754877170259988}
 --- !u!1 &2219109082142570174
 GameObject:
   m_ObjectHideFlags: 0
@@ -315,7 +316,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.6864838, g: 0.81761, b: 0.81761, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -665,10 +666,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: ShopManager, Assembly-CSharp
+      - m_Target: {fileID: 3052379961596186583}
+        m_TargetAssemblyTypeName: ShopTemplate, Assembly-CSharp
         m_MethodName: PurchaseItem
-        m_Mode: 3
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

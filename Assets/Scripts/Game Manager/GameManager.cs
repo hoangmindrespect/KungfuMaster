@@ -24,4 +24,13 @@ public class GameManager : MonoBehaviour
             }
         }
     }
+
+    private void OnApplicationFocus(bool focus) // This used to reset money when player turn the game off
+    {
+        if(!focus)
+        {
+            if (PlayerPrefs.HasKey("money"))
+                PlayerPrefs.DeleteKey("money");
+        }
+    }
 }
