@@ -231,18 +231,18 @@
     "Price": 1200
   },
   {
-    "objectSlug": "potion_log",
-    "itemName": "Log Potion",
-    "description": "healing HP.",
+    "objectSlug": "potion_nonstat",
+    "itemName": "HP Potion",
+    "description": "Healing HP.",
     "itemType": "Consumable",
     "actionName": "Drink",
     "itemModifier": 0,
     "Price": 200
   },
   {
-    "objectSlug": "potion_log",
+    "objectSlug": "potion_stat",
     "itemName": "ATK Potion",
-    "description": "A potion that increase your ATK.",
+    "description": "A potion increases your ATK.",
     "itemType": "Consumable",
     "actionName": "Drink",
     "itemModifier": 1,
@@ -256,9 +256,9 @@
     "Price": 500
   },
   {
-    "objectSlug": "potion_log",
+    "objectSlug": "potion_stat",
     "itemName": "DEF Potion",
-    "description": "A potion that increase your DEF.",
+    "description": "A potion increases your DEF.",
     "itemType": "Consumable",
     "actionName": "Drink",
     "itemModifier": 1,
