@@ -92014,6 +92014,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 992222440}
   bringerOfDeath: {fileID: 6625221028817790749, guid: f2e2bb140194a744ea5815610ead348a, type: 3}
+  playerComponent: {fileID: 0}
 --- !u!4 &1135759057
 Transform:
   m_ObjectHideFlags: 0
@@ -110808,6 +110809,10 @@ PrefabInstance:
       propertyPath: m_JumpForce
       value: 600
       objectReference: {fileID: 0}
+    - target: {fileID: 8452079546793078326, guid: 2d8c3dbe161b8734080356c2de30ce3c, type: 3}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 1135759056}
     m_RemovedComponents:
     - {fileID: 1651289585180932256, guid: 2d8c3dbe161b8734080356c2de30ce3c, type: 3}
     m_RemovedGameObjects: []

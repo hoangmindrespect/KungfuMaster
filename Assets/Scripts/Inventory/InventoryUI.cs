@@ -23,6 +23,9 @@ public class InventoryUI : MonoBehaviour // Responsible for loading data of item
         UIEventHandler.OnItemAddedToInventory += ItemAdded;
         itemContainer = Resources.Load<InventoryUIItem>("UI/Item_Container");
         //Debug.Log(itemContainer.gameObject.name);
+    }
+    private void Start()
+    {
         inventoryPanel.gameObject.SetActive(false);
         characterPanel.gameObject.SetActive(false);
         shopPanel.gameObject.SetActive(false);

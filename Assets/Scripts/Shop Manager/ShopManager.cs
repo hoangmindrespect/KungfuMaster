@@ -28,7 +28,7 @@ public class ShopManager : MonoBehaviour
     }
     void Start()
     {
-        Debug.Log("Item quantity: " + ItemDatabase.Instance.GetItemQuantity().ToString());
+        //Debug.Log("Item quantity: " + ItemDatabase.Instance.GetItemQuantity().ToString());
         AddRandomItemToShop();
     }
 
@@ -49,22 +49,22 @@ public class ShopManager : MonoBehaviour
         {
             for (int index = 0; index < 10; index++) 
             {
-                Debug.Log("LUCKY NUMBER START FROM: " + index.ToString());
+                //Debug.Log("LUCKY NUMBER START FROM: " + index.ToString());
                 randomIndex = Random.Range(0, itemQuantity);
 
                 while (itemIndexExist.Contains(randomIndex))
                 {
-                    Debug.Log("It's already exist this item index: " + randomIndex.ToString());
+                    //Debug.Log("It's already exist this item index: " + randomIndex.ToString());
                     randomIndex = Random.Range(0, itemQuantity);
                 }
                 itemIndexExist.Add(randomIndex);
 
                 Item randomItem = ItemDatabase.Instance.GetItem(randomIndex);
-                Debug.Log("LUCKY item: " + randomItem.ObjectSlug);
+                //Debug.Log("LUCKY item: " + randomItem.ObjectSlug);
                 ItemAdded(randomItem);
 
-                Debug.Log("random index: " + randomIndex.ToString());
-                Debug.Log("random item: " + randomItem.ItemName);
+                //Debug.Log("random index: " + randomIndex.ToString());
+                //Debug.Log("random item: " + randomItem.ItemName);
             }
         }
         catch { }
