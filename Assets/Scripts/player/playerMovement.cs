@@ -10,12 +10,6 @@ public class playerMovement : MonoBehaviour
     [SerializeField] public CharacterController2D controller;
     [SerializeField] public Animator animator;
     [SerializeField] public Rigidbody2D rb;
-    public GameObject LargeMeteor;
-    public GameObject MediumMeteor;
-    public GameObject SmallMeteor;
-    public GameObject Basic_Skill_None;
-    public GameObject Basic_Skill_Fire;
-    public GameObject Basic_Skill_Sword;
     private AudioManager audioManager;
     public float runSpeed = 40f;
     float horizontalMove = 0f;
@@ -88,10 +82,6 @@ public class playerMovement : MonoBehaviour
                 {
                     Kick();
                 }
-                if (Input.GetButtonDown("Skill3"))
-                {
-                    Skill3();
-                }
             }
 
             if (isSurfing)
@@ -140,7 +130,6 @@ public class playerMovement : MonoBehaviour
     }
     void FixedUpdate()
     {
-        resetSkillIcon();
         if (DialogueSystem.Instance.dialoguePanel.activeSelf == false)
         {
             if (!isSurfing)
@@ -174,24 +163,6 @@ public class playerMovement : MonoBehaviour
         animator.SetBool("isWeaponState", false);
     }
 
-    public void resetSkillIcon()
-    {
-        Basic_Skill_Fire.SetActive(false);
-        Basic_Skill_None.SetActive(false);
-        Basic_Skill_Sword.SetActive(false);
-        if (animator.GetBool("isNoneState") == true)
-        {
-            Basic_Skill_None.SetActive(true);
-        }
-        else if (animator.GetBool("isElementState") == true)
-        {
-            Basic_Skill_Fire.SetActive(true);
-        }
-        else
-        {
-            Basic_Skill_Sword.SetActive(true);
-        }
-    }
     public void setAnimator()
     {
         AnimatorStateInfo asi = animator.GetCurrentAnimatorStateInfo(0);
@@ -256,28 +227,5 @@ public class playerMovement : MonoBehaviour
             audioManager.PlaySFX(audioManager.playerKick);
         }
     }
-    private void Skill3()
-    {
-        //control S3 in element state
-        if (animator.GetBool("isElementState"))
-        {
-            Instantiate(LargeMeteor, new Vector3(transform.position.x - 20f, transform.position.y + 10f, 0f), Quaternion.identity);
-            Instantiate(MediumMeteor, new Vector3(transform.position.x - 15f, transform.position.y + 10f, 0f), Quaternion.identity);
-            Instantiate(SmallMeteor, new Vector3(transform.position.x - 12f, transform.position.y + 10f, 0f), Quaternion.identity);
-            Instantiate(LargeMeteor, new Vector3(transform.position.x - 8f, transform.position.y + 10f, 0f), Quaternion.identity);
-            Instantiate(MediumMeteor, new Vector3(transform.position.x - 5f, transform.position.y + 10f, 0f), Quaternion.identity);
-            Instantiate(LargeMeteor, new Vector3(transform.position.x, transform.position.y + 10f, 0f), Quaternion.identity);
-            Instantiate(SmallMeteor, new Vector3(transform.position.x + 2f, transform.position.y + 10f, 0f), Quaternion.identity);
-            Instantiate(LargeMeteor, new Vector3(transform.position.x + 5f, transform.position.y + 10f, 0f), Quaternion.identity);
-            Instantiate(SmallMeteor, new Vector3(transform.position.x + 8f, transform.position.y + 10f, 0f), Quaternion.identity);
-            Instantiate(MediumMeteor, new Vector3(transform.position.x + 11f, transform.position.y + 10f, 0f), Quaternion.identity);
-            Instantiate(MediumMeteor, new Vector3(transform.position.x + 14f, transform.position.y + 10f, 0f), Quaternion.identity);
-            Instantiate(LargeMeteor, new Vector3(transform.position.x + 17f, transform.position.y + 10f, 0f), Quaternion.identity);
-            Instantiate(LargeMeteor, new Vector3(transform.position.x + 20f, transform.position.y + 10f, 0f), Quaternion.identity);
-            Instantiate(MediumMeteor, new Vector3(transform.position.x + 23f, transform.position.y + 10f, 0f), Quaternion.identity);
-            Instantiate(SmallMeteor, new Vector3(transform.position.x + 26f, transform.position.y + 10f, 0f), Quaternion.identity);
-        }
-    }
-
 }
 

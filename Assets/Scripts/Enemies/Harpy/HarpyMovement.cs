@@ -5,9 +5,9 @@ using UnityEngine;
 public class HarpyMovement : MonoBehaviour
 {
 
-     private Animator animator;
-     public  GameObject AI;
-     private Rigidbody2D rb;
+    private Animator animator;
+    public GameObject AI;
+    private Rigidbody2D rb;
     void Start()
     {
         animator = GetComponent<Animator>();
@@ -15,11 +15,15 @@ public class HarpyMovement : MonoBehaviour
     void FixedUpdate()
     {
         AnimatorStateInfo asi = animator.GetCurrentAnimatorStateInfo(0);
-        if(asi.IsName("die") && asi.normalizedTime > 0.8f){
-            GetComponent<Health>().Destroy();
+        if (asi.IsName("die") && asi.normalizedTime > 0.8f)
+        {
+            GetComponent<EnemyHealth>().Destroy();
             Destroy(AI);
-        }else if(asi.IsName("hurt")){
-            if(asi.normalizedTime > 0.7f){
+        }
+        else if (asi.IsName("hurt"))
+        {
+            if (asi.normalizedTime > 0.7f)
+            {
                 animator.SetBool("isDamaged", false);
             }
         }

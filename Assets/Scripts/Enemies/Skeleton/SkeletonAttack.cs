@@ -2,13 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MinotourAttack : MonoBehaviour
+public class SkeletonAttack : MonoBehaviour
 {
     private Animator animator;
     public GameObject enemy;
-    private bool isAttacking = false;
     private AudioManager audioManager;
-
+    private bool isAttacking = false;
     void Awake()
     {
         audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
@@ -24,7 +23,6 @@ public class MinotourAttack : MonoBehaviour
             StartCoroutine(AttackWithSoundEffect());
         }
     }
-
     IEnumerator AttackWithSoundEffect()
     {
         isAttacking = true;
@@ -33,14 +31,14 @@ public class MinotourAttack : MonoBehaviour
         if (isAttacking)
         {
             isAttacking = false;
-            audioManager.PlaySFX(audioManager.minotourAttack);
+            audioManager.PlaySFX(audioManager.crowdeathAttack);
             yield return new WaitForSeconds(0.5f);
             animator.SetBool("isAttacking", false);
         }
     }
-
     void OnTriggerExit2D(Collider2D other)
     {
         animator.SetBool("isAttacking", false);
     }
+
 }

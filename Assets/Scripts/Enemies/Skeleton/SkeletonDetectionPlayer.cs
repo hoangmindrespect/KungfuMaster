@@ -1,12 +1,12 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MinotourDetectPlayer : MonoBehaviour
+public class SkeletonInteraction : MonoBehaviour
 {
     public GameObject enemy;
     public GameObject player;
-    private MinotourMovement mm;
+    private SkeletonMovement cm;
     private Animator enemyAnimator;
     private Rigidbody2D enemyRigidBody;
     private Rigidbody2D playerRigidBody;
@@ -24,7 +24,7 @@ public class MinotourDetectPlayer : MonoBehaviour
     {
         enemyAnimator = enemy.GetComponent<Animator>();
         enemyRigidBody = enemy.GetComponent<Rigidbody2D>();
-        mm = enemy.GetComponent<MinotourMovement>();
+        cm = enemy.GetComponent<SkeletonMovement>();
         playerRigidBody = player.GetComponent<Rigidbody2D>();
     }
 
@@ -33,7 +33,7 @@ public class MinotourDetectPlayer : MonoBehaviour
         //đảm bảo là CD chỉ nói gì đó 1 lần.
         if (!isEnterCollide)
         {
-            audioManager.PlaySFX(audioManager.minotourDetect);
+            //audioManager.PlaySFX(GetRandomCrowDeathSound());
             enemyAnimator.SetBool("isPlayerDetected", true);
             //Start
             isEnterCollide = true;
@@ -46,6 +46,17 @@ public class MinotourDetectPlayer : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
     }
 
+    AudioClip GetRandomCrowDeathSound()
+    {
+        int randomIndex = Random.Range(1, 3);
+        switch (randomIndex)
+        {
+            case 1: return audioManager.crowdeathDetect1;
+            case 2: return audioManager.crowdeathDetect2;
+            case 3: return audioManager.crowdeathDetect3;
+            default: return audioManager.crowdeathDetect1;
+        }
+    }
     void OnTriggerExit2D(Collider2D other)
     {
         if (!isExitCollide)
@@ -67,7 +78,7 @@ public class MinotourDetectPlayer : MonoBehaviour
             {
                 if ((enemyRigidBody.position.x < playerRigidBody.position.x && currentSpeed < 0.2f) || (enemyRigidBody.position.x >= playerRigidBody.position.x && currentSpeed > 0.2f))
                 {
-                    mm.Flip();
+                    cm.Flip();
                 }
             }
         }

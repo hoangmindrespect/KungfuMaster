@@ -148,6 +148,7 @@ GameObject:
   - component: {fileID: 8479874705702655759}
   - component: {fileID: 2961184233780237563}
   - component: {fileID: 8452079546793078326}
+  - component: {fileID: 8346753233897408264}
   - component: {fileID: 1651289585180932256}
   m_Layer: 6
   m_Name: Player
@@ -321,9 +322,6 @@ MonoBehaviour:
   controller: {fileID: 7471200118229010728}
   animator: {fileID: 8784295623620387553}
   rb: {fileID: 6739189710513829485}
-  LargeMeteor: {fileID: 244110850425716280, guid: cba8c78cded740046a082f6c7d37e27f, type: 3}
-  MediumMeteor: {fileID: 3550228021753126451, guid: cf126d6da4a1d864bb033e39904088c3, type: 3}
-  SmallMeteor: {fileID: 5867487929194662161, guid: af302c2a32c319a48a9c3068f4fca4c3, type: 3}
   runSpeed: 40
   cooldown: 0.5
 --- !u!58 &4077182351172698462
@@ -544,6 +542,45 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c6c856d2c3488549adedcd05a44f03a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &8346753233897408264
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6444708273226414920}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa665ef1463ded6489c0dc9eafd7869b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Basic_Skill_None: {fileID: 0}
+  Basic_Skill_Fire: {fileID: 0}
+  Basic_Skill_Sword: {fileID: 0}
+  LargeMeteor: {fileID: 244110850425716280, guid: cba8c78cded740046a082f6c7d37e27f, type: 3}
+  MediumMeteor: {fileID: 3550228021753126451, guid: cf126d6da4a1d864bb033e39904088c3, type: 3}
+  SmallMeteor: {fileID: 5867487929194662161, guid: af302c2a32c319a48a9c3068f4fca4c3, type: 3}
+  Special_Skill_One:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  Special_Skill_Two:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  animator: {fileID: 8784295623620387553}
 --- !u!96 &1651289585180932256
 TrailRenderer:
   serializedVersion: 3

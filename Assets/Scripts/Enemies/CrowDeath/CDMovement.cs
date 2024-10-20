@@ -8,6 +8,7 @@ public class CrowDeathMovement : MonoBehaviour
     private Rigidbody2D rb;
     public LayerMask layerMask;
     public GameObject attackPoint;
+    public Transform healthbarTransform;  // Transform của thanh máu (slider)
     public float radius;
     [Range(1.0f, 5f)] public float speed;
     private int direction;
@@ -40,13 +41,15 @@ public class CrowDeathMovement : MonoBehaviour
         transform.localScale = theScale;
         rb.velocity = new Vector2(speed * direction, 0.0f);
 
-
+        // Giữ thanh máu không bị lật bằng cách đảo ngược hướng của nó
+        Vector3 healthbarScale = healthbarTransform.localScale;
+        healthbarScale.x *= -1;  // Đảo ngược X của thanh máu
+        healthbarTransform.localScale = healthbarScale;
     }
 
     void OnCollisionEnter2D(Collision2D other)
     {
         Flip();
-
     }
 
     /// <summary>
@@ -62,17 +65,17 @@ public class CrowDeathMovement : MonoBehaviour
         AnimatorStateInfo asi = animator.GetCurrentAnimatorStateInfo(0);
         if (asi.IsName("die") && asi.normalizedTime > 0.7f)
         {
-            GetComponent<Health>().Destroy();
+            GetComponent<EnemyHealth>().Destroy();
         }
         else if (asi.IsName("damage"))
         {
             if (asi.normalizedTime > 1.0f)
             {
                 animator.SetBool("isDamaged", false);
-                if (GetComponent<Health>().isSameDirection)
+                if (GetComponent<EnemyHealth>().isSameDirection)
                 {
                     rb.velocity = new(rb.velocity.x / 2, 0.0f);
-                    GetComponent<Health>().ResetBool();
+                    GetComponent<EnemyHealth>().ResetBool();
                 }
                 else
                 {

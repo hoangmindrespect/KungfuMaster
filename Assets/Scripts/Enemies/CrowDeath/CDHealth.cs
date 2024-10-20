@@ -1,32 +1,30 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class MinotourHealth : MonoBehaviour, IEnemy
+public class CDHealth : EnemyHealth, IEnemy
 {
-    [SerializeField] private int maxHP = 5;
+    private int CD_HP = 5;
     public GameObject enemy;
     private GameObject player;
     private AudioManager audioManager;
-    public bool isSameDirection = false;
-
-    public int ID { get; set; }
-    public int Experience { get; set; }
+    public Slider healthBar;
 
     void Awake()
     {
         audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
         player = GameObject.FindGameObjectWithTag("Player");
         Experience = 15;
+        healthBar.value = CD_HP;
+        maxHP = CD_HP;
     }
-
-    public bool IsWillBeDie(int attdame)
+    public override bool IsWillBeDie(int attdame)
     {
         if (maxHP - attdame < 0)
         {
             {
                 enemy.GetComponent<Animator>().SetBool("isDied", true);
-                audioManager.PlaySFX(audioManager.minotourDeath);
                 maxHP -= attdame;
                 return true;
             }
@@ -34,9 +32,10 @@ public class MinotourHealth : MonoBehaviour, IEnemy
         else
             return false;
     }
-    public void TackDamage(int attdame)
+    public override void TackDamage(int attdame)
     {
         maxHP -= attdame;
+        healthBar.value = maxHP;
         if (enemy.CompareTag("Enemy"))
         {
             if (enemy.GetComponent<Rigidbody2D>().velocity.x * player.GetComponent<Rigidbody2D>().velocity.x > 0)
@@ -52,15 +51,11 @@ public class MinotourHealth : MonoBehaviour, IEnemy
         }
     }
 
-    public void Destroy()
+    public override void Destroy()
     {
         CombatEvents.EnemyDied(this);
         Destroy(enemy);
-        ScoreManager.instance.AddPoint(1000); // 1000 is point value only for CrowDeath, another enemy has different point,
+        ScoreManager.instance.AddPoint(50); // 50 is point value only for CrowDeath, another enemy has different point,
                                             // I can use delegate for this later to make sure Open/Closed Responsibility.
-    }
-    public void ResetBool()
-    {
-        isSameDirection = false;
     }
 }
