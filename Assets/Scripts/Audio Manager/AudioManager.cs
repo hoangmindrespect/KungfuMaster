@@ -29,20 +29,33 @@ public class AudioManager : MonoBehaviour
     public AudioClip playerFight;
     public AudioClip playerKick;
     public AudioClip EntryPortal;
+    public AudioClip lightning;
 
     [Header("----------Audio Clip For Collecting Gem----------")]
     public AudioClip collectingGem;
 
-    private void Start(){
-        if(SceneManager.GetActiveScene().name == "Game"){
+    private void Start()
+    {
+        if (SceneManager.GetActiveScene().name == "Game")
+        {
             musicSource.clip = background;
             musicSource.Play();
-        }else if(SceneManager.GetActiveScene().name == "Boss1"){
+        }
+        else if (SceneManager.GetActiveScene().name == "Boss1")
+        {
             musicSource.clip = combatboss;
             musicSource.Play();
         }
     }
-    public void PlaySFX(AudioClip clip){
+    public void PlaySFX(AudioClip clip)
+    {
+        SFXSource.PlayOneShot(clip);
+    }
+
+    public void PlaySFXBySpecificVol(AudioClip clip, float vol)
+    {
+        SFXSource.clip = clip;
+        SFXSource.volume = vol;
         SFXSource.PlayOneShot(clip);
     }
 }

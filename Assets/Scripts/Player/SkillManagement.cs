@@ -12,7 +12,7 @@ public class SkillManagement : MonoBehaviour
     public GameObject LargeMeteor;
     public GameObject MediumMeteor;
     public GameObject SmallMeteor;
-    public GameObject Arrow;
+    public GameObject Lightning;
     public List<GameObject> Special_Skill_One;
     public List<GameObject> Special_Skill_Two;
     [SerializeField] public Animator animator;
@@ -20,7 +20,11 @@ public class SkillManagement : MonoBehaviour
     private bool isUpdatedS2;
     private int cooldownS4;
     private int cooldownS5;
-
+    private AudioManager audioManager;
+    void Awake()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+    }
     void Start()
     {
         cooldownS4 = 0;
@@ -176,16 +180,25 @@ public class SkillManagement : MonoBehaviour
 
     private void Skill5()
     {
+        StartCoroutine(SpawnLightning());
+
+    }
+
+    IEnumerator SpawnLightning()
+    {
         float x = transform.position.x;
         float y = transform.position.y;
 
-        for (int i = 0; i < 100; i++)
+        for (int i = 0; i < 10; i++)
         {
-            float distanceX = Random.Range(-30f, 30f);
-            float distanceY = Random.Range(10, 20f);
+            float distanceX = Random.Range(-20f, 20f); // x ngẫu nhiên trong khoảng cố định
 
-            GameObject A = Instantiate(Arrow, new Vector3(x + distanceX, y + distanceY, 0f), Quaternion.identity);
-            A.transform.eulerAngles = new Vector3(0, 0, -90);
+            // Instantiate tia sét tại vị trí x ngẫu nhiên và y = 2
+            GameObject A = Instantiate(Lightning, new Vector3(x + distanceX, y + 4.0f, 0f), Quaternion.identity);
+            AudioClip lightning = audioManager.lightning;
+            audioManager.PlaySFXBySpecificVol(audioManager.lightning, 0.3f);
+            // Chờ 0.5 giây trước khi spawn tia sét tiếp theo
+            yield return new WaitForSeconds(0.2f);
         }
     }
 }
