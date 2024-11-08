@@ -26,7 +26,7 @@ public class KillGoal : Goal
     {
         if (enemy.ID == this.EnemyID)
         {
-            //Debug.Log("Detected enemy death: " + EnemyID);
+            Debug.Log("Detected enemy death: " + EnemyID);
             this.CurrentAmount++;
             Evaluate();
         }

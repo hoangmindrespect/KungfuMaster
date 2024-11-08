@@ -18,6 +18,7 @@ public class SkeletonHealth : EnemyHealth, IEnemy
         Experience = 15;
         healthBar.value = S_HP;
         maxHP = S_HP;
+        ID = 2; // ID of skeleton is 2
     }
 
     public override bool IsWillBeDie(int attdame)
