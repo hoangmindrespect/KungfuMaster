@@ -18,6 +18,7 @@ public class CDHealth : EnemyHealth, IEnemy
         Experience = 15;
         healthBar.value = CD_HP;
         maxHP = CD_HP;
+        ID = 1; // ID of crowdeath is 1
     }
     public override bool IsWillBeDie(int attdame)
     {

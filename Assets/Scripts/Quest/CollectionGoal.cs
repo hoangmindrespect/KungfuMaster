@@ -20,16 +20,16 @@ public class CollectionGoal : Goal
     public override void Init()
     {
         base.Init();
-        //UIEventHandler.OnItemAddedToInventory += ItemPickedUp;
+        UIEventHandler.OnItemAddedToInventory += ItemPickedUp;
     }
 
     void ItemPickedUp(Item item)
     {
-        //if (item.ObjectSlug == this.ItemID)
-        //{
-        //    Debug.Log("Detected enemy death: " + ItemID);
-        //    this.CurrentAmount++;
-        //    Evaluate();
-        //}
+        if (item.ObjectSlug == this.ItemID)
+        {
+            Debug.Log("Detected enemy death: " + ItemID);
+            this.CurrentAmount++;
+            Evaluate();
+        }
     }
 }

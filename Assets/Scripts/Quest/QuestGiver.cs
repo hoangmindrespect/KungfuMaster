@@ -13,15 +13,16 @@ public class QuestGiver : NPC
     [SerializeField]
     private string questType;
     private Quest Quest { get; set; }
+
     public override void Interact()
     {
 
-        if (!AssignedQuest && !Helped)
+        if (!AssignedQuest && !Helped) // assigned
         {
             base.Interact();
             AssignQuest();
         }
-        else if (AssignedQuest && !Helped)
+        else if (AssignedQuest && !Helped) // check
         {
             CheckQuest();
         }
