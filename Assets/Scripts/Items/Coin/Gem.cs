@@ -22,17 +22,24 @@ public class Gem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(isCollided == false)
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Ground"))
+        {
+            this.GetComponent<Rigidbody2D>().gravityScale = 0.0f;
+            this.GetComponent<Rigidbody2D>().AddForce(new Vector2(0.0f, 0.0f));
+            this.GetComponent<Rigidbody2D>().velocity = new Vector3(0.0f, 0.0f, 0.0f);
+        }
+
+        if (isCollided == false && collision.CompareTag("Player"))
         {
             audioManager.PlaySFX(audioManager.collectingGem);
             ScoreManager.instance.AddPoint(100);
             Destroy(gameObject);
             isCollided = true;
-        }  
+        }
     }
 }

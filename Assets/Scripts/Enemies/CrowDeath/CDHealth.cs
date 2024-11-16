@@ -9,15 +9,18 @@ public class CDHealth : EnemyHealth, IEnemy
     public GameObject enemy;
     private GameObject player;
     private AudioManager audioManager;
+    private EffectManagement effectManagement;
     public Slider healthBar;
 
     void Awake()
     {
         audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+        effectManagement = GameObject.FindGameObjectWithTag("BattleEffect").GetComponent<EffectManagement>();
         player = GameObject.FindGameObjectWithTag("Player");
         Experience = 15;
         healthBar.value = CD_HP;
         maxHP = CD_HP;
+        ID = 1; // ID of crowdeath is 1
     }
     public override bool IsWillBeDie(int attdame)
     {
@@ -53,6 +56,7 @@ public class CDHealth : EnemyHealth, IEnemy
 
     public override void Destroy()
     {
+        effectManagement.GenerateCoinDestroyCD(this.transform.position.x, this.transform.position.y);
         CombatEvents.EnemyDied(this);
         Destroy(enemy);
         ScoreManager.instance.AddPoint(50); // 50 is point value only for CrowDeath, another enemy has different point,

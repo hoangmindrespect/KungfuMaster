@@ -9,15 +9,19 @@ public class SkeletonHealth : EnemyHealth, IEnemy
     public GameObject enemy;
     private GameObject player;
     private AudioManager audioManager;
+    private EffectManagement effectManagement;
+
     public Slider healthBar;
 
     void Awake()
     {
+        effectManagement = GameObject.FindGameObjectWithTag("BattleEffect").GetComponent<EffectManagement>();
         audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
         player = GameObject.FindGameObjectWithTag("Player");
         Experience = 15;
         healthBar.value = S_HP;
         maxHP = S_HP;
+        ID = 2; // ID of skeleton is 2
     }
 
     public override bool IsWillBeDie(int attdame)
@@ -54,6 +58,7 @@ public class SkeletonHealth : EnemyHealth, IEnemy
 
     public override void Destroy()
     {
+        effectManagement.GenerateCoinDestroySkeleton(this.transform.position.x, this.transform.position.y);
         CombatEvents.EnemyDied(this);
         Destroy(enemy);
         ScoreManager.instance.AddPoint(100); // 50 is point value only for CrowDeath, another enemy has different point,
