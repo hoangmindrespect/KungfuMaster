@@ -21,8 +21,10 @@ public class SkillManagement : MonoBehaviour
     private int cooldownS4;
     private int cooldownS5;
     private AudioManager audioManager;
+    private EffectManagement effectManagement;
     void Awake()
     {
+        effectManagement = GameObject.FindGameObjectWithTag("BattleEffect").GetComponent<EffectManagement>();
         audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
     }
     void Start()
@@ -180,8 +182,8 @@ public class SkillManagement : MonoBehaviour
 
     private void Skill5()
     {
+        effectManagement.ShakeIt(2.0f);
         StartCoroutine(SpawnLightning());
-
     }
 
     IEnumerator SpawnLightning()
@@ -200,5 +202,6 @@ public class SkillManagement : MonoBehaviour
             // Chờ 0.5 giây trước khi spawn tia sét tiếp theo
             yield return new WaitForSeconds(0.2f);
         }
+        // effectManagement.StopCameraShaking();
     }
 }
