@@ -30,6 +30,8 @@ public class AudioManager : MonoBehaviour
     public AudioClip playerKick;
     public AudioClip EntryPortal;
     public AudioClip lightning;
+    public AudioClip meteoFallingDown;
+    public AudioClip meteoExplosion;
 
     [Header("----------Audio Clip For Collecting Gem----------")]
     public AudioClip collectingGem;
@@ -49,13 +51,6 @@ public class AudioManager : MonoBehaviour
     }
     public void PlaySFX(AudioClip clip)
     {
-        SFXSource.PlayOneShot(clip);
-    }
-
-    public void PlaySFXBySpecificVol(AudioClip clip, float vol)
-    {
-        SFXSource.clip = clip;
-        SFXSource.volume = vol;
         SFXSource.PlayOneShot(clip);
     }
 }

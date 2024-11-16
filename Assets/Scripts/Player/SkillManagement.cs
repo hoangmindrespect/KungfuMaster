@@ -156,11 +156,11 @@ public class SkillManagement : MonoBehaviour
     {
         float x = transform.position.x;
         float y = transform.position.y;
-
-        for (float i = -30f; i <= 30f; i += 2f)
+        for (float i = -20f; i <= 20f; i += 2f)
         {
             for (float j = 10f; j <= 20f; j += 2f)
             {
+                audioManager.PlaySFX(audioManager.meteoFallingDown);
                 int r = Random.Range(0, 2);
                 if (r == 0)
                 {
@@ -196,7 +196,7 @@ public class SkillManagement : MonoBehaviour
             // Instantiate tia sét tại vị trí x ngẫu nhiên và y = 2
             GameObject A = Instantiate(Lightning, new Vector3(x + distanceX, y + 4.0f, 0f), Quaternion.identity);
             AudioClip lightning = audioManager.lightning;
-            audioManager.PlaySFXBySpecificVol(audioManager.lightning, 0.3f);
+            audioManager.PlaySFX(audioManager.lightning);
             // Chờ 0.5 giây trước khi spawn tia sét tiếp theo
             yield return new WaitForSeconds(0.2f);
         }
