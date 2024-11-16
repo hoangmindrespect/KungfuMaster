@@ -5204,6 +5204,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   redCoin: {fileID: 34559388915107043, guid: c67ae8756b5529542aa0a5cafc19842c, type: 3}
   blueCoin: {fileID: 1392942891417289871, guid: c8b4672b70313cb45b3f33206eab3d0b, type: 3}
+  shakeMagnitude: 0.05
+  shakeTime: 1
+  mainCamera: {fileID: 1306754976}
 --- !u!4 &506910192 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7734934669020395967, guid: 3f0733b56e08e8c4a852b694cbbc24a5, type: 3}

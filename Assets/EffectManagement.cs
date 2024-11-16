@@ -10,6 +10,11 @@ public class EffectManagement : MonoBehaviour
     public GameObject redCoin;
     public GameObject blueCoin;
 
+    [Header("----------Screen Shake----------")]
+    Vector3 cameraInitialPosition;
+    public float shakeMagnitude = 0.1f;
+    public Camera mainCamera;
+
     public void GenerateCoinDestroyCD(float x, float y)
     {
         GameObject B = Instantiate(redCoin, new Vector3(x, y, 0), Quaternion.identity);
@@ -65,5 +70,28 @@ public class EffectManagement : MonoBehaviour
             rbC.gravityScale = 1;
             rbC.velocity = new Vector2(5, -3);
         }
+    }
+
+    public void ShakeIt(float shakeTime)
+    {
+        cameraInitialPosition = mainCamera.transform.position;
+        InvokeRepeating("StartCameraShaking", 0f, 0.005f);
+        Invoke("StopCameraShaking", shakeTime);
+    }
+
+    public void StartCameraShaking()
+    {
+        float cameraShakingOffsetX = Random.value * shakeMagnitude * 2 - shakeMagnitude;
+        float cameraShakingOffsetY = Random.value * shakeMagnitude * 2 - shakeMagnitude;
+        Vector3 cameraIntermadiatePosition = mainCamera.transform.position;
+        cameraIntermadiatePosition.x += cameraShakingOffsetX;
+        cameraIntermadiatePosition.y += cameraShakingOffsetY;
+        mainCamera.transform.position = cameraIntermadiatePosition;
+    }
+
+    public void StopCameraShaking()
+    {
+        CancelInvoke("StartCameraShaking");
+        mainCamera.transform.position = cameraInitialPosition;
     }
 }
