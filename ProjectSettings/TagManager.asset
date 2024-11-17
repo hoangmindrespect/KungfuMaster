@@ -9,6 +9,7 @@ TagManager:
   - Enemy
   - Audio
   - BattleEffect
+  - Ground
   layers:
   - Default
   - TransparentFX
