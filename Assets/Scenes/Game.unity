@@ -6292,6 +6292,14 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 992222440}
+    - target: {fileID: 281514543872321152, guid: 206925ebe81ff524485427119961758c, type: 3}
+      propertyPath: poisonLeftBullet
+      value: 
+      objectReference: {fileID: 8526994251598400490, guid: 50cab2c40369c734eaf3fd4288f697ce, type: 3}
+    - target: {fileID: 281514543872321152, guid: 206925ebe81ff524485427119961758c, type: 3}
+      propertyPath: poisonRightBullet
+      value: 
+      objectReference: {fileID: 322682799664575573, guid: 3bd2cbe613d34df4195874bed897c789, type: 3}
     - target: {fileID: 4197099865540058398, guid: 206925ebe81ff524485427119961758c, type: 3}
       propertyPath: m_Name
       value: poisonSpider (1)
@@ -6655,6 +6663,14 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 992222440}
+    - target: {fileID: 281514543872321152, guid: 206925ebe81ff524485427119961758c, type: 3}
+      propertyPath: poisonLeftBullet
+      value: 
+      objectReference: {fileID: 8526994251598400490, guid: 50cab2c40369c734eaf3fd4288f697ce, type: 3}
+    - target: {fileID: 281514543872321152, guid: 206925ebe81ff524485427119961758c, type: 3}
+      propertyPath: poisonRightBullet
+      value: 
+      objectReference: {fileID: 322682799664575573, guid: 3bd2cbe613d34df4195874bed897c789, type: 3}
     - target: {fileID: 4197099865540058398, guid: 206925ebe81ff524485427119961758c, type: 3}
       propertyPath: m_Name
       value: poisonSpider
@@ -114160,6 +114176,14 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 992222440}
+    - target: {fileID: 281514543872321152, guid: 206925ebe81ff524485427119961758c, type: 3}
+      propertyPath: poisonLeftBullet
+      value: 
+      objectReference: {fileID: 8526994251598400490, guid: 50cab2c40369c734eaf3fd4288f697ce, type: 3}
+    - target: {fileID: 281514543872321152, guid: 206925ebe81ff524485427119961758c, type: 3}
+      propertyPath: poisonRightBullet
+      value: 
+      objectReference: {fileID: 322682799664575573, guid: 3bd2cbe613d34df4195874bed897c789, type: 3}
     - target: {fileID: 4197099865540058398, guid: 206925ebe81ff524485427119961758c, type: 3}
       propertyPath: m_Name
       value: poisonSpider
@@ -114541,7 +114565,7 @@ PrefabInstance:
       objectReference: {fileID: 348429687}
     - target: {fileID: 7471200118229010728, guid: 2d8c3dbe161b8734080356c2de30ce3c, type: 3}
       propertyPath: m_JumpForce
-      value: 600
+      value: 500
       objectReference: {fileID: 0}
     - target: {fileID: 8346753233897408264, guid: 2d8c3dbe161b8734080356c2de30ce3c, type: 3}
       propertyPath: Arrow

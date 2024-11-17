@@ -1,11 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class SpiderRightBulletMovement : MonoBehaviour
 {
     private Animator animator;
-
     private Rigidbody2D rb;
     void Start()
     {
@@ -29,6 +29,10 @@ public class SpiderRightBulletMovement : MonoBehaviour
     }
     void OnTriggerEnter2D(Collider2D other)
     {
-        Destroy(this.gameObject);
+        if (other.gameObject.CompareTag("Player"))
+        {
+            other.GetComponent<Player>().TakeDamage(1);
+            Destroy(this.gameObject);
+        }
     }
 }

@@ -8,6 +8,7 @@ public class SpiderAttack : MonoBehaviour
     private float spiderPositionX;
     private float spiderPositionY;
     private bool isFaceRight;
+    private bool isAttacked;
 
     public GameObject player;
     public GameObject poisonRightBullet;
@@ -45,7 +46,7 @@ public class SpiderAttack : MonoBehaviour
             }
         }
         AnimatorStateInfo asi = animator.GetCurrentAnimatorStateInfo(0);
-        if (asi.IsName("attack"))
+        if (asi.IsName("attack") && !isAttacked)
         {
             if (!isFaceRight)
             {
@@ -56,6 +57,11 @@ public class SpiderAttack : MonoBehaviour
                 Flip();
                 Instantiate(poisonRightBullet, new Vector3(spiderPositionX, spiderPositionY - 1.5f, 0.0f), Quaternion.identity);
             }
+            isAttacked = true;
+        }
+        else if (asi.IsName("hide"))
+        {
+            isAttacked = false;
         }
     }
 }
