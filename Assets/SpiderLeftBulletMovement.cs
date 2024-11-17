@@ -18,7 +18,7 @@ public class SpiderLeftBulletMovement : MonoBehaviour
         AnimatorStateInfo asi = animator.GetCurrentAnimatorStateInfo(0);
         if (asi.IsName("live-bullet"))
         {
-            StartCoroutine(ResetIsAppearAfterDelay(5f));
+            StartCoroutine(ResetIsAppearAfterDelay(2f));
         }
     }
     private IEnumerator ResetIsAppearAfterDelay(float delay)
@@ -28,6 +28,10 @@ public class SpiderLeftBulletMovement : MonoBehaviour
     }
     void OnTriggerEnter2D(Collider2D other)
     {
-        Destroy(this.gameObject);
+        if (other.gameObject.CompareTag("Player"))
+        {
+            other.GetComponent<Player>().TakeDamage(1);
+            Destroy(this.gameObject);
+        }
     }
 }

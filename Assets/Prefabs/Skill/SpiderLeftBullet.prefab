@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2105290368029356463}
   - component: {fileID: 1844875865470321587}
   - component: {fileID: 2192697608095621424}
-  m_Layer: 12
+  m_Layer: 19
   m_Name: SpiderLeftBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -30,8 +30,8 @@ Transform:
   m_GameObject: {fileID: 8526994251598400490}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 79.962814, y: -4.2214527, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 45.10312, y: -3.4735985, z: 0}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}

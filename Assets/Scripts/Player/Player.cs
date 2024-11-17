@@ -5,10 +5,12 @@ using System;
 using Unity.Properties;
 using static Cinemachine.DocumentationSortingAttribute;
 using System.Collections.Generic;
+using UnityEngine.UI;
 
-public class Player : MonoBehaviour 
+public class Player : MonoBehaviour
 {
     public CharacterStats characterStats;
+    public Slider healthBar;
     public Rigidbody2D playerRb;
     public int currentHealth;
     public int maxHealth;
@@ -31,7 +33,7 @@ public class Player : MonoBehaviour
 
     public void TakeDamage(int amount)
     {
-        Debug.Log("Ui da");
+        healthBar.value -= amount;
         currentHealth -= amount;
         if (currentHealth <= 0)
             Die();
