@@ -8,14 +8,13 @@ public class SpiderMovement : MonoBehaviour
     void Start()
     {
         animator = GetComponent<Animator>();
-        animator.SetBool("isAppear", true);
-
+        animator.SetBool("isReadyToAppear", true);
     }
 
     void FixedUpdate()
     {
-        AnimatorStateInfo asi = animator.GetCurrentAnimatorStateInfo(0);
-        if (asi.IsName("hide") && animator.GetBool("isAppear"))
+        // AnimatorStateInfo asi = animator.GetCurrentAnimatorStateInfo(0);
+        if (animator.GetBool("isReadyToAppear"))
         {
             StartCoroutine(ResetIsAppearAfterDelay(10f));
         }
@@ -23,8 +22,8 @@ public class SpiderMovement : MonoBehaviour
 
     private IEnumerator ResetIsAppearAfterDelay(float delay)
     {
-        animator.SetBool("isAppear", false);
+        animator.SetBool("isReadyToAppear", false);
         yield return new WaitForSeconds(delay); // Chờ 10 giây
-        animator.SetBool("isAppear", true);
+        animator.SetBool("isReadyToAppear", true);
     }
 }
