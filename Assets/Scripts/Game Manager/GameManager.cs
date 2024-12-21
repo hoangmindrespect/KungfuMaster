@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour // Used GameManager to handle Caretaker
     public GameObject player;
     public GameObject bringerOfDeath;
 
-    private bool is_bringer_created = false;
+    // private bool is_bringer_created = false;
 
     // Setup to control Caretaker and used as a history
     public Player playerComponent;
@@ -20,7 +20,7 @@ public class GameManager : MonoBehaviour // Used GameManager to handle Caretaker
         playerComponent = player.GetComponent<Player>();
 
         // Save the initial state of the player when the game starts
-        
+
         //foreach (BaseStat baseStat in playerComponent.SaveStatsToMemento().PlayerBaseStats)
         //{
         //    Debug.Log("[PlayerStats] " + baseStat.StatName + " {save}: " + baseStat.FinalValue.ToString());
@@ -38,19 +38,21 @@ public class GameManager : MonoBehaviour // Used GameManager to handle Caretaker
 
     private void Update()
     {
-        if (!is_bringer_created)
-        {
-            if (player.transform.position.x > 280.0f)
-            {
-                if (Input.GetButtonDown("Boss"))
-                {
-                    SceneManager.LoadScene("Boss1");
-                    is_bringer_created = true;
-                }
-            }
-        }
+        float x = player.transform.position.x;
+        float y = player.transform.position.y;
+        // if (!is_bringer_created)
+        // {
+        //     if (player.transform.position.x > 280.0f)
+        //     {
+        //         if (Input.GetButtonDown("Boss"))
+        //         {
+        //             SceneManager.LoadScene("Boss1");
+        //             is_bringer_created = true;
+        //         }
+        //     }
+        // }
 
-        if(playerComponent.IsDied)
+        if (playerComponent.IsDied)
         {
             // Player dies, restore the last saved stats (pop from stack)
             var previousStats = caretaker.GetSavedState();
@@ -68,7 +70,7 @@ public class GameManager : MonoBehaviour // Used GameManager to handle Caretaker
 
     private void OnApplicationFocus(bool focus) // This used to reset money when player turn the game off
     {
-        if(!focus)
+        if (!focus)
         {
             if (PlayerPrefs.HasKey("money"))
                 PlayerPrefs.DeleteKey("money");

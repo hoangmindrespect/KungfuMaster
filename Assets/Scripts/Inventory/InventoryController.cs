@@ -31,9 +31,9 @@ public class InventoryController : MonoBehaviour // Responsible for managing the
 
     public void GiveItem(string itemSlug)
     {
-        Item item = ItemDatabase.Instance.GetItem(itemSlug);
-        playerItems.Add(item);
-        UIEventHandler.ItemAddedToInventory(item);
+        // Item item = ItemDatabase.Instance.GetItem(itemSlug);
+        // playerItems.Add(item);
+        // UIEventHandler.ItemAddedToInventory(item);
     }
 
     public void GiveItem(Item item)

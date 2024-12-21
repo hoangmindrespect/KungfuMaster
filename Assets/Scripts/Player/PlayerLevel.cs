@@ -23,7 +23,6 @@ public class PlayerLevel : MonoBehaviour
     private void Start()
     {
         gameManagerObject = GameObject.Find("GameManager");
-        gameManagerComponent = gameManagerObject.GetComponent<GameManager>();
     }
 
     public void EnemyToExperience(IEnemy enemy)
