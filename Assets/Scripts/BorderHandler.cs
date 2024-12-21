@@ -12,6 +12,9 @@ public class BorderHandler : MonoBehaviour
     /// <param name="other">The other Collider2D involved in this collision.</param>
     void OnTriggerEnter2D(Collider2D other)
     {
-        SceneManager.LoadScene("GameOver");
+        if (other.CompareTag("Player"))
+        {
+            SceneManager.LoadScene("GameOver");
+        }
     }
 }
