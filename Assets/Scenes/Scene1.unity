@@ -191557,6 +191557,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8300000, guid: 2d23117f758e34e478edb8792df81b27, type: 3}
     - target: {fileID: 2511021067373144188, guid: 28e066c602875b745a81e41f26614845, type: 3}
+      propertyPath: combatboss2
+      value: 
+      objectReference: {fileID: 8300000, guid: b6c68c39d5138be4dbf6fc8b81a50736, type: 3}
+    - target: {fileID: 2511021067373144188, guid: 28e066c602875b745a81e41f26614845, type: 3}
       propertyPath: meteoExplosion
       value: 
       objectReference: {fileID: 8300000, guid: 04e90ba74dcca5a4292a174e19edd835, type: 3}

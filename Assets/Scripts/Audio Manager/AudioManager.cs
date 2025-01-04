@@ -12,6 +12,8 @@ public class AudioManager : MonoBehaviour
     [Header("----------Audio Clip For Background----------")]
     public AudioClip background;
     public AudioClip combatboss;
+    public AudioClip combatboss2;
+
 
     [Header("----------Audio Clip For CrowDeadth----------")]
     public AudioClip crowdeathDetect1;
@@ -46,6 +48,11 @@ public class AudioManager : MonoBehaviour
         else if (SceneManager.GetActiveScene().name == "Boss1")
         {
             musicSource.clip = combatboss;
+            musicSource.Play();
+        }
+        else if (SceneManager.GetActiveScene().name == "Boss2")
+        {
+            musicSource.clip = combatboss2;
             musicSource.Play();
         }
     }
