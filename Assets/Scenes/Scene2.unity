@@ -5326,7 +5326,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1167677752}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1117832346
@@ -5540,6 +5541,92 @@ Transform:
   - {fileID: 316752762}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1167677751
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1085187219}
+    m_Modifications:
+    - target: {fileID: 385675126270878154, guid: 196636a4c658b164c8096c6725f18438, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.86
+      objectReference: {fileID: 0}
+    - target: {fileID: 385675126270878154, guid: 196636a4c658b164c8096c6725f18438, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -7.06
+      objectReference: {fileID: 0}
+    - target: {fileID: 385675126270878154, guid: 196636a4c658b164c8096c6725f18438, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 385675126270878154, guid: 196636a4c658b164c8096c6725f18438, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 385675126270878154, guid: 196636a4c658b164c8096c6725f18438, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 385675126270878154, guid: 196636a4c658b164c8096c6725f18438, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 385675126270878154, guid: 196636a4c658b164c8096c6725f18438, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 385675126270878154, guid: 196636a4c658b164c8096c6725f18438, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 385675126270878154, guid: 196636a4c658b164c8096c6725f18438, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 385675126270878154, guid: 196636a4c658b164c8096c6725f18438, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4356395166573226423, guid: 196636a4c658b164c8096c6725f18438, type: 3}
+      propertyPath: m_Name
+      value: RogueGiveQuest
+      objectReference: {fileID: 0}
+    - target: {fileID: 6256011158279516941, guid: 196636a4c658b164c8096c6725f18438, type: 3}
+      propertyPath: name
+      value: Shifu
+      objectReference: {fileID: 0}
+    - target: {fileID: 6256011158279516941, guid: 196636a4c658b164c8096c6725f18438, type: 3}
+      propertyPath: quests
+      value: 
+      objectReference: {fileID: 967312807}
+    - target: {fileID: 6256011158279516941, guid: 196636a4c658b164c8096c6725f18438, type: 3}
+      propertyPath: questType
+      value: DominateSkull
+      objectReference: {fileID: 0}
+    - target: {fileID: 6256011158279516941, guid: 196636a4c658b164c8096c6725f18438, type: 3}
+      propertyPath: dialogue.Array.data[0]
+      value: Hey, I got new quest for you.
+      objectReference: {fileID: 0}
+    - target: {fileID: 6256011158279516941, guid: 196636a4c658b164c8096c6725f18438, type: 3}
+      propertyPath: dialogue.Array.data[1]
+      value: Lets kill nine skeleton to master your skills.
+      objectReference: {fileID: 0}
+    - target: {fileID: 6256011158279516941, guid: 196636a4c658b164c8096c6725f18438, type: 3}
+      propertyPath: dialogue.Array.data[2]
+      value: Are you ready?!?
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 196636a4c658b164c8096c6725f18438, type: 3}
+--- !u!4 &1167677752 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 385675126270878154, guid: 196636a4c658b164c8096c6725f18438, type: 3}
+  m_PrefabInstance: {fileID: 1167677751}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1189986280 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4632610378327931973, guid: c8b4672b70313cb45b3f33206eab3d0b, type: 3}
