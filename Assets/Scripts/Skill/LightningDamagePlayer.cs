@@ -15,13 +15,12 @@ public class LightningDamagePlayer : MonoBehaviour
     {
         animator = GetComponent<Animator>();
     }
-    void OnTriggerEnter2D(Collider2D other)
+    public void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("Enemy"))
         {
             EnemyHealth enemyHealth = other.gameObject.GetComponent<EnemyHealth>();
             enemyHealth.TackDamage(damage);
-            enemyHealth.Destroy();
         }
     }
 

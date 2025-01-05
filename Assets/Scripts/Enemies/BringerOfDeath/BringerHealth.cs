@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class BringerHealth : EnemyHealth, IEnemy
@@ -38,6 +39,7 @@ public class BringerHealth : EnemyHealth, IEnemy
 
     public override void Destroy()
     {
+        SceneManager.LoadScene("Scene2");
         effectManagement.GenerateCoinDestroyCD(this.transform.position.x, this.transform.position.y);
         CombatEvents.EnemyDied(this);
         Destroy(enemy);

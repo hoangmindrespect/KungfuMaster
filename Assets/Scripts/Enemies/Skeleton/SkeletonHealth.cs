@@ -54,6 +54,14 @@ public class SkeletonHealth : EnemyHealth, IEnemy
                 enemy.GetComponent<Rigidbody2D>().velocity = new(-enemy.GetComponent<Rigidbody2D>().velocity.x, 0.0f);
             }
         }
+        if (IsWillBeDie(attdame))
+        {
+            audioManager.PlaySFX(audioManager.crowdeathDeath);
+        }
+        else
+        {
+            Debug.Log("");
+        }
     }
 
     public override void Destroy()

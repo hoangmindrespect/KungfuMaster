@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class WizardMovement : MonoBehaviour
@@ -23,6 +24,7 @@ public class WizardMovement : MonoBehaviour
     [SerializeField] private Transform attackPoint;
     [SerializeField] private float radiusAttack;
     [SerializeField] private int damageCaused;
+    public static bool isDied;
     private float x;
     private float y;
 
@@ -36,14 +38,20 @@ public class WizardMovement : MonoBehaviour
 
     private void Update()
     {
-        CheckPlayerDirection();
+        if (!isDied)
+        {
+            CheckPlayerDirection();
+        }
     }
 
     private void FixedUpdate()
     {
-        if (state == 1)
+        if (!isDied)
         {
-            FollowPlayerAndUseMeele();
+            if (state == 1)
+            {
+                FollowPlayerAndUseMeele();
+            }
         }
     }
 
