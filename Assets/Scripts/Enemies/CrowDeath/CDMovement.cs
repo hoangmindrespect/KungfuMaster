@@ -12,7 +12,7 @@ public class CrowDeathMovement : MonoBehaviour
     public float radius;
     [Range(1.0f, 5f)] public float speed;
     private int direction;
-    [Range(1, 5)] public int damageCaused;
+    [Range(1, 10)] public int damageCaused;
     private Animator animator;
     // Start is called before the first frame update
     void Start()
